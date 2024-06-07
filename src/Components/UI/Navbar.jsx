@@ -62,10 +62,10 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             <p className="secondary-text">{t("navbar.item2")}</p>
           </NavLink>
 
-          <NavLink to="/products" className="link">
+          {/* <NavLink to="/products" className="link">
             <img src={box} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item4")}</p>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/marketplace" className="link">
             <img src={job} alt="" className="ico" />
@@ -118,12 +118,12 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
           </p>
         </ul>
         <div className="navButtons">
-          <Link to="/login" className="linkBtn">
+          {/* <Link to="/login" className="linkBtn">
             <button className="sbtn">
               <img src={peoples} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item7")}</p>
             </button>
-          </Link>
+          </Link> */}
 
           {!loggedin && (
             <Link
