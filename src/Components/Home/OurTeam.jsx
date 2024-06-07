@@ -74,11 +74,12 @@ const OurTeam = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="details team-bg"
           >
-            <h2 className="primary-text">Md. Oyasiul Islam</h2>
-            <small className="star">CSE - BUET</small>
-            <p className="secondary-text">Co-Founder & Instructor</p>
+            <h2 className="primary-text">Tareq Aziz Mahim</h2>
+            <small className="star">CSE - Green University Bangladesh</small>
+            <p className="secondary-text">Co-Founder and Web Developer</p>
           </motion.div>
         </motion.div>
+
 
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}

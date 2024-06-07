@@ -299,3 +299,96 @@
     }
   }
 }
+@media only screen and (max-width: 480px) {
+  #popularCourses {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    
+  }
+
+  #popularCourses .back {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  #popularCourses .grad2 {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    background: rgba(9, 255, 0, 0.329);
+    filter: blur(100px);
+  }
+
+  #popularCourses .front {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 1rem 0;
+    z-index: 2;
+  }
+
+  #popularCourses .front h1 {
+    text-align: center;
+    font-size: 1.5rem;
+   
+  }
+
+  #popularCourses .front .sec-subTitle {
+    text-align: center;
+    
+    font-size: 0.9rem;
+  }
+
+  #popularCourses .front .slider {
+    
+    width: 100%; 
+    overflow-x: auto; 
+  }
+
+
+  .slick-slide {
+    
+    width: 100%;
+  }
+
+  .course-card {
+    width: calc(100% + 20px);
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .course-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .course-card .details {
+    display: block;
+    padding: 1rem;
+  }
+
+  .course-card .details .left-col,
+  .course-card .details .right-col {
+    width: 100%;
+    height: auto;
+  }
+
+  .course-card .details .left-col p,
+  .course-card .details .right-col ul,
+  .course-card .details .right-col button {
+    font-size: 0.8rem;
+  }
+
+  .course-card .details .right-col button {
+    width: 100%;
+    height: 35px;
+  }
+}

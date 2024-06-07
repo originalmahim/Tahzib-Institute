@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import CourseCard from "../Cards/CourseCard";
 import { course1, course2, course3, course4, course5 } from "../../assets";
 import { motion } from "framer-motion";
-import CoursePopup from "./CoursePopup";
+import CoursePopup from './CoursePopup';
 
 const PopularCourses = () => {
   const settings = {
@@ -24,14 +24,14 @@ const PopularCourses = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 700,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 575,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -41,31 +41,29 @@ const PopularCourses = () => {
   };
 
   const [popup, setPopup] = useState(false);
-
   return (
     <div id="popularCourses" className="sec-background">
-      {popup && <CoursePopup setPopup={setPopup} />}
-
+ {popup && <CoursePopup setPopup={setPopup} />}
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 1.2 }}
+        transition={{ duration: 0, delay: 0 }}
         className="back"
       >
-        <div className="grad1"></div>
+        {/* <div className="grad1"></div> */}
         <div className="grad2"></div>
-        <div className="grad3"></div>
+        {/* <div className="grad3"></div> */}
       </motion.div>
       <div className="front">
         <motion.h1
           whileInView={{ y: [-50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.3 }}
           className="primary-text"
         >
           পপুলার <span className="textGradient"> কোর্স </span>সমূহ
         </motion.h1>
         <motion.p
           whileInView={{ y: [-20, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
           className="secondary-text sec-subTitle"
         >
           যেকোনো বিষয়ে যেকোনো কিছু শিখতে চলে যাও তোমার পছন্দের সেকশনে
@@ -74,12 +72,12 @@ const PopularCourses = () => {
         <motion.div
           className="slider"
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
         >
           <Slider {...settings}>
             <div>
               <CourseCard
-                setPopup={setPopup}
+                 setPopup={setPopup}
                 banner={course1}
                 title="এডভান্স পাইথন প্রোগ্রামিং"
                 mentor="Mehedi Hasan"
@@ -91,7 +89,7 @@ const PopularCourses = () => {
             </div>
             <div>
               <CourseCard
-                setPopup={setPopup}
+                 setPopup={setPopup}
                 banner={course2}
                 title="ফ্রন্টএন্ড ডেভেলপমেন্ট"
                 mentor="Shykat Raha"
@@ -103,7 +101,7 @@ const PopularCourses = () => {
             </div>
             <div>
               <CourseCard
-                setPopup={setPopup}
+                 setPopup={setPopup}
                 banner={course3}
                 title="3D গেম ডেভেলপমেন্ট"
                 mentor="Shykat Raha"
@@ -115,7 +113,7 @@ const PopularCourses = () => {
             </div>
             <div>
               <CourseCard
-                setPopup={setPopup}
+                 setPopup={setPopup}
                 banner={course4}
                 title="ক্রিয়াটিভ illustration"
                 mentor="Tanmay Dash"
@@ -127,7 +125,7 @@ const PopularCourses = () => {
             </div>
             <div>
               <CourseCard
-                setPopup={setPopup}
+                 setPopup={setPopup}
                 banner={course5}
                 title="ক্রিয়াটিভ video editing"
                 mentor="Tanmay Dash"

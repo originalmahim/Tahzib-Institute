@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { aboutus, checked } from "../../assets";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";

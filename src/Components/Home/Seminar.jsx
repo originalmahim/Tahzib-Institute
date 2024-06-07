@@ -117,20 +117,20 @@ const Seminar = () => {
                 bestSeller={false}
               />
             </div>
-            <div></div>
-            <div></div>
-            {/* <div>
+            {/* <div></div>
+            <div></div> */}
+            <div>
               <FreeCourseCard
                 banner={course7}
-                title="এডভান্স পাইথন প্রোগ্রামিং"
-                mentor="Mehedi Hasan"
+                title="ডিজিটাল প্রোডাক্ট ম্যানেজমেন্ট"
+                mentor="Tareq Aziz Mahim"
+                desc="এই ডিজিটাল প্রোডাক্ট ম্যানেজমেন্ট কোর্সে প্রোডাক্ট ম্যানেজমেন্ট অনেক সহজ করে বোঝানো হয়েছে এবং বেসিক থেকে এডভান্স সব টপিক কভার করা হয়েছে"
                 price="2000"
-                desc="এই পাইথন কোর্সে প্রগ্রামিং কে অনেক সহজ করে বোঝানো হয়েছে এবং বেসিক থেকে এডভান্স সব টপিক কভার করা হয়েছে"
-                nos="67"
+                nos="1567"
                 bestSeller={true}
               />
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <FreeCourseCard
                 banner={course8}
                 title="এডভান্স পাইথন প্রোগ্রামিং"
@@ -140,7 +140,7 @@ const Seminar = () => {
                 nos="67"
                 bestSeller={false}
               />
-            </div> */}
+            </div>
             {/* <div>
               <FreeCourseCard
                 banner={course5}

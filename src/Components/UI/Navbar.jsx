@@ -147,7 +147,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                 onClick={() => setProfileView(!profileView)}
               >
                 <img src={profile} alt="" />
-                <small className="primary-text">Shykat Raha</small>
+                <small className="primary-text">Tareq Aziz Mahim</small>
               </div>
 
               {profileView && (

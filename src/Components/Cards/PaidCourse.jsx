@@ -1,21 +1,15 @@
 import React from "react";
-import { aboutus, checked, play } from "../../assets";
+import { aboutus, checked } from "../../assets";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
-const CourseCard = ({
-  banner,
-  title,
-  mentor,
-  price,
-  desc,
-  nos,
-  bestSeller,
-  setPopup,
-}) => {
+const PaidCourse = ({ banner, title, mentor, desc, nos, bestSeller, price }) => {
+  const [t] = useTranslation("global");
+
   return (
     <div>
-      <div id="courseCard" className="p-course">
+      <div id="freeCourseCard" className="p-course">
         <div className="courseBanner">
           {bestSeller && (
             <div className="bestSeller">
@@ -23,12 +17,11 @@ const CourseCard = ({
             </div>
           )}
           <img src={banner} alt="" />
-          <div className="popupbtn" onClick={() => setPopup(true)}>
-            <img src={play} alt="" />
-          </div>
         </div>
         <div className="course-details">
-          <h2 className="primary-text">{title}</h2>
+          <Link to="/">
+            <h2 className="primary-text">{title}</h2>
+          </Link>
           <small>
             A course by <span className="star">{mentor}</span>
           </small>
@@ -45,7 +38,7 @@ const CourseCard = ({
             <div className="right-btn hbtn">
               <Link to="/">
                 <BsCart2 className="cart" />
-                <p>এনরল করো</p>
+                <p>{t("freeCourses.course1.btn")}</p>
               </Link>
             </div>
           </div>
@@ -55,4 +48,6 @@ const CourseCard = ({
   );
 };
 
-export default CourseCard;
+export default PaidCourse;
+
+//  PaidCourse;

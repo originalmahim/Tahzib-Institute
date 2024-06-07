@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Components/Home/Header";
 import Journey from "../Components/Home/Journey";
-// import PopularCourses from "../Components/Home/PopularCourses";
+ import PopularCourses from "../Components/Home/PopularCourses";
 import CourseCategory from "../Components/Home/CourseCategory";
 import Support from "../Components/Home/Support";
 import Seminar from "../Components/Home/Seminar";
@@ -15,10 +15,10 @@ const Homepage = ({ darkTheme }) => {
     <div id="homepage" className={!darkTheme ? "dark" : "light"}>
       <Header />
       <Journey />
-      {/* <PopularCourses /> */}
       <OurSeminars />
       <CourseCategory />
       <Support />
+      <PopularCourses />
       <Seminar />
       <Faq />
       <SocialSupport />
