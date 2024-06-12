@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import SeminarsCard from "../Cards/SeminarsCard";
 import {
   s1p1,
@@ -59,20 +58,20 @@ const OurSeminars = () => {
   return (
     <div id="ourSeminars" className="sec-background">
       <div className="intro">
-        <motion.h1
-          whileInView={{ opacity: [0, 1], y: [-50, 0] }}
-          transition={{ duration: 0.7, delay: 0 }}
+        <h1
+          // whileInView={{ opacity: [0, 1], y: [-50, 0] }}
+          // transition={{ duration: 0.7, delay: 0 }}
           className="primary-text"
         >
           {t("seminar.title1")} <span className="textGradient">{t("seminar.title2")}</span> {t("seminar.title3")}
-        </motion.h1>
-        <motion.p
-          whileInView={{ opacity: [0, 1], y: [-50, 0] }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+        </h1>
+        <p
+          // whileInView={{ opacity: [0, 1], y: [-50, 0] }}
+          // transition={{ duration: 0.7, delay: 0.3 }}
           className="secondary-text"
         >
           {t("seminar.desc")}
-        </motion.p>
+        </p>
       </div>
 
       <div className="seminars-slider">

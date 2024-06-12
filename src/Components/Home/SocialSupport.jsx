@@ -11,7 +11,7 @@ const SocialSupport = () => {
       <div className="left-col">
         <motion.h1
           whileInView={{ opacity: [0, 1], x: [-50, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="primary-text"
         >
           {t("discordSupport.title1")}
@@ -19,14 +19,14 @@ const SocialSupport = () => {
         </motion.h1>
         <motion.p
           whileInView={{ opacity: [0, 1], x: [-50, 0] }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.1, delay: 0.1 }}
           className="secondary-text"
         >{t("discordSupport.desc")}
         </motion.p>
 
         <motion.div
           whileInView={{ opacity: [0, 1], y: [50, 0] }}
-          transition={{ duration: 0.7, delay: 0.6 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           className="btn-group"
         >
           <Link to="/batch" className="linkBtn">
@@ -48,7 +48,7 @@ const SocialSupport = () => {
         <div className="gradient2"></div>
         <motion.img
           whileInView={{ opacity: [0, 1], x: [20, 0] }}
-          transition={{ duration: 0.7, delay: 0.7 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           src={socialSupport}
           alt=""
         />

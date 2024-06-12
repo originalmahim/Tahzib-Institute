@@ -46,7 +46,7 @@ const PopularCourses = () => {
  {popup && <CoursePopup setPopup={setPopup} />}
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0, delay: 0 }}
+        transition={{ duration: 0, delay: 0.1 }}
         className="back"
       >
         {/* <div className="grad1"></div> */}
@@ -56,14 +56,14 @@ const PopularCourses = () => {
       <div className="front">
         <motion.h1
           whileInView={{ y: [-50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0 }}
           className="primary-text"
         >
           পপুলার <span className="textGradient"> কোর্স </span>সমূহ
         </motion.h1>
         <motion.p
           whileInView={{ y: [-20, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.3, delay: 0.3 }}
+          transition={{ duration: 0, delay: 0.1 }}
           className="secondary-text sec-subTitle"
         >
           যেকোনো বিষয়ে যেকোনো কিছু শিখতে চলে যাও তোমার পছন্দের সেকশনে
@@ -72,7 +72,7 @@ const PopularCourses = () => {
         <motion.div
           className="slider"
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.3, delay: 0.5 }}
+          transition={{ duration: 0, delay: 0.1 }}
         >
           <Slider {...settings}>
             <div>

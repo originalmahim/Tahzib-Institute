@@ -24,7 +24,7 @@ const Header = () => {
       <div className="details">
         <motion.div
           whileInView={{ x: [-50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="left-col"
         >
           <h2 className="primary-text">{t("header.tagline1")}</h2>
@@ -36,7 +36,7 @@ const Header = () => {
         </motion.div>
         <motion.div
           whileInView={{ x: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7, delay: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
           className="right-col"
         >
           <p className="secondary-text">{t("header.message")}</p>
@@ -61,7 +61,7 @@ const Header = () => {
 
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 1.3 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
         className="review-section"
       >
         <div className="star-review">
@@ -92,14 +92,14 @@ const Header = () => {
       <div className="banner">
         <motion.img
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5 }}
           src={student}
           alt=""
           className="student"
         />
         <motion.div
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5 }}
           className="content bannerBg"
         >
           <div className="illustrations">

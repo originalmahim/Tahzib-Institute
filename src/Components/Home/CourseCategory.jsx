@@ -20,7 +20,7 @@ const CourseCategory = () => {
         <div className="gradient1"></div>
         <motion.h1
           whileInView={{ opacity: [0, 1], x: [-50, 0] }}
-          transition={{ duration: 0.7, delay: 0 }}
+          transition={{ duration: 0, delay: 0 }}
           className="primary-text"
         >
           {t("category.title1")}
@@ -28,14 +28,14 @@ const CourseCategory = () => {
         </motion.h1>
         <motion.p
           whileInView={{ opacity: [0, 1], x: [-50, 0] }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0, delay: 0 }}
           className="secondary-text"
         >
           {t("category.desc")}
         </motion.p>
         <motion.img
           whileInView={{ opacity: [0, 1], y: [50, 0] }}
-          transition={{ duration: 0.7, delay: 0.6 }}
+          transition={{ duration: 0, delay: 0 }}
           src={binbag}
           alt=""
         />
@@ -44,7 +44,7 @@ const CourseCategory = () => {
         <div className="category-grid">
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 0.9 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={kids} alt="" />
@@ -57,7 +57,7 @@ const CourseCategory = () => {
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 1.1 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={creativity} alt="" />
@@ -70,7 +70,7 @@ const CourseCategory = () => {
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 1.3 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={development} alt="" />
@@ -83,7 +83,7 @@ const CourseCategory = () => {
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 1.5 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={self} alt="" />
@@ -96,7 +96,7 @@ const CourseCategory = () => {
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 1.7 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={ssc} alt="" />
@@ -109,7 +109,7 @@ const CourseCategory = () => {
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
-            transition={{ duration: 0.7, delay: 1.9 }}
+            transition={{ duration: 0, delay: 0 }}
           >
             <Link to="/" className="category-item gitem">
               <img src={extra} alt="" />

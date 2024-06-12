@@ -1,0 +1,206 @@
+#DetailsPage{
+  @include basicStyle(auto, 5rem, 10rem);
+
+  #MainDetais{
+    // @include basicStyle(90vh, 5rem, 10rem);
+    // @include flexStyles(space-between, center);
+    
+    margin: 0 auto; 
+    text-align: center;
+    .left-col {
+      width: 63%;
+      height: 100%;
+      @include flexStyles(center, start);
+      flex-direction: column;
+  
+      h1 {
+        margin-top: 4rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+    .right-col {
+      width: 35%;
+      height: 100%;
+      @include flexStyles(center, center);
+      position: relative;
+  
+  
+      #courseCard {
+        width: 85%;
+        height: auto;
+        overflow: hidden;
+        border-radius: 0.5rem;
+  
+        .courseBanner {
+          width: 100%;
+          height: 40%;
+          position: relative;
+  
+          .bestSeller {
+            background: $star;
+            position: absolute;
+            z-index: 3;
+            right: 5%;
+            top: 5%;
+            @include flexStyles(center, center);
+            border-radius: 0.3rem;
+            #ul_top_hypers li {
+              display: inline;
+            }
+            
+            
+            p {
+              font-size: 0.7rem;
+              padding: 0.1rem 0.5rem;
+            }
+          }
+  
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .popupbtn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.3s;
+  
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+  
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.34);
+          }
+        }
+  
+        .course-details {
+          width: 100%;
+          height: 60%;
+          padding: 1rem 2rem;
+  
+          h2 {
+            width: 100%;
+            height: auto;
+          }
+  
+          small {
+            color: $secondaryDarkText;
+            span {
+              font-weight: bold;
+            }
+          }
+  
+          .desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            height: 30%;
+          }
+  
+          .enrollNum {
+            @include flexStyles(start, center);
+            width: 100%;
+            height: 5vh;
+  
+            img {
+              width: 6%;
+              margin-right: 0.6rem;
+            }
+            p {
+              font-weight: 500;
+            }
+          }
+  
+          .btn-group {
+            margin-top: 0.5rem;
+            width: 100%;
+            height: 5vh;
+            @include flexStyles(space-between, center);
+  
+            .left-btn {
+              width: 40%;
+              height: 100%;
+              border-radius: 0.3rem;
+              @include flexStyles(center, center);
+  
+              img {
+                width: 15%;
+                margin-right: 0.5rem;
+              }
+              p {
+                font-weight: 600;
+              }
+            }
+            .right-btn {
+              width: 55%;
+              @include flexStyles(center, center);
+              border-radius: 0.3rem;
+              cursor: pointer;
+              transition: 0.3s;
+  
+              a {
+                @include flexStyles(center, center);
+                padding: 0.5rem;
+  
+                .cart{
+                  color: #fff;
+                  margin-right: 0.5rem;
+                }
+                p {
+                  font-weight: 600;
+                  color: $primaryDarkText;
+                }
+              }
+  
+              &:hover {
+                background: $highlightHover;
+              }
+            }
+          }
+        }
+      }
+  
+      .gradient1,
+      .gradient2 {
+        width: 30rem;
+        height: 30rem;
+        border-radius: 50%;
+        position: absolute;
+        filter: blur(200px);
+      }
+  
+      .gradient1 {
+        background: rgba(0, 255, 179, 0.221);
+        top: 40%;
+        left: -10%;
+      }
+      .gradient2 {
+        background: rgba(0, 145, 255, 0.221);
+        top: -10%;
+        left: -100%;
+      }
+    }   
+          
+  }
+
+}
+
+

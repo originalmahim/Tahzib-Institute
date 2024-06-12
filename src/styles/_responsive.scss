@@ -10,6 +10,8 @@
     }
   }
 
+  
+
   #header {
     .details {
       .left-col {
@@ -244,6 +246,7 @@
     }
   }
 
+  
   #seminar {
     @include basicStyle(180vh, 5rem, 5rem);
 
@@ -324,6 +327,8 @@
       }
     }
   }
+
+  
 
   #socialSupport {
     @include basicStyle(90vh, 5rem, 5rem);
@@ -1121,6 +1126,8 @@
     }
   }
 
+  
+
   #seminar {
     overflow-x: hidden !important;
 
@@ -1262,6 +1269,7 @@
     }
   }
 
+  
   #socialSupport {
     overflow-x: hidden !important;
     overflow-y: hidden;

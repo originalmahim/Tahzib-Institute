@@ -245,6 +245,7 @@ button {
 @import "./Pages_style/home_style/faq";
 @import "./Pages_style/home_style/socialSupport";
 @import "./Pages_style/home_style/team";
+@import "./Pages_style/home_style/CourseDetaisPage";
 
 //marketplace styles
 @import "./Pages_style/marketplaceStyles/marketplace";
@@ -255,3 +256,7 @@ button {
 @import "./Pages_style/marketplaceStyles/talentProfile";
 
 @import "./responsive";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -26,10 +26,10 @@ const OurTeam = () => {
   };
 
   return (
-    <div id="ourTeam" className="sec-background">
+    <div id="ourTeam" className="sec-background ">
       <motion.h1
         whileInView={{ opacity: [0, 1], y: [-50, 0] }}
-        transition={{ duration: 0.7, delay: 0 }}
+        transition={{ duration: 0, delay: 0 }}
         className="primary-text"
       >
         {t("team.title1")}{" "}
@@ -39,7 +39,7 @@ const OurTeam = () => {
       </motion.h1>
       <motion.p
         whileInView={{ opacity: [0, 1], y: [-50, 0] }}
-        transition={{ duration: 0.7, delay: 0 }}
+        transition={{ duration: 0, delay: 0 }}
         className="secondary-text"
       >
         {t("team.desc")}
@@ -48,13 +48,13 @@ const OurTeam = () => {
       <div className="team" ref={teamDiv}>
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}
-          transition={{ duration: 0.7, delay: 0 }}
-          className={`team-member mem-active`}
+          transition={{ duration: 0, delay: 0 }}
+          className={`team-member`}
           onClick={handleActive}
         >
           <motion.div
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.1, delay: 0.2 }}
             className="details team-bg"
           >
             <h2 className="primary-text">MD. Mehedi Hasan</h2>
@@ -65,13 +65,13 @@ const OurTeam = () => {
 
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className={`team-member`}
+          transition={{ duration: 0.2, delay: 0.1 }}
+          className={`team-member mem-active`}
           onClick={handleActive}
         >
           <motion.div
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="details team-bg"
           >
             <h2 className="primary-text">Tareq Aziz Mahim</h2>
@@ -83,13 +83,13 @@ const OurTeam = () => {
 
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}
-          transition={{ duration: 0.7, delay: 0.9 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           className={`team-member`}
           onClick={handleActive}
         >
           <motion.div
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="details team-bg"
           >
             <h2 className="primary-text">Shykat Raha</h2>
@@ -100,13 +100,13 @@ const OurTeam = () => {
 
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}
-          transition={{ duration: 0.7, delay: 1.2 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           className={`team-member`}
           onClick={handleActive}
         >
           <motion.div
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="details team-bg"
           >
             <h2 className="primary-text">Mahabuba Hasan Mati</h2>
@@ -117,13 +117,13 @@ const OurTeam = () => {
 
         <motion.div
           whileInView={{ opacity: [0, 1], x: [-10, 0] }}
-          transition={{ duration: 0.7, delay: 1.8 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           className={`team-member`}
           onClick={handleActive}
         >
           <motion.div
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="details team-bg"
           >
             <h2 className="primary-text">Mehra Khatun Ananna</h2>

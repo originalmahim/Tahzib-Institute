@@ -1,7 +1,6 @@
 import React from "react";
 import {
   course5,
-  course6,
   course7,
   course8,
   seminar,
@@ -48,7 +47,7 @@ const Seminar = () => {
       <div className="gradient1"></div>
       <motion.div
         whileInView={{ y: [50, 0], opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0 }}
+        transition={{ duration: 0, delay: 0 }}
         className="upcomingSeminar bannerBg"
       >
         <div className="banner-col">
@@ -76,7 +75,7 @@ const Seminar = () => {
         <div className="top-row">
           <motion.h1
             whileInView={{ y: [20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0 }}
             className="primary-text"
           >
             {t("freeCourses.title1")}
@@ -85,7 +84,7 @@ const Seminar = () => {
           </motion.h1>
           <motion.p
             whileInView={{ y: [-20, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0, delay: 0 }}
             className="secondary-text sec-subTitle"
           >
             {t("freeCourses.desc")}
@@ -93,7 +92,7 @@ const Seminar = () => {
         </div>
         <motion.div
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0, delay: 0 }}
           className="bottom-row"
         >
           <Slider {...settings}>

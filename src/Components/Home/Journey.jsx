@@ -58,7 +58,7 @@ const Journey = () => {
     <div id="journey" className="sec-background">
       <motion.div
         whileInView={{ x: [-50, 0], opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.5 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
         className="left-slider"
       >
         <Slider {...settings}>
@@ -115,7 +115,7 @@ const Journey = () => {
 
       <motion.div
         whileInView={{ x: [50, 0], opacity: [0, 1] }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.1 }}
         className="right-details"
       >
         <img src={path} alt="" className="path" />

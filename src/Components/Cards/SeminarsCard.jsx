@@ -6,8 +6,8 @@ const SeminarsCard = ({ title, date, plc, vidSrc, sp1, sp2, sp3, sp4 }) => {
   return (
     <div className="seminarCard">
       <motion.div
-        whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0 }}
+        whileInView={{ opacity: [0,1] }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <div className="vid-cont">
@@ -22,7 +22,7 @@ const SeminarsCard = ({ title, date, plc, vidSrc, sp1, sp2, sp3, sp4 }) => {
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1], y: [-50, 0] }}
-        transition={{ duration: 0.7, delay: 0.3 }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <div className="date">
@@ -41,28 +41,28 @@ const SeminarsCard = ({ title, date, plc, vidSrc, sp1, sp2, sp3, sp4 }) => {
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.6 }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <img src={sp1} alt="" />
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.6 }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <img src={sp2} alt="" />
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.6 }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <img src={sp3} alt="" />
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.6 }}
+        transition={{ duration: 0, delay: 0 }}
         className="card-item gitem"
       >
         <img src={sp4} alt="" />

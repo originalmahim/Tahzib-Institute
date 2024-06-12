@@ -11,7 +11,7 @@ const Faq = () => {
     <div id="FAQ" className="sec-background">
       <motion.div
         whileInView={{ x: [-50, 0], opacity: [0, 1] }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.1 }}
         className="left-col"
       >
         <img src={rocket} alt="" className="rocket" />
@@ -31,7 +31,7 @@ const Faq = () => {
       </motion.div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7, delay: 0.3 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
         className="ans-col"
       >
         <div className="row">

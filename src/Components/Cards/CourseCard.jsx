@@ -43,7 +43,7 @@ const CourseCard = ({
               <p className="primary-text">{price} tk</p>
             </div>
             <div className="right-btn hbtn">
-              <Link to="/">
+              <Link to="/ ">
                 <BsCart2 className="cart" />
                 <p>এনরল করো</p>
               </Link>

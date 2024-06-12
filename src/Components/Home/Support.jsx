@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { boss, laptop } from "../../assets";
 import { useTranslation } from "react-i18next";
 
 const Support = () => {
@@ -60,7 +59,7 @@ const Support = () => {
     <div id="support" className="sec-background">
       <motion.div
         whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.1 }}
         className="switchBar"
       >
         <div className="switches">
@@ -105,7 +104,7 @@ const Support = () => {
 
       <motion.h1
         whileInView={{ opacity: [0, 1], y: [20, 0] }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.1 }}
         className="primary-text"
       >
         {t("support.title1")}{" "}
@@ -116,7 +115,7 @@ const Support = () => {
       {switc1 && (
         <motion.p
           whileInView={{ opacity: [0, 1], y: [-10, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="supportText nav-bg"
         >
           {supports[0]}
@@ -125,7 +124,7 @@ const Support = () => {
       {switc2 && (
         <motion.p
           whileInView={{ opacity: [0, 1], y: [-10, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="supportText nav-bg"
         >
           {supports[1]}
@@ -134,7 +133,7 @@ const Support = () => {
       {switc3 && (
         <motion.p
           whileInView={{ opacity: [0, 1], y: [-10, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="supportText nav-bg"
         >
           {supports[2]}
@@ -143,7 +142,7 @@ const Support = () => {
       {switc4 && (
         <motion.p
           whileInView={{ opacity: [0, 1], y: [-10, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="supportText nav-bg"
         >
           {supports[3]}
@@ -152,7 +151,7 @@ const Support = () => {
       {switc5 && (
         <motion.p
           whileInView={{ opacity: [0, 1], y: [-10, 0] }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.1 }}
           className="supportText nav-bg"
         >
           {supports[4]}

@@ -46,7 +46,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
   };
 
   return (
-    <div id="navbar" className={!darkTheme ? "dark navColor" : "light "}>
+    <div id="navbar" className={!darkTheme ? "dark navColor" : "light "  }>
       <div className="desktop_menu nav-bg">
         <Link to="/" className="logo">
           <img src={logo} alt="" />
