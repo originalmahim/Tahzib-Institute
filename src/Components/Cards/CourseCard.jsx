@@ -1,5 +1,5 @@
 import React from "react";
-import { aboutus, checked, play } from "../../assets";
+import { aboutus, checked } from "../../assets";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 
@@ -11,7 +11,6 @@ const CourseCard = ({
   desc,
   nos,
   bestSeller,
-  setPopup,
 }) => {
   return (
     <div>
@@ -23,9 +22,6 @@ const CourseCard = ({
             </div>
           )}
           <img src={banner} alt="" />
-          <div className="popupbtn" onClick={() => setPopup(true)}>
-            <img src={play} alt="" />
-          </div>
         </div>
         <div className="course-details">
           <h2 className="primary-text">{title}</h2>

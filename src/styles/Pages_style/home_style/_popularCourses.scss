@@ -152,10 +152,11 @@
     .slider {
       opacity: 0;
       position: relative;
+      height: 100%;
 
       #courseCard {
         width: 95%;
-        height: 55vh;
+        height: 100%;
         overflow: hidden;
         border-radius: 0.5rem;
 

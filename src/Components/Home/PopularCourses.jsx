@@ -1,18 +1,31 @@
-import React, { useState } from "react";
-import Slider from "react-slick";
-import CourseCard from "../Cards/CourseCard";
-import { course1, course2, course3, course4, course5 } from "../../assets";
-import { motion } from "framer-motion";
-import CoursePopup from './CoursePopup';
+import React, { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import CourseCard from '../Cards/CourseCard';
+import { motion } from 'framer-motion';
+import vedioapi from '../../app/vedioapi'; // Assuming this imports your API functions
 
 const PopularCourses = () => {
+  const [courses, setCourses] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllCourses();
+  }, []);
+
+  const getAllCourses = () => {
+    vedioapi.getCourses().then(resp => {
+      setCourses(resp.courses);
+      setLoading(false);
+    });
+  };
+
   const settings = {
     arrows: false,
     dots: false,
     infinite: true,
     autoplay: true,
     speed: 1000,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
@@ -40,17 +53,15 @@ const PopularCourses = () => {
     ],
   };
 
-  const [popup, setPopup] = useState(false);
   return (
     <div id="popularCourses" className="sec-background">
- {popup && <CoursePopup setPopup={setPopup} />}
       <motion.div
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0, delay: 0.1 }}
         className="back"
       >
-        {/* <div className="grad1"></div> */}
-        <div className="grad2"></div>
+        <div className="grad1"></div>
+        {/* <div className="grad2"></div> */}
         {/* <div className="grad3"></div> */}
       </motion.div>
       <div className="front">
@@ -74,68 +85,32 @@ const PopularCourses = () => {
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
           transition={{ duration: 0, delay: 0.1 }}
         >
-          <Slider {...settings}>
-            <div>
-              <CourseCard
-                 setPopup={setPopup}
-                banner={course1}
-                title="এডভান্স পাইথন প্রোগ্রামিং"
-                mentor="Mehedi Hasan"
-                price="2000"
-                desc="এই পাইথন কোর্সে প্রগ্রামিং কে অনেক সহজ করে বোঝানো হয়েছে এবং বেসিক থেকে এডভান্স সব টপিক কভার করা হয়েছে"
-                nos="67"
-                bestSeller={true}
-              />
-            </div>
-            <div>
-              <CourseCard
-                 setPopup={setPopup}
-                banner={course2}
-                title="ফ্রন্টএন্ড ডেভেলপমেন্ট"
-                mentor="Shykat Raha"
-                price="5100"
-                desc="This course is exactly which you are looking for master python programming"
-                nos="50"
-                bestSeller={false}
-              />
-            </div>
-            <div>
-              <CourseCard
-                 setPopup={setPopup}
-                banner={course3}
-                title="3D গেম ডেভেলপমেন্ট"
-                mentor="Shykat Raha"
-                price="18000"
-                desc="This course is exactly which you are looking for master python programming"
-                nos="10"
-                bestSeller={true}
-              />
-            </div>
-            <div>
-              <CourseCard
-                 setPopup={setPopup}
-                banner={course4}
-                title="ক্রিয়াটিভ illustration"
-                mentor="Tanmay Dash"
-                price="700"
-                desc="This course is exactly which you are looking for master python programming"
-                nos="76"
-                bestSeller={false}
-              />
-            </div>
-            <div>
-              <CourseCard
-                 setPopup={setPopup}
-                banner={course5}
-                title="ক্রিয়াটিভ video editing"
-                mentor="Tanmay Dash"
-                price="700"
-                desc="This course is exactly which you are looking for master python programming"
-                nos="76"
-                bestSeller={false}
-              />
-            </div>
-          </Slider>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <Slider {...settings}>
+              {courses.map((course, index) => (
+                <div key={index}>
+                  <CourseCard
+                    banner={course?.bannerImage?.url} 
+                    title={course?.courseName}
+                    mentor={course?.author}
+                    price={course?.price}
+                    desc='৪৮টি লাইভ সাপোর্ট সেশন
+                বেসিক থেকে অ্যাডভান্সড লেভেল
+                ৪ মাসের ব্যাচ
+                কুইজ ও অ্যাসাইনমেন্ট
+                রিয়েল-লাইফ কেস স্টাডি
+                মেন্টর সাপোর্ট
+                ২ বছরের কন্টেন্ট অ্যাক্সেস
+                প্রফেশনাল সার্টিফিকেট'
+                    nos='200'
+                    bestSeller='true'
+                  />
+                </div>
+              ))}
+            </Slider>
+          )}
         </motion.div>
       </div>
     </div>
@@ -143,3 +118,4 @@ const PopularCourses = () => {
 };
 
 export default PopularCourses;
+

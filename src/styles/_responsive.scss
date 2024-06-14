@@ -947,9 +947,10 @@
       }
 
       .slider {
+        height: 100%;
         #courseCard {
           width: 100%;
-          height: 55vh;
+          height: 100%;
 
           .course-details {
             padding: 1rem;

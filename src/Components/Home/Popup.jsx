@@ -18,15 +18,16 @@ const Popup = ({ onClose }) => {
           className="absolute top-2 right-2 text-3xl cursor-pointer text-red-500"
         />
         <iframe
-          width="100%"
-          height="450"
-          src="https://www.youtube-nocookie.com/embed/O_NmXOWJ9Qg?autoplay=1"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          onClick={handleVideoClick} // Attach the event handler to the iframe
-        ></iframe>
+        src="https://player.cloudinary.com/embed/?public_id=samples%2Fcld-sample-video&cloud_name=dfq61lhkc&player[autoplay]=true&player[controls]=true&player[showJumpControls]=true&player[logoImageUrl]=http%3A%2F%2Flocalhost%3A3000%2Fstatic%2Fmedia%2Flogo.1b027f1499aaf619375d.png&player[fluid]=true"
+        width="100%"
+        height="450"
+        title="YouTube video player"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+        onClick={handleVideoClick}
+        >         
+        </iframe>
       </div>
     </div>
   );

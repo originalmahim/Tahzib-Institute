@@ -16,6 +16,7 @@ import TalentProfile from "./Components/MarketPlace/TalentProfile";
 import TalentDashboard from "./Components/MarketPlace/TalentDashboard";
 import AllJobs from "./Components/MarketPlace/AllJobs";
 import CourseDetaisPage from "./Components/Home/CourseDetaisPage";
+import Courselist from "./Components/Home/Courselist";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -61,6 +62,10 @@ function App() {
           <Route
           path="/Details"
           element={<CourseDetaisPage darkTheme={darkTheme}/>}
+          />
+          <Route
+          path="/Courses"
+          element={<Courselist></Courselist>}
           />
 
           {/* MarketPlace----------------------x----------------- */}

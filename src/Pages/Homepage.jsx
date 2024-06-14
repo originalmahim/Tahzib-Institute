@@ -9,6 +9,7 @@ import Faq from "../Components/Home/Faq";
 import SocialSupport from "../Components/Home/SocialSupport";
 import OurSeminars from "../Components/Home/OurSeminars";
 import OurTeam from "../Components/Home/OurTeam";
+import Courselist from "../Components/Home/Courselist";
 
 const Homepage = ({ darkTheme }) => {
   return (
