@@ -18,9 +18,6 @@ const getCourses = async () => {
         description {
          text
         }
-        introvedio {
-         url
-        }
         chapters {
           id
           title

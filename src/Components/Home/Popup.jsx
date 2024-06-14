@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillXCircleFill } from "react-icons/bs";
 
-const Popup = ({ videoUrl, onClose }) => {
+const Popup = ({  onClose }) => {
   const handleVideoClick = (event) => {
     // Prevent default behavior (i.e., navigating to YouTube)
     event.preventDefault();
@@ -17,7 +17,7 @@ const Popup = ({ videoUrl, onClose }) => {
           className="absolute top-2 right-2 text-3xl cursor-pointer text-red-500"
         />
         <iframe
-          src={videoUrl}
+          src='https://res.cloudinary.com/dfq61lhkc/video/upload/v1718371491/ahpr07eu902q5ajbdkru.mp4&player[controls]=true&player[showJumpControls]=true&player[showLogo]=false&player[fluid]=true'
           width="100%"
           height="450"
           title="Video player"

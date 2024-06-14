@@ -22,14 +22,11 @@ const benefits = [
 
 const CourseDetaisPage = ({ darkTheme, courses }) => {
   const [popup, setPopup] = useState(false);
-  const [videoUrl, setVideoUrl] = useState('');
 
   const { id } = useParams();
   const course = courses.find(course => course.id === id);
-  console.log(course?.introvedio?.url);
 
   const handleButtonClick = (url) => {
-    setVideoUrl(url);
     setPopup(true);
   };
 
@@ -58,7 +55,7 @@ const CourseDetaisPage = ({ darkTheme, courses }) => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
                   className="bg-white text-black rounded-full p-3 bg-opacity-70 hover:bg-opacity-100 transition"
-                  onClick={() => handleButtonClick(course?.introvedio?.url)}
+                  onClick={() => handleButtonClick('https://res.cloudinary.com/dfq61lhkc/video/upload/v1718371491/ahpr07eu902q5ajbdkru.mp4')}
                 >
                   <img src={play} alt="" />
                 </button>
@@ -140,7 +137,7 @@ const CourseDetaisPage = ({ darkTheme, courses }) => {
           <div className="lg:w-[37%] h-full"></div>
         </div>
       </div>
-      {popup && <Popup videoUrl={videoUrl} onClose={() => setPopup(false)} />}
+      {popup && <Popup videoUrl='https://res.cloudinary.com/dfq61lhkc/video/upload/v1718371491/ahpr07eu902q5ajbdkru.mp4' onClose={() => setPopup(false)} />}
     </div>
   );
 };

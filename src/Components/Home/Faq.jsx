@@ -35,7 +35,7 @@ const Faq = () => {
         className="ans-col"
       >
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center ">
             <img src={checked} alt=""></img> {t("faq.qna1.ques")}
           </h3>
           <p className="secondary-text">
@@ -43,7 +43,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna2.ques")}
           </h3>
           <p className="secondary-text">
@@ -51,7 +51,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna3.ques")}
           </h3>
           <p className="secondary-text">
@@ -59,7 +59,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna4.ques")}
           </h3>
           <p className="secondary-text">
@@ -67,7 +67,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna5.ques")}
           </h3>
           <p className="secondary-text">
@@ -75,7 +75,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna6.ques")}
           </h3>
           <p className="secondary-text">
@@ -83,7 +83,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna7.ques")}
           </h3>
           <p className="secondary-text">
@@ -91,7 +91,7 @@ const Faq = () => {
           </p>
         </div>
         <div className="row">
-          <h3>
+          <h3 className="flex gap-2 items-center" >
             <img src={checked} alt=""></img>{t("faq.qna8.ques")}
           </h3>
           <p className="secondary-text">
