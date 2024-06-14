@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/app.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/UI/Navbar";
@@ -17,9 +17,22 @@ import TalentDashboard from "./Components/MarketPlace/TalentDashboard";
 import AllJobs from "./Components/MarketPlace/AllJobs";
 import CourseDetaisPage from "./Components/Home/CourseDetaisPage";
 import Courselist from "./Components/Home/Courselist";
+import vedioapi from "./app/vedioapi";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    getAllCourses();
+  }, []);
+
+  const getAllCourses = () => {
+    vedioapi.getCourses().then(resp => {
+      setCourses(resp.courses);
+    });
+  };
 
   return (
     <div className="app">
@@ -60,8 +73,8 @@ function App() {
             element={<ClientProfile darkTheme={darkTheme} />}
           />
           <Route
-          path="/Details"
-          element={<CourseDetaisPage darkTheme={darkTheme}/>}
+          path="/Details/:id"
+          element={<CourseDetaisPage courses={courses} darkTheme={darkTheme}/>}
           />
           <Route
           path="/Courses"

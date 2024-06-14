@@ -11,6 +11,7 @@ const CourseCard = ({
   desc,
   nos,
   bestSeller,
+  courseId
 }) => {
   return (
     <div>
@@ -39,7 +40,7 @@ const CourseCard = ({
               <p className="primary-text">{price} tk</p>
             </div>
             <div className="right-btn hbtn">
-              <Link to="/ ">
+              <Link to={`/Details/${courseId}`}>
                 <BsCart2 className="cart" />
                 <p>এনরল করো</p>
               </Link>

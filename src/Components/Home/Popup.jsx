@@ -1,8 +1,7 @@
 import React from "react";
 import { BsFillXCircleFill } from "react-icons/bs";
 
-
-const Popup = ({ onClose }) => {
+const Popup = ({ videoUrl, onClose }) => {
   const handleVideoClick = (event) => {
     // Prevent default behavior (i.e., navigating to YouTube)
     event.preventDefault();
@@ -18,16 +17,15 @@ const Popup = ({ onClose }) => {
           className="absolute top-2 right-2 text-3xl cursor-pointer text-red-500"
         />
         <iframe
-        src="https://player.cloudinary.com/embed/?public_id=samples%2Fcld-sample-video&cloud_name=dfq61lhkc&player[autoplay]=true&player[controls]=true&player[showJumpControls]=true&player[logoImageUrl]=http%3A%2F%2Flocalhost%3A3000%2Fstatic%2Fmedia%2Flogo.1b027f1499aaf619375d.png&player[fluid]=true"
-        width="100%"
-        height="450"
-        title="YouTube video player"
-        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-        allowfullscreen
-        frameborder="0"
-        onClick={handleVideoClick}
-        >         
-        </iframe>
+          src={videoUrl}
+          width="100%"
+          height="450"
+          title="Video player"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowFullScreen
+          frameBorder="0"
+          onClick={handleVideoClick}
+        ></iframe>
       </div>
     </div>
   );

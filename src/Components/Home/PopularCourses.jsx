@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import CourseCard from '../Cards/CourseCard';
 import { motion } from 'framer-motion';
-import vedioapi from '../../app/vedioapi'; // Assuming this imports your API functions
-
+import vedioapi from '../../app/vedioapi'; 
 const PopularCourses = () => {
   const [courses, setCourses] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -106,6 +105,7 @@ const PopularCourses = () => {
                 প্রফেশনাল সার্টিফিকেট'
                     nos='200'
                     bestSeller='true'
+                    courseId={course.id}
                   />
                 </div>
               ))}

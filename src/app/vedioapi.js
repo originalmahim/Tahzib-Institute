@@ -8,7 +8,6 @@ const getCourses = async () => {
       courses {
         id
         courseName
-        level
         price
         tags
         time
@@ -16,8 +15,15 @@ const getCourses = async () => {
         bannerImage {
           url
         }
+        description {
+         text
+        }
+        introvedio {
+         url
+        }
         chapters {
           id
+          title
         }
       }
     }
