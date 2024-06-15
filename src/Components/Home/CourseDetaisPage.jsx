@@ -127,7 +127,7 @@ const CourseDetaisPage = ({ darkTheme, courses }) => {
                 </div>
               </div>
               <div className="h-auto overflow-hidden rounded-md p-4">
-                <h2 className="text-2xl primary-text">কোর্সের পরিপূর্ণ কারিকুলাম</h2>
+                
                 <div className="my-3">
                     <Coursecontents course={course} />
                 </div>

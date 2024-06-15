@@ -5,21 +5,11 @@ import {
   home,
   logo,
   login,
-  peoples,
-  under10,
-  all,
-  career,
-  eng,
-  ssc,
   en,
   bn,
-  job,
-  box,
   profile,
 } from "../../assets";
 import {
-  BsFillCaretDownFill,
-  BsFillCaretRightFill,
   BsMoon,
   BsSun,
 } from "react-icons/bs";
@@ -53,13 +43,13 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
         </Link>
         <ul className="menu">
           <NavLink to="/" className="link">
-            <img src={home} alt="" className="ico" />
-            <p className="secondary-text">{t("navbar.item1")}</p>
+            <img src={home} alt="" className="logo" />
+            <p className="primary-text">{t("navbar.item1")}</p>
           </NavLink>
 
           <NavLink to="/about-us" className="link">
-            <img src={aboutus} alt="" className="ico" />
-            <p className="secondary-text">{t("navbar.item2")}</p>
+            <img src={aboutus} alt="" className="logo" />
+            <p className="primary-text">{t("navbar.item2")}</p>
           </NavLink>
 
           {/* <NavLink to="/products" className="link">
@@ -67,16 +57,16 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             <p className="secondary-text">{t("navbar.item4")}</p>
           </NavLink> */}
 
-          <NavLink to="/marketplace" className="link">
+          {/* <NavLink to="/marketplace" className="link">
             <img src={job} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item5")}</p>
-          </NavLink>
+          </NavLink> */}
 
           <p className="link d-link">
-            <img src={courses} alt="" className="ico" />
-            <p className="secondary-text">{t("navbar.item3")}</p>
-            <BsFillCaretDownFill className="downArrow" />
-            <ul className="drop-bg">
+            <img src={courses} alt="" className="logo" />
+            <p className="primary-text">{t("navbar.item3")}</p>
+            {/* <BsFillCaretDownFill className="downArrow" /> */}
+            {/* <ul className="drop-bg">
               <li>
                 {" "}
                 <Link className="menuLink secondary-text" to="/under-10">
@@ -114,7 +104,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   <BsFillCaretRightFill className="rightArrow" />
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </p>
         </ul>
         <div className="navButtons">
@@ -133,7 +123,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             >
               <button className="hbtn">
                 <img src={login} alt="" className="ico" />
-                <p>{t("navbar.item6")}</p>
+                <p className="primary-text" >{t("navbar.item6")}</p>
               </button>
             </Link>
           )}
@@ -175,12 +165,6 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   </small>
                   <small className="info secondary-text">
                     Location: <span className="primary-text">Bangladesh</span>
-                  </small>
-                  <small className="info secondary-text">
-                    Payment: <span className="primary-text">BDT</span>
-                  </small>
-                  <small className="info secondary-text">
-                    Earning: <span className="primary-text">৳ 00</span>
                   </small>
 
                   <div className="line"></div>
@@ -255,28 +239,28 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
               <p className="secondary-text">{t("navbar.item2")}</p>
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
               to="/about-us"
               onClick={() => setMobileActive(false)}
               className="link"
             >
               <img src={box} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item4")}</p>
-            </NavLink>
+            </NavLink> */}
 
-            <NavLink
+            {/* <NavLink
               to="/about-us"
               onClick={() => setMobileActive(false)}
               className="link"
             >
               <img src={job} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item5")}</p>
-            </NavLink>
+            </NavLink> */}
 
             <p to="" className="link d-link">
               <img src={courses} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item3")}</p>
-              <BsFillCaretDownFill className="downArrow" />
+              {/* <BsFillCaretDownFill className="downArrow" />
               <ul className="">
                 <li>
                   {" "}
@@ -335,7 +319,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                     <BsFillCaretRightFill className="rightArrow" />
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
             </p>
 
             <div className="link-btns">
@@ -350,7 +334,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                 </button>
               </Link>
 
-              <Link
+              {/* <Link
                 to="/batch"
                 onClick={() => setMobileActive(false)}
                 className="linkBtn"
@@ -359,18 +343,12 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   <img src={peoples} alt="" className="ico" />
                   <p>{t("navbar.item7")}</p>
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </motion.ul>
         )}
         <div className="navButtons">
-          {!darkTheme ? (
-            <BsSun className="sun" onClick={themeChange} />
-          ) : (
-            <BsMoon className="moon" onClick={themeChange} />
-          )}
-
-          {langEN ? (
+          {/* {langEN ? (
             <img
               src={bn}
               alt="en"
@@ -384,7 +362,15 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
               onClick={() => handleLanguage("en")}
               className="lang"
             />
+          )} */}
+          
+          {!darkTheme ? (
+            <BsSun className="sun" onClick={themeChange} />
+          ) : (
+            <BsMoon className="moon" onClick={themeChange} />
           )}
+
+          
 
           {!mobileActive ? (
             <AiOutlineAlignRight

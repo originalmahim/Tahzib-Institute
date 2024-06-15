@@ -5,25 +5,34 @@ const MASTER_URL = "https://api-ap-northeast-1.hygraph.com/v2/clxbmdobw00gw07w3i
 const getCourses = async () => {
   const query = gql`
     query Courses {
-      courses {
+  courses {
+    courseName
+    id
+    price
+    tags
+    time
+    author
+    bannerImage {
+      url
+    }
+    description {
+      text
+    }
+    chapters {
+      id
+      title
+      content {
         id
-        courseName
-        price
-        tags
-        time
-        author
-        bannerImage {
-          url
-        }
         description {
-         text
+          text
         }
-        chapters {
-          id
-          title
-        }
+        title
+         demovedio
       }
     }
+    
+  }
+}
   `;
   const result = await request(MASTER_URL, query);
   return result;

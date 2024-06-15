@@ -5,7 +5,7 @@
   }
 
   .desktop_menu {
-    @include basicStyle(10vh, 0, 10rem);
+    @include basicStyle(10vh, 0, 12rem);
     @include flexStyles(space-between, center);
     position: fixed;
     top: 0;

@@ -18,6 +18,7 @@ import AllJobs from "./Components/MarketPlace/AllJobs";
 import CourseDetaisPage from "./Components/Home/CourseDetaisPage";
 import Courselist from "./Components/Home/Courselist";
 import vedioapi from "./app/vedioapi";
+import CourseStart from "./Components/Home/CourseStart";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
@@ -75,6 +76,10 @@ function App() {
           <Route
           path="/Details/:id"
           element={<CourseDetaisPage courses={courses} darkTheme={darkTheme}/>}
+          />
+          <Route
+          path="/learn/:id"
+          element={<CourseStart courses={courses} darkTheme={darkTheme} />}
           />
           <Route
           path="/Courses"

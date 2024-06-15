@@ -41,6 +41,8 @@ $borderColor: #8b8b8b38;
   .secondary-text {
     color: $secondaryLightText;
   }
+
+
   .s-bg {
     background: #ccccccb7;
   }
@@ -256,6 +258,7 @@ button {
 @import "./Pages_style/marketplaceStyles/talentProfile";
 
 @import "./responsive";
+@import "./../styles/Pages_style/home_style/Coursestart.scss";
 
 @tailwind base;
 @tailwind components;
