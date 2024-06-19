@@ -3,6 +3,7 @@ import { checked, play } from "../../assets";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import CourseView from "./CourseView";
+import { ArrowLeftCircleIcon, ArrowLeftIcon, ArrowRightCircleIcon, ArrowRightEndOnRectangleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const CourseStart = ({ darkTheme, courses }) => {
   const { id } = useParams();
@@ -25,26 +26,33 @@ const CourseStart = ({ darkTheme, courses }) => {
                 transition={{ duration: 0.1 }}
                 className="lg:text-4xl text-3xl primary-text font-bold mt-16 mb-2"
               >
-                <span className="textGradient"> {course?.courseName} </span>
+                <span className="textGradient"> Video 1: This Is Title Section </span>
               </motion.h1>
-              <div className="relative">
-                <motion.img
-                  whileInView={{ opacity: [0, 1], x: [20, 0] }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
-                  src={course?.bannerImage?.url}
-                  alt=""
-                  className="rounded-md"
-                />
-                <div className="absolute inset-0 flex items-center justify-center rounded-md">
-                  <button className="bg-white text-black rounded-full p-3 bg-opacity-70 hover:bg-opacity-100 transition">
-                    <img src={play} alt="" />
-                  </button>
-                </div>
+              <div className="rounded-md">
+              <iframe
+              src="https://player.cloudinary.com/embed/?public_id=dskfjklasdjflaksd&cloud_name=dfq61lhkc&player[autoplay]=true&player[controls]=true&player[showJumpControls]=true&player[showLogo]=false&player[fluid]=true&player[controlBar][volumePanel]=false"
+              className="rounded-md w-full lg:h-[360px] h-[250px]"
+              allow="autoplay; fullscreen; encrypted-media;"
+              allowfullscreen
+              frameborder="0"
+            ></iframe>
               </div>
-              <div className="mt-4">
-                <h1 className="primary-text text-2xl">
-                  Video 1: This Is Title Section
-                </h1>
+              <div className="mt-4 flex justify-between items-center" >
+               <div>
+                <button className="btn gap-1 flex items-center justify-center bg-blue-400 p-2 text-white" >
+                  <ArrowLeftIcon className="w-4 h-4 text-3xl text-white" />
+                  Previous
+                </button>
+               </div>
+               <div>
+               <button className="btn gap-1 flex items-center justify-center bg-blue-400 p-2 text-white" >
+               Next
+                  <ArrowRightIcon className="w-4 h-4 text-3xl text-white" />
+                  
+                </button>
+               </div>
+              </div>
+              <div className="my-4">
                 <p className="primary-text text-lg">
                   This is Description Lorem ipsum dolor sit amet, consectetur
                   adipisicing elit. Ipsa, inventore ducimus, non iure laborum
@@ -58,7 +66,7 @@ const CourseStart = ({ darkTheme, courses }) => {
           id="Leftcol"
             whileInView={{ opacity: [0, 1] }}
             transition={{ duration: 0.2, delay: 0.1 }}
-            className="ans-col w-full h-auto lg:w-[38%] "
+            className="ans-col w-full hidden lg:grid md:grid h-auto lg:w-[38%] "
           >
             <h2 className="text-2xl mt-2 primary-text">কোর্সের পরিপূর্ণ কারিকুলাম</h2>
             <div className="ans-col my-3 h-[38vh] ">
