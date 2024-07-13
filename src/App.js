@@ -78,7 +78,7 @@ function App() {
           element={<CourseDetaisPage courses={courses} darkTheme={darkTheme}/>}
           />
           <Route
-          path="/learn/:id"
+          path="/Learn/:id"
           element={<CourseStart courses={courses} darkTheme={darkTheme} />}
           />
           <Route

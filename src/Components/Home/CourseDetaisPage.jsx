@@ -86,7 +86,7 @@ const CourseDetaisPage = ({ darkTheme, courses }) => {
                   <p className="font-semibold primary-text">{course?.price} tk</p>
                 </div>
                 <div className="w-[55%] right-btn hbtn flex items-center justify-center rounded-md cursor-pointer transition duration-300 hover:bg-green-600">
-                  <Link to="/" className="flex items-center justify-center p-2">
+                  <Link to={`/Learn/${course?.id}`} className="flex items-center justify-center p-2">
                     <BsCart2 className="text-white mr-2" />
                     <p className="font-semibold primary-text">এখনি ভর্তি হোন</p>
                   </Link>

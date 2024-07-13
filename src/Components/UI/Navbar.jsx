@@ -146,18 +146,18 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   className="profileOverview drop-bg"
                 >
                   <Link
-                    to="/talent"
-                    className="activity secondary-text"
-                    onClick={() => setProfileView(false)}
-                  >
-                    <p>Profile</p>
-                  </Link>
-                  <Link
                     to="/talent-dashboard"
                     className="activity secondary-text"
                     onClick={() => setProfileView(false)}
                   >
                     <p>Dashboard</p>
+                  </Link>
+                  <Link
+                    to="/talent"
+                    className="activity secondary-text"
+                    onClick={() => setProfileView(false)}
+                  >
+                    <p>My Courses</p>
                   </Link>
                   <div className="line"></div>
                   <small className="info secondary-text">

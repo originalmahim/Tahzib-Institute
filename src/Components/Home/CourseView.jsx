@@ -43,14 +43,14 @@ const CourseView = ({ course }) => {
                       </dt>
                       <Disclosure.Panel as="div" className="mt-2">
                         {chapter?.content?.map((contentItem, contentIndex) => (
-                          <div key={contentIndex} className="flex items-center justify-between my-2">
-                            <div className="flex items-center gap-1">
+                          <button key={contentIndex} className=" flex  items-center justify-between my-2">
+                            <div className="flex  gap-1">
                               <PlayCircleIcon className="w-6 h-6 text-blue-500" />
-                              <p className="primary-text lg:text-xl">
+                              <p className="primary-text lg:text-xl hover:text-green-400 text-left ">
                                 {contentItem?.title}
                               </p>
                             </div>
-                          </div>
+                          </button>
                         ))}
                       </Disclosure.Panel>
                     </div>
