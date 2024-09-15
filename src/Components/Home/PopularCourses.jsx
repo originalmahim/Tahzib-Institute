@@ -3,7 +3,44 @@ import Slider from 'react-slick';
 import CourseCard from '../Cards/CourseCard';
 import { motion } from 'framer-motion';
 import vedioapi from '../../app/vedioapi'; 
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useTranslation } from 'react-i18next';
+
+const CourseCardSkeleton = () => {
+  return (
+    <div id="courseCard" className="p-course">
+      <div className="courseBanner">
+        <Skeleton baseColor="#202020" highlightColor="#444" height={200} />
+      </div>
+      <div className="course-details">
+        <div className="skeleton-title">
+          <Skeleton baseColor="#202020" highlightColor="#444"  width={200} />
+        </div>
+        <div className="skeleton-subtitle">
+          <Skeleton baseColor="#202020" highlightColor="#444"  width={100} />
+        </div>
+        <div className="skeleton-desc">
+          <Skeleton baseColor="#202020" highlightColor="#444"  count={3} />
+        </div>
+        <div className="enrollNum">
+          <Skeleton baseColor="#202020" highlightColor="#444"  width={150} />
+        </div>
+        <div className="btn-group">
+          <div className="">
+            <Skeleton baseColor="#202020" highlightColor="#444"  width={110} height={42} />
+          </div>
+          <div className="">
+            <Skeleton baseColor="#202020" highlightColor="#444"  width={150} height={40} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PopularCourses = () => {
+  const [t] = useTranslation("global");
   const [courses, setCourses] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -20,11 +57,11 @@ const PopularCourses = () => {
 
   const settings = {
     arrows: false,
-    dots: false,
+    dots: true,
     infinite: true,
     autoplay: true,
     speed: 1000,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
@@ -36,14 +73,7 @@ const PopularCourses = () => {
         },
       },
       {
-        breakpoint: 700,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -61,22 +91,24 @@ const PopularCourses = () => {
       >
         <div className="grad1"></div>
         {/* <div className="grad2"></div> */}
-        {/* <div className="grad3"></div> */}
+        {/* <div className="grad3"></div> */}-- 
       </motion.div>
       <div className="front">
-        <motion.h1
-          whileInView={{ y: [-50, 0], opacity: [0, 1] }}
-          transition={{ duration: 0 }}
-          className="primary-text"
-        >
-          পপুলার <span className="textGradient"> কোর্স </span>সমূহ
-        </motion.h1>
+      <motion.h1
+            whileInView={{ y: [20, 0], opacity: [0, 1] }}
+            transition={{ duration: 0 }}
+            className="primary-text"
+          >
+            {t("popularCourses.title1")}
+            <span className="textGradient"> {t("popularCourses.title2")} </span>
+            {t("popularCourses.title3")}
+          </motion.h1>
         <motion.p
           whileInView={{ y: [-20, 0], opacity: [0, 1] }}
           transition={{ duration: 0, delay: 0.1 }}
           className="secondary-text sec-subTitle"
         >
-          যেকোনো বিষয়ে যেকোনো কিছু শিখতে চলে যাও তোমার পছন্দের সেকশনে
+          {t("popularCourses.desc")}
         </motion.p>
 
         <motion.div
@@ -85,7 +117,13 @@ const PopularCourses = () => {
           transition={{ duration: 0, delay: 0.1 }}
         >
           {loading ? (
-            <p>Loading...</p>
+            <Slider {...settings}>
+              {[...Array(4)].map((_, index) => (
+                <div key={index}>
+                  <CourseCardSkeleton />
+                </div>
+              ))}
+            </Slider>
           ) : (
             <Slider {...settings}>
               {courses.map((course, index) => (
@@ -118,4 +156,5 @@ const PopularCourses = () => {
 };
 
 export default PopularCourses;
+
 

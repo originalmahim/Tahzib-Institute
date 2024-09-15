@@ -177,12 +177,15 @@ $borderColor: #8b8b8b38;
   }
 }
 
+
+
+
 //Fonts----------------------------------
 $hind: "Hind Siliguri", sans-serif;
 
 //Same Code------------------------------
 @mixin basicStyle($height, $yPadding, $xPadding) {
-  width: 100%;
+  
   height: $height;
   padding: $yPadding $xPadding;
 }
@@ -232,6 +235,13 @@ button {
   color: $gradientText2;
 }
 
+.line {
+  width: 100%;
+  height: 1px;
+  background: $borderColor;
+  margin: 1rem 0;
+}
+
 @import "./Components_style/navbar";
 @import "./Components_style/footer";
 @import "./Components_style/construction";
@@ -259,7 +269,14 @@ button {
 
 @import "./responsive";
 @import "./../styles/Pages_style/home_style/Coursestart.scss";
+@import "./../styles/Pages_style/home_style/upcommingseminar.scss";
 
+//login styles
+@import "./../styles/Pages_style/Login_style/_login.scss";
+
+//Blogs Styles
+@import "./../Components/Blog/_Blogcatagory.scss";
+@import "./../Components/Blog/_Blog.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -3,9 +3,9 @@
     "item1": "Home",
     "item2": "About Us",
     "item3": "Courses",
-    "item4": "Products",
-    "item5": "Kormo",
-    "item6": "login/register",
+    "item4": "Our Blogs",
+    "item5": "Newsletter",
+    "item6": "Login/register",
     "item7": "Batch 01",
     "course1": "Under 10",
     "course2": "SSC/HSC",
@@ -15,20 +15,20 @@
   },
   "header": {
     "tagline1": "You will learn easily",
-    "tagline2": "We will teach the",
+    "tagline2": "We will teach by",
     "tagline3": "STORY",
-    "message": "Edupy Academy is a platform where we create passion for learning, where every student can thrive through this experience, and shape a bright future for generations to come.",
+    "message": "Tahzeeb Institute is a specialized online platform for religious education. Tahzeeb Institute is at your side to meet all the needs of Islamic knowledge. Stay with Tahzeeb Institute to learn anything about Islam at home.",
     "btn1": "New Batch",
     "btn2": "Free Seminar"
   },
 
   "upcoming": {
     "commingTag1": "Our Upcoming",
-    "commingTag2": "Event",
+    "commingTag2": "Course",
     "successTag1": "Our Successfull Event",
     "successTag2": "Our Successfull Event",
     "eventName": "Divisional level cultural competition",
-    "eventDesc": "Cultural development is a very important issue for building a smart Bangladesh, realizing the need, the Honorable Prime Minister has given an order to bring out talented people at the grass root level. Keeping that order in mind, we, the Edupy family have taken up the endeavor to bring forward and train the talented people of Rajshahi Division, which can take a major form with the help of the Government.",
+    "eventDesc": "Cultural development is a very important issue for building a smart Bangladesh, realizing the need, the Honorable Prime Minister has given an order to bring out talented people at the grass root level. Keeping that order in mind, we, the ACADEMY family have taken up the endeavor to bring forward and train the talented people of Rajshahi Division, which can take a major form with the help of the Government.",
     "eventPlace": "Rabindra University, Bangladesh"
   },
   "journey": {
@@ -135,6 +135,12 @@
     "desc": "Attend our free seminars to get the right guidance to build a successful career. You can clear your confusion through question and answer in these seminars.",
     "btn": "Free Seminar"
   },
+  "popularCourses": {
+    "title1": "Popular",
+    "title2": "Courses",
+    "title3": "",
+    "desc": "Go to the course of your choice to learn anything in any subject"
+  },
   "freeCourses": {
     "title1": "Free",
     "title2": "Courses",
@@ -153,7 +159,7 @@
   },
   "faq": {
     "title1": "Why start from",
-    "title2": "Edupy Academy",
+    "title2": "Academy",
     "title3": "?",
     "desc": "Take a look at how we walk you through each step",
     "btn": "Enroll Now",
@@ -223,6 +229,6 @@
       "option5": "Blogs"
     },
     "heading3": "CONTACT",
-    "copy": "Copyright © 2023 by Edupy Academy All rights reserved"
+    "copy": "Copyright © 2024  All rights reserved"
   }
 }

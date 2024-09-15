@@ -28,6 +28,7 @@ const getCourses = async () => {
         }
         title
          demovedio
+         vediolink
       }
     }
     

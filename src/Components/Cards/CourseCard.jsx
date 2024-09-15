@@ -2,6 +2,8 @@ import React from "react";
 import { aboutus, checked } from "../../assets";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const CourseCard = ({
   banner,
@@ -11,39 +13,72 @@ const CourseCard = ({
   desc,
   nos,
   bestSeller,
-  courseId
+  courseId,
+  loading
 }) => {
   return (
     <div>
       <div id="courseCard" className="p-course">
         <div className="courseBanner">
-          {bestSeller && (
-            <div className="bestSeller">
-              <p>Best Seller</p>
-            </div>
+          {loading ? (
+            <Skeleton height={200} />
+          ) : (
+            <>
+              {bestSeller && (
+                <div className="bestSeller">
+                  <p>Best Seller</p>
+                </div>
+              )}
+              <img src={banner} alt="" />
+            </>
           )}
-          <img src={banner} alt="" />
         </div>
         <div className="course-details">
-          <h2 className="primary-text">{title}</h2>
+          <h2 className="primary-text">
+            {loading ? <Skeleton width={200} /> : title}
+          </h2>
           <small>
-            A course by <span className="star">{mentor}</span>
+            {loading ? (
+              <Skeleton width={100} />
+            ) : (
+              <>
+                A course by <span className="star">{mentor}</span>
+              </>
+            )}
           </small>
-          <p className="secondary-text desc">{desc}</p>
+          <p className="secondary-text desc">
+            {loading ? <Skeleton count={3} /> : desc}
+          </p>
           <div className="enrollNum">
-            <img src={aboutus} alt="" />
-            <p className="star">{nos} students enrolled</p>
+            {loading ? (
+              <Skeleton width={150} />
+            ) : (
+              <>
+                <img src={aboutus} alt="" />
+                <p className="star">{nos} students enrolled</p>
+              </>
+            )}
           </div>
           <div className="btn-group">
             <div className="left-btn sbtn">
-              <img src={checked} alt="" />
-              <p className="primary-text">{price} tk</p>
+              {loading ? (
+                <Skeleton width={60} height={40} />
+              ) : (
+                <>
+                  <img src={checked} alt="" />
+                  <p className="primary-text">{price} tk</p>
+                </>
+              )}
             </div>
             <div className="right-btn hbtn">
-              <Link to={`/Details/${courseId}`}>
-                <BsCart2 className="cart" />
-                <p>এনরল করো</p>
-              </Link>
+              {loading ? (
+                <Skeleton width={100} height={40} />
+              ) : (
+                <Link to={`/Details/${courseId}`}>
+                  <BsCart2 className="cart" />
+                  <p>এনরল করো</p>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -53,3 +88,4 @@ const CourseCard = ({
 };
 
 export default CourseCard;
+

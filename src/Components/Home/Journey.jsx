@@ -98,7 +98,7 @@ const Journey = () => {
               bottomNum="06"
             />
           </div>
-          <div>
+          {/* <div>
             <JourneyCard
               topIco={job}
               bottomIco={work}
@@ -109,7 +109,7 @@ const Journey = () => {
               topNum="07"
               bottomNum="08"
             />
-          </div>
+          </div> */}
         </Slider>
       </motion.div>
 
@@ -126,14 +126,14 @@ const Journey = () => {
         {t("journey.desc")}
         </p>
         <div className="btn-group">
-          <Link to="/batch" className="linkBtn">
+          <Link to="/all-courses" className="linkBtn">
             <button className="hbtn">
               <img src={peoples} alt="" className="ico" />
               <p>{t("journey.btn1")}</p>
             </button>
           </Link>
 
-          <Link to="/batch" className="linkBtn">
+          <Link to="/blogs" className="linkBtn">
             <button className="sbtn">
               <img src={seminar} alt="" className="ico" />
               <p className="secondary-text">{t("journey.btn2")}</p>

@@ -7,22 +7,20 @@ import Support from "../Components/Home/Support";
 import Seminar from "../Components/Home/Seminar";
 import Faq from "../Components/Home/Faq";
 import SocialSupport from "../Components/Home/SocialSupport";
-import OurSeminars from "../Components/Home/OurSeminars";
-import OurTeam from "../Components/Home/OurTeam";
 
 const Homepage = ({ darkTheme }) => {
   return (
     <div id="homepage" className={!darkTheme ? "dark" : "light"}>
       <Header />
-      <Journey />
-      {/* <OurSeminars /> */}
       <CourseCategory />
-      <Support />
       <PopularCourses />
+      <Journey />
       <Seminar />
-      <Faq />
+      <Support />
       <SocialSupport />
-      <OurTeam />
+      <Faq />
+      
+      {/* <OurTeam /> */}
     </div>
   );
 };

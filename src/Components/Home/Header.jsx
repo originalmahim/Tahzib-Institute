@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import {
   boy,
   circle,
+  end,
   girl,
+  money,
   peoples,
   place,
   seminar,
+  start,
   student,
   user,
 } from "../../assets";
@@ -49,7 +52,7 @@ const Header = () => {
               </button>
             </Link>
 
-            <Link to="/batch" className="linkBtn">
+            <Link to="blogs/#ourSeminars" className="linkBtn">
               <button className="sbtn">
                 <img src={seminar} alt="" className="ico" />
                 <p className="secondary-text">{t("header.btn2")}</p>
@@ -74,7 +77,7 @@ const Header = () => {
               <BsStarFill className="star" />
               <BsStarFill className="star" />
             </div>
-            <small className="primary-text">100+ review</small>
+            <small className="primary-text">1000+ review</small>
           </div>
         </div>
         <div className="text-review">
@@ -90,13 +93,13 @@ const Header = () => {
       </motion.div>
 
       <div className="banner">
-        <motion.img
+        {/* <motion.img
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
           transition={{ duration: 0.5 }}
           src={student}
           alt=""
           className="student"
-        />
+        /> */}
         <motion.div
           whileInView={{ y: [50, 0], opacity: [0, 1] }}
           transition={{ duration: 0.5 }}
@@ -107,22 +110,22 @@ const Header = () => {
             <img src={girl} alt="" className="girl" />
           </div>
           <div className="details">
-            <p className="banner-title">Upcoming...</p>
+            {/* <p className="banner-title">Upcoming...</p> */}
             <h1 className="primary-text">
               {t("upcoming.commingTag1")}
               <span> {t("upcoming.commingTag2")}</span>
             </h1>
-            <h2 className="textGradient" style={{ textAlign: "end" }}>
+            {/* <h2 className="textGradient" style={{ textAlign: "end" }}>
             {t("upcoming.eventName")}
-            </h2>
+            </h2> */}
             <p style={{ textAlign: "end" }} className="secondary-text desc">
             {t("upcoming.eventDesc")}
             </p>
-            <div className="seminarPlace">
+            {/* <div className="seminarPlace">
               <img src={place} alt="" />
               <p className="primary-text">{t("upcoming.eventPlace")}</p>
-            </div>
-            {/* <div className="timing">
+            </div> */}
+            <div className="timing">
               <div className="start">
                 <img src={start} alt="" />
                 <div className="time">
@@ -142,7 +145,7 @@ const Header = () => {
               কোর্স ফি <span>6500</span> টাকা মাত্র
             </h2>
             <div className="btn-group">
-              <Link to="/batch" className="linkBtn">
+              <Link to="/blogs" className="linkBtn">
                 <button className="sbtn">
                   <img src={seminar} alt="" className="ico" />
                   <p className="secondary-text">ফ্রি সেমিনার </p>
@@ -155,7 +158,7 @@ const Header = () => {
                   <p>এখনি শুরু করো</p>
                 </button>
               </Link>
-            </div> */}
+            </div>
           </div>
         </motion.div>
       </div>

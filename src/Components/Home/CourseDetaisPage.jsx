@@ -7,6 +7,7 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import CauntDown from "./CauntDown";
 import Popup from "./Popup";
 import Coursecontents from "./Coursecontents";
+import Faq from "./Faq";
 
 const benefits = [
   "৮০+ ভিডিও কন্টেন্ট",

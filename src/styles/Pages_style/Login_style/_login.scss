@@ -1,0 +1,193 @@
+.fSection {
+          width: 100%;
+          height: 100vh;
+          position: relative;
+          @include flexStyles(space-between, center);
+          padding: 0 10rem;
+    
+          .gradient1,
+          .gradient2 {
+            width: 35rem;
+            height: 35rem;
+            border-radius: 50%;
+            position: absolute;
+            filter: blur(200px);
+          }
+    
+          .gradient1 {
+            background: rgba(0, 255, 229, 0.221);
+            top: 0%;
+            left: 0;
+            animation: g1 15s ease-in-out infinite;
+            animation-direction: alternate;
+            animation-delay: 1.5s;
+          }
+    
+          @keyframes g1 {
+            50% {
+              top: 5%;
+              left: 50%;
+            }
+            100% {
+              top: 25%;
+              left: 80%;
+            }
+          }
+    
+          .gradient2 {
+            background: rgba(123, 0, 255, 0.413);
+            right: 0;
+            bottom: -10%;
+            animation: g2 15s ease-in-out infinite;
+            animation-direction: alternate;
+            animation-delay: 2s;
+          }
+    
+          @keyframes g2 {
+            50% {
+              bottom: 5%;
+              right: 50%;
+            }
+            100% {
+              bottom: 35%;
+              right: 80%;
+            }
+          }
+    
+          .banner {
+            width: 40%;
+            height: 80vh;
+            z-index: 1;
+    
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+    
+          header {
+            width: 35%;
+            height: 60vh;
+            @include flexStyles(center, center);
+            border: 1px solid $borderColor;
+            padding: 1rem;
+            gap: 0.2rem;
+            border-radius: 0.7rem;
+            flex-direction: column;
+            z-index: 1;
+    
+            .Box {
+              width: 90%;
+              height: 60px;
+              text-align: left;
+              @include flexStyles(center, center);
+              padding: 0.1rem 0.5rem;
+              border-radius: 0.4rem;
+              gap: 0.1rem;
+              border: 1px solid #797979c6;
+    
+              small {
+                font-size: 1.5rem;
+                
+              }
+            }
+            .content-btns {
+              margin-top: 0.5rem;
+              margin-bottom: 0.5rem;
+              width: 100%;
+              height: auto;
+              @include flexStyles(center, center);
+              gap: 2rem;
+      
+              button {
+                width: auto;
+                @include flexStyles(center, center);
+                padding: 0.3rem 0rem;
+                background: none;
+                font-size: 1rem;
+                border-radius: 0;
+                transition: all 0.3s;
+      
+                img {
+                  width: 1rem;
+                  margin-right: 0.5rem;
+                }
+              }
+      
+              button.active {
+                border-bottom: 1px solid $gradientText2;
+                display: none;
+              }
+            }
+    
+            .heading {
+              font-size: 2.5rem;
+              width: 100%;
+              text-align: center;
+              line-height: 1rem;
+              margin-top: 0.2rem;
+              margin-bottom: 0.5rem;
+    
+              span {
+                font-family: "Satisfy", cursive;
+                padding: 0 1rem;
+              }
+            }
+    
+            .subTitle {
+              width: 100%;
+              text-align: left;
+              padding-left: 1.6rem;
+              font-size: 1.2rem;
+              margin-top: 0.2rem;
+              font-weight: 300;
+            }
+    
+            .btn-group {
+              @include flexStyles(space-between, center);
+              flex-direction: column;
+              width: 80%;
+              height: auto;
+              margin-top: 10px;
+    
+              .linkBtn {
+                width: 45%;
+                height: 100%;
+    
+                button {
+                  width: 100%;
+                  height: 50px;
+                  @include flexStyles(center, center);
+    
+                  img {
+                    width: 10%;
+                  }
+    
+                  p {
+                    font-size: 1rem;
+                    margin-left: 0.5rem;
+                    margin-top: 0;
+                  }
+                }
+              }
+    
+              .linkBtn:first-child {
+                button {
+                  color: #fff;
+                  &:hover {
+                    background: $highlightHover;
+                  }
+                }
+              }
+              .linkBtn:last-child {
+                button {
+                  &:hover {
+                    background: #bcbcbc52;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }

@@ -22,16 +22,16 @@ const Footer = ({ darkTheme }) => {
             </small>
 
             <div className="socials">
-              <Link to="https://www.facebook.com/edupyacademy">
+              <Link to="https://www.facebook.com/">
                 <FaFacebookF className="ico primary-text" />
               </Link>
-              <Link to="https://www.instagram.com/edupyacademy/?hl=en">
+              <Link to="https://www.instagram.com/">
                 <FaInstagram className="ico primary-text" />
               </Link>
-              <Link to="https://www.facebook.com/edupyacademy">
+              <Link to="https://www.facebook.com/">
                 <FaLinkedin className="ico primary-text" />
               </Link>
-              <Link to="https://www.youtube.com/@Edupybd">
+              <Link to="https://www.youtube.com/">
                 <FaYoutube className="ico primary-text" />
               </Link>
             </div>
@@ -58,12 +58,12 @@ const Footer = ({ darkTheme }) => {
             <Link to="/upcoming-batch" className="footer-link secondary-text">
             {t('footer.heading2option.option1')}
             </Link>
-            <Link
+            {/* <Link
               to="/free-live-classes"
               className="footer-link secondary-text"
             >
               {t('footer.heading2option.option2')}
-            </Link>
+            </Link> */}
             <Link to="/live-workshop" className="footer-link secondary-text">
             {t('footer.heading2option.option3')}
             </Link>
@@ -79,15 +79,15 @@ const Footer = ({ darkTheme }) => {
 
             <span className="secondary-text">
               <img src={phone} alt="" />
-              +880 1315851280
+              +880 1200054321
             </span>
             <span className="secondary-text">
               <img src={envelop} alt="" />
-              ceo.edupybd@gmail.com
+              demo.admin@gmail.com
             </span>
             <span className="secondary-text">
               <img src={map} alt="" />
-              Mirpur,Dhaka 1216, Dhaka, Bangladesh
+               Dhaka, Bangladesh
             </span>
           </div>
         </div>

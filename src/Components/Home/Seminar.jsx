@@ -45,31 +45,7 @@ const Seminar = () => {
   return (
     <div id="seminar" className="sec-background">
       <div className="gradient1"></div>
-      <motion.div
-        whileInView={{ y: [50, 0], opacity: [0, 1] }}
-        transition={{ duration: 0, delay: 0 }}
-        className="upcomingSeminar bannerBg"
-      >
-        <div className="banner-col">
-          <img src={seminarBanner} alt="" />
-        </div>
-        <div className="info-col">
-          <small className="primary-text">Upcoming...</small>
-          <h1 className="primary-text">
-            {t("onlineSeminar.title1")}{" "}
-            <span className="textGradient">{t("onlineSeminar.title2")}</span>{" "}
-            {t("onlineSeminar.title3")}
-          </h1>
-          <p className="secondary-text">{t("onlineSeminar.desc")}</p>
-
-          <Link to="/batch" className="linkBtn">
-            <button>
-              <img src={seminar} alt="" className="ico" />
-              <p>{t("onlineSeminar.btn")}</p>
-            </button>
-          </Link>
-        </div>
-      </motion.div>
+      {/* <Upcommintseminar/> */}
 
       <div className="freeCourses">
         <div className="top-row">
@@ -100,7 +76,7 @@ const Seminar = () => {
               <FreeCourseCard
                 banner={course5}
                 title={t("freeCourses.course1.title")}
-                mentor="Edupy Academy"
+                mentor="ACADEMY"
                 desc={t("freeCourses.course1.desc")}
                 nos="0"
                 bestSeller={false}
@@ -110,7 +86,7 @@ const Seminar = () => {
               <FreeCourseCard
                 banner={web_mastery}
                 title={t("freeCourses.course2.title")}
-                mentor="Edupy Academy"
+                mentor="ACADEMY"
                 desc={t("freeCourses.course2.desc")}
                 nos="0"
                 bestSeller={false}

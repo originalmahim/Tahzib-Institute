@@ -1,0 +1,80 @@
+.animated-texts {
+          @include basicStyle(auto, 0rem, 0rem);
+          height: 7vh;
+          // background: $dark1;
+        
+          ul {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            animation: rightToLeft 5s infinite linear;
+            animation-delay: 1s;
+        
+            li {
+              white-space: nowrap;
+              padding: 0 1.5rem;
+              list-style: none;
+              font-weight: 400;
+        
+              &::before {
+                content: "\2022";
+                color: $star;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+              }
+            }
+          }
+        
+          @keyframes rightToLeft {
+            from {
+              transform: translateX(0%);
+            }
+            to {
+              transform: translateX(-15%);
+            }
+          }
+        }
+        @media only screen and (max-width: 480px) {
+
+          .animated-texts {
+                    overflow-x: auto ;
+                    width: auto;
+                    height: 7vh;
+                    // background: $dark1;
+                  
+                    ul {
+                      height: 100%;
+                      display: flex;
+                      align-items: center;
+                      animation: rightToLeft 5s infinite linear;
+                      animation-delay: 2s;
+                  
+                      li {
+                        white-space: nowrap;
+                        padding: 0 1.5rem;
+                        list-style: none;
+                        font-weight: 400;
+                  
+                        &::before {
+                          content: "\2022";
+                          color: $star;
+                          font-weight: bold;
+                          display: inline-block;
+                          width: 1em;
+                          margin-left: -1em;
+                        }
+                      }
+                    }
+                  
+                    @keyframes rightToLeft {
+                      from {
+                        transform: translateX(0%);
+                      }
+                      to {
+                        transform: translateX(-15%);
+                      }
+                    }
+                  } 
+        }

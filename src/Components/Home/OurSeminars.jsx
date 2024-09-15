@@ -20,8 +20,8 @@ import { useTranslation } from "react-i18next";
 
 const OurSeminars = () => {
   const settings = {
-    arrows: true,
-    dots: true,
+    arrows: false,
+    dots: false,
     infinite: true,
     autoplay: true,
     swipeToSlide: true,

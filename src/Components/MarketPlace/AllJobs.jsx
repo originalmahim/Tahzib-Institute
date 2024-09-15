@@ -27,7 +27,7 @@ const AllJobs = ({ darkTheme }) => {
         <div className="categories">
             
         </div>
-        {/* <div className="jobs">
+        <div className="jobs">
           <div className="jobsCard">
             {currentJobs.map((j) => {
               return <JobCard />;
@@ -42,7 +42,7 @@ const AllJobs = ({ darkTheme }) => {
               currentPage={currentPage}
             />
           </div>
-        </div> */}
+        </div>
       </main>
     </div>
   );

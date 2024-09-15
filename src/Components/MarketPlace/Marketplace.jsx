@@ -18,6 +18,7 @@ import {
 } from "../../assets";
 import Slider from "react-slick";
 import PopularServicesCard from "./PopularServicesCard";
+import Faq from "../Home/Faq";
 
 const Marketplace = ({ darkTheme }) => {
   const settings = {
@@ -83,24 +84,9 @@ const Marketplace = ({ darkTheme }) => {
               just project-based pricing.
             </p>
 
-            <div className="btn-group">
-              <Link to="/batch" className="linkBtn">
-                <button className="hbtn">
-                  <img src={login} alt="" className="ico" />
-                  <p>Login</p>
-                </button>
-              </Link>
-
-              <Link to="/batch" className="linkBtn">
-                <button className="sbtn">
-                  <img src={login} alt="" className="ico" />
-                  <p className="secondary-text">Sign up</p>
-                </button>
-              </Link>
-            </div>
           </header>
 
-          <div className="searchBar">
+          {/* <div className="searchBar">
             <input
               type="text"
               name=""
@@ -110,8 +96,92 @@ const Marketplace = ({ darkTheme }) => {
             <button>
               <img src={search} alt="" />
             </button>
+          </div> */}
+        </div>
+
+        <div className="animated-texts jc2">
+          <ul>
+            <li className="secondary-text">Academy</li>
+            <li className="secondary-text">
+              First Freelancing Website in Bangladesh
+            </li>
+            <li className="secondary-text">Trusted Platform for freelancers</li>
+            <li className="secondary-text">Beginner Freiendly</li>
+            <li className="secondary-text">No cost to join</li>
+            <li className="secondary-text">Explore different ways to earn</li>
+            <li className="secondary-text">
+              Access expert talent to fill your skill gaps
+            </li>
+            <li className="secondary-text">Get quality work done quickly</li>
+            <li className="secondary-text">
+              Find the right service for every price point
+            </li>
+          </ul>
+        </div>
+
+        <div className="howWeWork">
+        <div className="gradient1"></div>
+        <div className="gradient2"></div>
+          <div className="left">
+            <h1 className="primary-text">
+              How work
+              <br />
+              <span className="textGradient">should work</span>
+            </h1>
+            <p className="primary-text">
+              Forget the old rules. You can have the best people. Right now.
+              Right here.
+            </p>
+            <button className="getStarted hbtn">Get Started</button>
+          </div>
+          <img src={cover2} alt="" className="middle" />
+          <div className="right">
+            <ul>
+              <li>
+                <img src={checked} alt="" />
+                <div className="item">
+                  <h3 className="primary-text" >No cost to join</h3>
+                  <small className="primary-text" >
+                    Register and browse professionals, explore projects, or even
+                    book a consultation.
+                  </small>
+                </div>
+              </li>
+              <li>
+                <img src={checked} alt="" />
+                <div className="item">
+                  <h3 className="primary-text" >Post a job and hire top talent</h3>
+                  <small className="primary-text" >
+                    Finding talent doesn’t have to be a chore. Post a job or we
+                    can search for you!
+                  </small>
+                </div>
+              </li>
+              <li>
+                <img src={checked} alt="" />
+                <div className="item">
+                  <h3 className="primary-text" >Get quality work done quickly</h3>
+                  <small className="primary-text" >
+                    Hand your project over to a talented freelancer in minutes,
+                    get long-lasting results.
+                  </small>
+                </div>
+              </li>
+              <li>
+                <img src={checked} alt="" />
+                <div className="item">
+                  <h3 className="primary-text" >Pay when you're happy</h3>
+                  <small className="primary-text" >
+                    Upfront quotes mean no surprises. Payments only get released
+                    when you approve.
+                  </small>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
+
+        
 
         <div className="categories">
           <div className="title">
@@ -176,9 +246,9 @@ const Marketplace = ({ darkTheme }) => {
           </Slider>
         </div>
 
-        <div className="startContent">
-          <div className="gradient1"></div>
+        {/* <div className="startContent">
           <div className="gradient2"></div>
+          <div className="gradient1"></div>
 
           <div className="title">
             <h1 className="primary-text">
@@ -257,87 +327,9 @@ const Marketplace = ({ darkTheme }) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="howWeWork">
-          <div className="left">
-            <h1>
-              How work
-              <br />
-              <span className="textGradient">should work</span>
-            </h1>
-            <p>
-              Forget the old rules. You can have the best people. Right now.
-              Right here.
-            </p>
-            <button className="getStarted hbtn">Get Started</button>
-          </div>
-          <img src={cover2} alt="" className="middle" />
-          <div className="right">
-            <ul>
-              <li>
-                <img src={checked} alt="" />
-                <div className="item">
-                  <h3>No cost to join</h3>
-                  <small>
-                    Register and browse professionals, explore projects, or even
-                    book a consultation.
-                  </small>
-                </div>
-              </li>
-              <li>
-                <img src={checked} alt="" />
-                <div className="item">
-                  <h3>Post a job and hire top talent</h3>
-                  <small>
-                    Finding talent doesn’t have to be a chore. Post a job or we
-                    can search for you!
-                  </small>
-                </div>
-              </li>
-              <li>
-                <img src={checked} alt="" />
-                <div className="item">
-                  <h3>Get quality work done quickly</h3>
-                  <small>
-                    Hand your project over to a talented freelancer in minutes,
-                    get long-lasting results.
-                  </small>
-                </div>
-              </li>
-              <li>
-                <img src={checked} alt="" />
-                <div className="item">
-                  <h3>Pay when you're happy</h3>
-                  <small>
-                    Upfront quotes mean no surprises. Payments only get released
-                    when you approve.
-                  </small>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="animated-texts jc2">
-          <ul>
-            <li className="secondary-text">Edupy Academy</li>
-            <li className="secondary-text">
-              First Freelancing Website in Bangladesh
-            </li>
-            <li className="secondary-text">Trusted Platform for freelancers</li>
-            <li className="secondary-text">Beginner Freiendly</li>
-            <li className="secondary-text">No cost to join</li>
-            <li className="secondary-text">Explore different ways to earn</li>
-            <li className="secondary-text">
-              Access expert talent to fill your skill gaps
-            </li>
-            <li className="secondary-text">Get quality work done quickly</li>
-            <li className="secondary-text">
-              Find the right service for every price point
-            </li>
-          </ul>
-        </div>
+        <Faq></Faq>
       </main>
     </div>
   );

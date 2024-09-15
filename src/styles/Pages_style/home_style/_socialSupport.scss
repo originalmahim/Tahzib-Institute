@@ -1,5 +1,5 @@
 #socialSupport {
-  @include basicStyle(90vh, 5rem, 10rem);
+  @include basicStyle(60vh, 5rem, 10rem);
   @include flexStyles(space-between, center);
 
   .left-col {

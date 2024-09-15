@@ -8,8 +8,19 @@ import {
   en,
   bn,
   profile,
+  under10,
+  eng,
+  career,
+  all,
+  ssc,
+  job,
+  box,
+  dashboard,
+  exam,
 } from "../../assets";
 import {
+  BsFillCaretDownFill,
+  BsFillCaretRightFill,
   BsMoon,
   BsSun,
 } from "react-icons/bs";
@@ -47,27 +58,27 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             <p className="primary-text">{t("navbar.item1")}</p>
           </NavLink>
 
-          <NavLink to="/about-us" className="link">
+          {/* <NavLink to="/about-us" className="link">
             <img src={aboutus} alt="" className="logo" />
             <p className="primary-text">{t("navbar.item2")}</p>
-          </NavLink>
+          </NavLink> */}
 
-          {/* <NavLink to="/products" className="link">
+          <NavLink to="/blogs" className="link">
             <img src={box} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item4")}</p>
-          </NavLink> */}
+          </NavLink>
 
-          {/* <NavLink to="/marketplace" className="link">
-            <img src={job} alt="" className="ico" />
+          <NavLink to="/newsletter" className="link">
+            <img src={exam} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item5")}</p>
-          </NavLink> */}
+          </NavLink>
 
           <p className="link d-link">
-            <img src={courses} alt="" className="logo" />
+            <img src={dashboard} alt="" className="logo" />
             <p className="primary-text">{t("navbar.item3")}</p>
-            {/* <BsFillCaretDownFill className="downArrow" /> */}
-            {/* <ul className="drop-bg">
-              <li>
+            <BsFillCaretDownFill className="downArrow" />
+            <ul className="drop-bg">
+              {/* <li>
                 {" "}
                 <Link className="menuLink secondary-text" to="/under-10">
                   <img src={under10} alt="" />
@@ -96,7 +107,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   <p className="secondary-text">{t("navbar.course4")}</p>
                   <BsFillCaretRightFill className="rightArrow" />
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link className="menuLink secondary-text" to="/all-courses">
                   <img src={all} alt="" />
@@ -104,7 +115,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   <BsFillCaretRightFill className="rightArrow" />
                 </Link>
               </li>
-            </ul> */}
+            </ul>
           </p>
         </ul>
         <div className="navButtons">
@@ -147,25 +158,20 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                 >
                   <Link
                     to="/talent-dashboard"
-                    className="activity secondary-text"
+                    className="activity hover:text-blue-400 secondary-text"
                     onClick={() => setProfileView(false)}
                   >
                     <p>Dashboard</p>
                   </Link>
                   <Link
                     to="/talent"
-                    className="activity secondary-text"
+                    className="activity hover:text-blue-400 secondary-text"
                     onClick={() => setProfileView(false)}
                   >
                     <p>My Courses</p>
                   </Link>
-                  <div className="line"></div>
-                  <small className="info secondary-text">
-                    Joined: <span className="primary-text">12/04/2023</span>
-                  </small>
-                  <small className="info secondary-text">
-                    Location: <span className="primary-text">Bangladesh</span>
-                  </small>
+                  
+            
 
                   <div className="line"></div>
 

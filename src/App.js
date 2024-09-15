@@ -16,9 +16,13 @@ import TalentProfile from "./Components/MarketPlace/TalentProfile";
 import TalentDashboard from "./Components/MarketPlace/TalentDashboard";
 import AllJobs from "./Components/MarketPlace/AllJobs";
 import CourseDetaisPage from "./Components/Home/CourseDetaisPage";
-import Courselist from "./Components/Home/Courselist";
 import vedioapi from "./app/vedioapi";
 import CourseStart from "./Components/Home/CourseStart";
+import About from "./Components/About/About";
+import Allcourses from './Components/AllCourses/Allcourses';
+import Login from "./styles/Pages_style/Login-Register/Login";
+import Blogs from './Components/Blog/Blogs';
+
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
@@ -41,11 +45,15 @@ function App() {
         <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
         <ScrollTop />
         <Routes>
-          <Route path="/" element={<Homepage darkTheme={darkTheme} />} />
-          {/* MarketPlace */}
+          <Route path="/" element={<Homepage darkTheme={darkTheme} />}
+           />
+           <Route
+            path="/about-us"
+            element={<About darkTheme={darkTheme} />}
+          />
 
           <Route
-            path="/marketplace"
+            path="/newsletter"
             element={<Marketplace darkTheme={darkTheme} />}
           />
           <Route path="/post-job" element={<PostJob darkTheme={darkTheme} />} />
@@ -82,11 +90,17 @@ function App() {
           element={<CourseStart courses={courses} darkTheme={darkTheme} />}
           />
           <Route
-          path="/Courses"
-          element={<Courselist></Courselist>}
+          path="/all-courses"
+          element={<Allcourses darkTheme={darkTheme} />}
           />
-
-          {/* MarketPlace----------------------x----------------- */}
+          <Route
+          path="/blogs"
+          element={<Blogs darkTheme={darkTheme} />}
+          />
+          <Route
+          path="/Login"
+          element={<Login darkTheme={darkTheme} />}
+          />
 
           <Route path="*" element={<Construction darkTheme={darkTheme} />} />
         </Routes>
