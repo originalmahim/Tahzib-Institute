@@ -12,7 +12,7 @@ const SocialSupport = () => {
         <motion.h1
           whileInView={{ opacity: [0, 1], x: [-50, 0] }}
           transition={{ duration: 0.1 }}
-          className="primary-text"
+          className="primary-text text-3xl"
         >
           {t("discordSupport.title1")}
           <span className="textGradient"> {t("discordSupport.title2")}</span> {t("discordSupport.title3")}

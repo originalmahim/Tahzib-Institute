@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   aboutus,
   courses,
@@ -29,6 +29,8 @@ import { AiOutlineAlignRight } from "react-icons/ai";
 import { NavLink, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+// import { useSelector } from "react-redux";
+// import { fetchCourseCategories } from './../../services/operations/courseDetailsAPI';
 
 const Navbar = ({ setDarkTheme, darkTheme }) => {
   const themeChange = () => {
@@ -46,6 +48,34 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
     setLangEN(!langEN);
   };
 
+ //login and sign up related codes 
+//  const { token } = useSelector((state) => state.auth);
+//     const { user } = useSelector((state) => state.profile);
+//     // console.log('USER data from Navbar (store) = ', user)
+//     const { totalItems } = useSelector((state) => state.cart)
+//     const location = useLocation();
+
+//     const [subLinks, setSubLinks] = useState([]);
+//     const [loading, setLoading] = useState(false);
+
+
+//     const fetchSublinks = async () => {
+//         try {
+//             setLoading(true)
+//             const res = await fetchCourseCategories();
+//             setSubLinks(res);
+//         }
+//         catch (error) {
+//             console.log("Could not fetch the category list = ", error);
+//         }
+//         setLoading(false)
+//     }
+
+
+//     useEffect(() => {
+//         fetchSublinks();
+//     }, [])
+
   return (
     <div id="navbar" className={!darkTheme ? "dark navColor" : "light "  }>
       <div className="desktop_menu nav-bg">
@@ -58,20 +88,20 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             <p className="primary-text">{t("navbar.item1")}</p>
           </NavLink>
 
-          {/* <NavLink to="/about-us" className="link">
+          <NavLink to="/about-us" className="link">
             <img src={aboutus} alt="" className="logo" />
             <p className="primary-text">{t("navbar.item2")}</p>
-          </NavLink> */}
+          </NavLink>
 
           <NavLink to="/blogs" className="link">
             <img src={box} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item4")}</p>
           </NavLink>
 
-          <NavLink to="/newsletter" className="link">
+          {/* <NavLink to="/newsletter" className="link">
             <img src={exam} alt="" className="ico" />
             <p className="secondary-text">{t("navbar.item5")}</p>
-          </NavLink>
+          </NavLink> */}
 
           <p className="link d-link">
             <img src={dashboard} alt="" className="logo" />

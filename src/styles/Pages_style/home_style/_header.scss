@@ -80,9 +80,9 @@
 
       .circle {
         position: absolute;
-        bottom: 25%;
-        left: -7%;
-        width: 45%;
+        bottom: 26%;
+        left: -1%;
+        width: 57%;
       }
     }
 
@@ -264,22 +264,22 @@
       overflow: hidden;
 
       .illustrations {
-        width: 50%;
-        height: 100%;
+        width: 80%;
+        height: 70%;
         position: relative;
 
-        .boy {
-          position: absolute;
-          width: 70%;
-          left: 0;
-          bottom: 0;
-        }
+        // .boy {
+        //   position: absolute;
+        //   width: 26%;
+        //   left: 5%;
+        //   bottom: -30%;
+        // }
 
         .girl {
           position: absolute;
           width: 50%;
-          bottom: 0%;
-          left: 20%;
+          bottom: -30%;
+          left: 10%;
         }
       }
       .details {

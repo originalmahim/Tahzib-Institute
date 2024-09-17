@@ -30,10 +30,9 @@ const Header = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="left-col"
         >
-          <h2 className="primary-text">{t("header.tagline1")}</h2>
+          {/* <h2 className="primary-text">{t("header.tagline1")}</h2> */}
           <h1 className="primary-text">
-            {t("header.tagline2")} <br />
-            <span className="textGradient">{t("header.tagline3")}</span>
+            {t("header.tagline2")} <span className="textGradient">{t("header.tagline3")}</span><br /> {t("header.tagline1")}
           </h1>
           <img src={circle} alt="" className="circle" />
         </motion.div>
@@ -45,7 +44,7 @@ const Header = () => {
           <p className="secondary-text">{t("header.message")}</p>
 
           <div className="btn-group">
-            <Link to="/batch" className="linkBtn">
+            <Link to="https://course.tahzibinstitute.com/all-course/" className="linkBtn">
               <button className="hbtn">
                 <img src={peoples} alt="" className="ico" />
                 <p>{t("header.btn1")}</p>
@@ -106,7 +105,7 @@ const Header = () => {
           className="content bannerBg"
         >
           <div className="illustrations">
-            <img src={boy} alt="" className="boy" />
+            {/* <img src={boy} alt="" className="boy" /> */}
             <img src={girl} alt="" className="girl" />
           </div>
           <div className="details">

@@ -22,6 +22,9 @@ import About from "./Components/About/About";
 import Allcourses from './Components/AllCourses/Allcourses';
 import Login from "./styles/Pages_style/Login-Register/Login";
 import Blogs from './Components/Blog/Blogs';
+import VerifyEmail from "./styles/Pages_style/Login-Register/VerifyEmail";
+import UpdatePassword from "./styles/Pages_style/Login-Register/UpdatePassword";
+import ForgotPassword from "./styles/Pages_style/Login-Register/ForgotPassword";
 
 
 function App() {
@@ -100,6 +103,18 @@ function App() {
           <Route
           path="/Login"
           element={<Login darkTheme={darkTheme} />}
+          />
+          <Route
+          path="/verify-email"
+          element={<VerifyEmail darkTheme={darkTheme} />}
+          />
+          <Route
+          path="/forgot-password"
+          element={<ForgotPassword darkTheme={darkTheme} />}
+          />
+          <Route
+          path="/update-password/:id"
+          element={<UpdatePassword darkTheme={darkTheme} />}
           />
 
           <Route path="*" element={<Construction darkTheme={darkTheme} />} />

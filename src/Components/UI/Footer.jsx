@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
-  FaLinkedin,
+  FaTelegram,
+  FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -22,17 +23,20 @@ const Footer = ({ darkTheme }) => {
             </small>
 
             <div className="socials">
-              <Link to="https://www.facebook.com/">
+              <Link to="https://www.facebook.com/TahzibInstitute">
                 <FaFacebookF className="ico primary-text" />
               </Link>
-              <Link to="https://www.instagram.com/">
+              <Link to="https://www.instagram.com/tahzibinstitute/">
                 <FaInstagram className="ico primary-text" />
               </Link>
-              <Link to="https://www.facebook.com/">
-                <FaLinkedin className="ico primary-text" />
+              <Link to="https://x.com/tahzibinstitute">
+                <FaTwitter className="ico primary-text" />
               </Link>
-              <Link to="https://www.youtube.com/">
+              <Link to="https://www.youtube.com/@tahzibinstitute">
                 <FaYoutube className="ico primary-text" />
+              </Link>
+              <Link to="https://t.me/TahzibOfficial">
+                <FaTelegram className="ico primary-text" />
               </Link>
             </div>
           </div>
@@ -79,15 +83,15 @@ const Footer = ({ darkTheme }) => {
 
             <span className="secondary-text">
               <img src={phone} alt="" />
-              +880 1200054321
+              +880 1730-986832
             </span>
             <span className="secondary-text">
               <img src={envelop} alt="" />
-              demo.admin@gmail.com
+              tahzibinstitute@gmail.com
             </span>
             <span className="secondary-text">
               <img src={map} alt="" />
-               Dhaka, Bangladesh
+              50 Ethelbert Gardens, Ilford, Essex, England.
             </span>
           </div>
         </div>

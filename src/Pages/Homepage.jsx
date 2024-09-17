@@ -18,7 +18,7 @@ const Homepage = ({ darkTheme }) => {
       <Seminar />
       <Support />
       <SocialSupport />
-      <Faq />
+      {/* <Faq /> */}
       
       {/* <OurTeam /> */}
     </div>

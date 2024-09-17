@@ -42,7 +42,7 @@ const CourseCategory = () => {
       </div>
       <div className="right-col">
         <div className="category-grid">
-          {/* <motion.div
+          <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
             transition={{ duration: 0, delay: 0 }}
           >
@@ -53,7 +53,7 @@ const CourseCategory = () => {
               {t("category.cat1.desc")}
               </small>
             </Link>
-          </motion.div> */}
+          </motion.div>
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
@@ -94,7 +94,7 @@ const CourseCategory = () => {
             </Link>
           </motion.div>
 
-          {/* <motion.div
+          <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}
             transition={{ duration: 0, delay: 0 }}
           >
@@ -105,7 +105,7 @@ const CourseCategory = () => {
               {t("category.cat5.desc")}
               </small>
             </Link>
-          </motion.div> */}
+          </motion.div>
 
           <motion.div
             whileInView={{ opacity: [0, 1], x: [-20, 0] }}

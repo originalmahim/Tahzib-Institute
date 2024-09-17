@@ -74,9 +74,9 @@ const Seminar = () => {
           <Slider {...settings}>
             <div>
               <FreeCourseCard
-                banner={course5}
+                banner='https://tahzibinstitute.com/wp-content/uploads/2024/08/Fundamentals-of-Islami-Aqida-torn-paper-final-e1708185493174.jpg'
                 title={t("freeCourses.course1.title")}
-                mentor="ACADEMY"
+                mentor="Ustaza Umme Zuyairiya"
                 desc={t("freeCourses.course1.desc")}
                 nos="0"
                 bestSeller={false}
@@ -84,9 +84,9 @@ const Seminar = () => {
             </div>
             <div>
               <FreeCourseCard
-                banner={web_mastery}
+                banner='https://course.tahzibinstitute.com/wp-content/uploads/2024/02/%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97-%E0%A6%95%E0%A7%81%E0%A6%B0%E0%A6%86%E0%A6%A8-%E0%A6%A4%E0%A6%B0%E0%A6%9C%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AB%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-1024x1024-1.jpg'
                 title={t("freeCourses.course2.title")}
-                mentor="ACADEMY"
+                mentor="Ustaz Fazle Rabbi"
                 desc={t("freeCourses.course2.desc")}
                 nos="0"
                 bestSeller={false}
@@ -96,10 +96,10 @@ const Seminar = () => {
             <div></div> */}
             <div>
               <FreeCourseCard
-                banner={course7}
-                title="ডিজিটাল প্রোডাক্ট ম্যানেজমেন্ট"
-                mentor="Tareq Aziz Mahim"
-                desc="এই ডিজিটাল প্রোডাক্ট ম্যানেজমেন্ট কোর্সে প্রোডাক্ট ম্যানেজমেন্ট অনেক সহজ করে বোঝানো হয়েছে এবং বেসিক থেকে এডভান্স সব টপিক কভার করা হয়েছে"
+                banner='https://course.tahzibinstitute.com/wp-content/uploads/2024/02/%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97-%E0%A6%95%E0%A7%81%E0%A6%B0%E0%A6%86%E0%A6%A8-%E0%A6%A4%E0%A6%B0%E0%A6%9C%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AB%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-1024x1024-1.jpg'
+                mentor="Ustaz Fazle Rabbi"
+                title= "হালাকাতুল কুরআন"
+                desc= "পূর্নাঙ্গ কুরআন তরজমা ও সংক্ষিপ্ত তাফসির কোর্স । কোর্সটি সবাই করতে পারবেন । সৌদি আরব থেকে কোর্সটি পরিচালনা করবেন উস্তাদ ফজলে রাব্বি , তিনি বর্তমানে মদিনা বিশ্ববিদ্যালয়ে পড়াশোনা করছেন । "
                 price="2000"
                 nos="1567"
                 bestSeller={true}
@@ -107,12 +107,11 @@ const Seminar = () => {
             </div>
             <div>
               <FreeCourseCard
-                banner={course8}
-                title="এডভান্স পাইথন প্রোগ্রামিং"
-                mentor="Mehedi Hasan"
-                price="2000"
-                desc="এই পাইথন কোর্সে প্রগ্রামিং কে অনেক সহজ করে বোঝানো হয়েছে এবং বেসিক থেকে এডভান্স সব টপিক কভার করা হয়েছে"
-                nos="67"
+                banner='https://tahzibinstitute.com/wp-content/uploads/2024/08/Fundamentals-of-Islami-Aqida-torn-paper-final-e1708185493174.jpg'
+                title={t("freeCourses.course1.title")}
+                mentor="Ustaza Umme Zuyairiya"
+                desc={t("freeCourses.course1.desc")}
+                nos="0"
                 bestSeller={false}
               />
             </div>
