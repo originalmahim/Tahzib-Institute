@@ -4,11 +4,11 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPI"
-import Img from './../../common/Img';
+import Img from './../../../Components/Img';
 
 
 
-export default function EnrolledCourses() {
+export default function EnrolledCourses({darkTheme}) {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
@@ -31,7 +31,8 @@ export default function EnrolledCourses() {
   // Loading Skeleton
   const sklItem = () => {
     return (
-      <div className="flex border border-richblack-700 px-5 py-3 w-full">
+      <div className={!darkTheme ? "dark navColor" : "light "}>
+      <div className="sec-background flex border border-richblack-700 px-5 py-3 w-full">
         <div className="flex flex-1 gap-x-4 ">
           <div className='h-14 w-14 rounded-lg skeleton '></div>
 
@@ -45,6 +46,7 @@ export default function EnrolledCourses() {
           <p className="h-2 w-[20%] rounded-xl skeleton mt-2"></p>
           <p className="h-2 w-[40%] rounded-xl skeleton mt-3"></p>
         </div>
+      </div>
       </div>
     )
   }

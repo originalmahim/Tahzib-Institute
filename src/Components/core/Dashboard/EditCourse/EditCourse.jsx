@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import { getFullDetailsOfCourse, } from "../../../../services/operations/courseDetailsAPI"
 import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
 import RenderSteps from "../AddCourse/RenderSteps"
-import Loading from './../../../common/Loading';
+import Loading from './../../../../Components/Loading';
 
 
 

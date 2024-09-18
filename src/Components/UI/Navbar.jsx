@@ -26,11 +26,12 @@ import {
 } from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { AiOutlineAlignRight } from "react-icons/ai";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-// import { useSelector } from "react-redux";
-// import { fetchCourseCategories } from './../../services/operations/courseDetailsAPI';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourseCategories } from './../../services/operations/courseDetailsAPI';
+import { logout } from "./../../services/operations/authAPI"
 
 const Navbar = ({ setDarkTheme, darkTheme }) => {
   const themeChange = () => {
@@ -38,43 +39,43 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
   };
 
   const [mobileActive, setMobileActive] = useState(false);
-  const [loggedin, setLoggedin] = useState(false);
   const [profileView, setProfileView] = useState(false);
   const [langEN, setLangEN] = useState(false);
   const [t, i18n] = useTranslation("global");
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setLangEN(!langEN);
   };
 
- //login and sign up related codes 
-//  const { token } = useSelector((state) => state.auth);
-//     const { user } = useSelector((state) => state.profile);
-//     // console.log('USER data from Navbar (store) = ', user)
-//     const { totalItems } = useSelector((state) => state.cart)
-//     const location = useLocation();
+//  login and sign up related codes 
+ const { token } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.profile);
+    // console.log('USER data from Navbar (store) = ', user)
+    // const { totalItems } = useSelector((state) => state.cart)
+    // const location = useLocation();
 
-//     const [subLinks, setSubLinks] = useState([]);
-//     const [loading, setLoading] = useState(false);
-
-
-//     const fetchSublinks = async () => {
-//         try {
-//             setLoading(true)
-//             const res = await fetchCourseCategories();
-//             setSubLinks(res);
-//         }
-//         catch (error) {
-//             console.log("Could not fetch the category list = ", error);
-//         }
-//         setLoading(false)
-//     }
+    // const [subLinks, setSubLinks] = useState([]);
+    // const [loading, setLoading] = useState(false);
 
 
-//     useEffect(() => {
-//         fetchSublinks();
-//     }, [])
+    // const fetchSublinks = async () => {
+    //     try {
+    //         setLoading(true)
+    //         const res = await fetchCourseCategories();
+    //         // (res);setSubLinks
+    //     }
+    //     catch (error) {
+    //         console.log("Could not fetch the category list = ", error);
+    //     }
+    //     setLoading(false)
+    // }
+
+
+    // useEffect(() => {
+    //     fetchSublinks();
+    // }, [])
 
   return (
     <div id="navbar" className={!darkTheme ? "dark navColor" : "light "  }>
@@ -156,11 +157,10 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             </button>
           </Link> */}
 
-          {!loggedin && (
+          {token === null && (
             <Link
-              to="/"
+              to="/Login"
               className="linkBtn"
-              onClick={() => setLoggedin(!loggedin)}
             >
               <button className="hbtn">
                 <img src={login} alt="" className="ico" />
@@ -169,16 +169,16 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             </Link>
           )}
 
-          {loggedin && (
+          {token !== null && (
             <div className="profile">
               <div
                 className={
-                  loggedin ? "visible visibleBrdr drop-bg" : "visible drop-bg"
+                  token !== null ? "visible visibleBrdr drop-bg" : "visible drop-bg"
                 }
                 onClick={() => setProfileView(!profileView)}
               >
                 <img src={profile} alt="" />
-                <small className="primary-text">Tareq Aziz Mahim</small>
+                <small className="primary-text">{user?.firstName}</small>
               </div>
 
               {profileView && (
@@ -207,8 +207,11 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
 
                   <button
                     className="logout"
+                    // onClick={() => {
+                    //   
+                    // }}
                     onClick={() => {
-                      setLoggedin(false);
+                      dispatch(logout(navigate))
                       setProfileView(false);
                     }}
                   >

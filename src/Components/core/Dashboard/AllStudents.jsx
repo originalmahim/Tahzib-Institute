@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { getAllStudentsData } from '../../../services/operations/adminApi'
 import { Table, Th, Thead, Tr, Td, Tbody } from 'react-super-responsive-table';
-import IconBtn from '../../common/IconBtn';
+import IconBtn from "./../../../Components/IconBtn"
 
 import { VscAdd } from 'react-icons/vsc';
-import user_logo from "../../../assets/Images/user.png";
+import user_logo from "./../../../assets/user.jpg";
 
 
 // loading skeleton

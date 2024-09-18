@@ -3,8 +3,8 @@ import { FiUpload } from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux"
 
 import { updateUserProfileImage } from "../../../../services/operations/SettingsAPI"
-import IconBtn from "../../../common/IconBtn"
-import Img from './../../../common/Img';
+import IconBtn from "./../../../../Components/IconBtn"
+import Img from './../../../../Components/Img';
 
 
 
@@ -64,17 +64,17 @@ export default function ChangeProfilePicture() {
 
   return (
     <>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-3 sm:px-12 text-richblack-5">
-        <div className="flex items-center gap-x-4">
+      <div className="flex items-center w-full justify-between rounded-md bg-transparent px-1 sm:p-4 primary-text">
+        <div className="flex flex-col items-center gap-x-2">
           <Img
             src={previewSource || user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[78px] rounded-full object-cover"
+            className="  rounded-sm  object-cover"
           />
 
-          <div className="space-y-2">
+          <div className="space-y-2 mt-2 text-center">
             <p className="font-medium">Change Profile Picture</p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="file"
                 ref={fileInputRef}
@@ -86,12 +86,13 @@ export default function ChangeProfilePicture() {
               <button
                 onClick={handleClick}
                 disabled={loading}
-                className="cursor-pointer rounded-md py-2 px-5 font-semibold bg-richblack-200 text-richblack-900 hover:bg-richblack-900 hover:text-richblack-200 duration-300"
+                className="cursor-pointer rounded-md py-2 px-5 font-semibold bg-green-500 primary-text hover:bg-richblack-900 hover:text-richblack-200 duration-300"
               >
-                Select
+              Select
               </button>
 
               <IconBtn
+                className='text-green-500'
                 text={loading ? "Uploading..." : "Upload"}
                 onclick={handleFileUpload}
               >

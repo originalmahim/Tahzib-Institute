@@ -14,8 +14,8 @@ import { useNavigate } from "react-router-dom"
 import { formatDate } from "../../../../services/formatDate"
 import { deleteCourse, fetchInstructorCourses, } from "../../../../services/operations/courseDetailsAPI"
 import { COURSE_STATUS } from "../../../../utils/constants"
-import ConfirmationModal from "../../../common/ConfirmationModal"
-import Img from './../../../common/Img';
+import ConfirmationModal from "../../../../Components/ConfirmationModal"
+import Img from './../../../Img';
 import toast from 'react-hot-toast'
 
 

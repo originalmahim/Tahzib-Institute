@@ -3,16 +3,16 @@ import { VscSignOut } from "react-icons/vsc"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { sidebarLinks } from './../../../../data/dashboard-links';
+import { sidebarLinks } from './../../../data/dashboard-links';
 import { logout } from "../../../services/operations/authAPI"
-import ConfirmationModal from "../../common/ConfirmationModal"
 import SidebarLink from "./SidebarLink"
-import Loading from './../../common/Loading';
+import Loading from './../../Loading';
 
 import { HiMenuAlt1 } from 'react-icons/hi'
 import { IoMdClose } from 'react-icons/io'
 
 import { setOpenSideMenu, setScreenSize } from "../../../slices/sidebarSlice";
+import ConfirmationModal from "../../ConfirmationModal";
 
 
 
@@ -72,8 +72,8 @@ export default function Sidebar() {
 
       {
         openSideMenu &&
-        <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10 ">
-          <div className="flex flex-col mt-6">
+        <div className="flex min-w-[220px] flex-col border-l-[1px] border-r-richblack-700 primary-text bg-richblack-800 py-10 ">
+          <div className="flex flex-col mt-20">
             {sidebarLinks.map((link) => {
               if (link.type && user?.accountType !== link.type) return null
               return (
@@ -104,7 +104,7 @@ export default function Sidebar() {
               }
               className=" "
             >
-              <div className="flex items-center gap-x-2 px-8 py-2 text-sm font-medium text-richblack-300 hover:bg-richblack-700 relative">
+              <div className="flex items-center gap-x-2 px-8 py-2 text-sm font-medium primary-text hover:bg-richblack-700 relative">
                 <VscSignOut className="text-lg" />
                 <span>Logout</span>
               </div>

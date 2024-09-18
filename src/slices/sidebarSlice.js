@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     openSideMenu: false,
     screenSize: undefined,
-
-    // course view side bar
     courseViewSidebar: false,
 }
 

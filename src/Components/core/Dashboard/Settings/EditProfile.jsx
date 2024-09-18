@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { updateProfile } from "../../../../services/operations/SettingsAPI"
-import IconBtn from "../../../common/IconBtn"
+import IconBtn from "./../../../../Components/IconBtn"
 
-const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"]
+const genders = ["Male", "Female"]
 
 export default function EditProfile() {
   const { user } = useSelector((state) => state.profile)
@@ -27,7 +27,7 @@ export default function EditProfile() {
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-6 sm:px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-sky-400 bg-transparent primary-text p-8 px-6 sm:px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Profile Information
           </h2>
@@ -42,7 +42,7 @@ export default function EditProfile() {
                 name="firstName"
                 id="firstName"
                 placeholder="Enter first name"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("firstName", { required: true })}
                 defaultValue={user?.firstName}
               />
@@ -62,7 +62,7 @@ export default function EditProfile() {
                 name="lastName"
                 id="lastName"
                 placeholder="Enter first name"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("lastName", { required: true })}
                 defaultValue={user?.lastName}
               />
@@ -83,7 +83,7 @@ export default function EditProfile() {
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("dateOfBirth", {
                   required: {
                     value: true,
@@ -111,13 +111,13 @@ export default function EditProfile() {
                 type="text"
                 name="gender"
                 id="gender"
-                className="form-style"
+                className=" bg-transparent  border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("gender", { required: true })}
                 defaultValue={user?.additionalDetails?.gender}
               >
                 {genders.map((ele, i) => {
                   return (
-                    <option key={i} value={ele}>
+                    <option className="bg-green-400 primary-text" key={i} value={ele}>
                       {ele}
                     </option>
                   )
@@ -141,7 +141,7 @@ export default function EditProfile() {
                 name="contactNumber"
                 id="contactNumber"
                 placeholder="Enter Contact Number"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("contactNumber", {
                   required: {
                     value: true,
@@ -168,7 +168,7 @@ export default function EditProfile() {
                 name="about"
                 id="about"
                 placeholder="Enter Bio Details"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("about", { required: true })}
                 defaultValue={user?.additionalDetails?.about}
               />
@@ -184,7 +184,7 @@ export default function EditProfile() {
         <div className="flex justify-end gap-2">
           <button
             onClick={() => { navigate("/dashboard/my-profile") }}
-            className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+            className="cursor-pointer rounded-md bg-transparent primary-text py-2 px-5 font-semibold text-richblack-50"
           >
             Cancel
           </button>

@@ -6,7 +6,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 
 import { getAllInstructorDetails } from "../../../services/operations/adminApi";
 
-import IconBtn from "../../common/IconBtn";
+import IconBtn from "./../../../Components/IconBtn"
 
 
 

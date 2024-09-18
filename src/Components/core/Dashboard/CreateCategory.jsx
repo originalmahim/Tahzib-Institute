@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createNewCategory, deleteCategory, fetchCourseCategories } from "../../../services/operations/courseDetailsAPI";
-import IconBtn from '../../common/IconBtn';
+import IconBtn from "./../../../Components/IconBtn"
 
 import { IoIosAdd } from "react-icons/io";
 import { useSelector } from "react-redux";

@@ -5,12 +5,10 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { changePassword } from "../../../../services/operations/SettingsAPI"
-import IconBtn from "../../../common/IconBtn"
+import IconBtn from "./../../../../Components/IconBtn"
 
 export default function UpdatePassword() {
   const { token } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
-
   const [showOldPassword, setShowOldPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
@@ -26,15 +24,15 @@ export default function UpdatePassword() {
     try {
       await changePassword(token, data)
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
+      // console.log("ERROR MESSAGE - ", error.message)
     }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit(submitPasswordForm)}>
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-6 sm:px-12">
-          <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
+        <div className="my-10 primary-text flex flex-col gap-y-6 rounded-md border-[1px] border-sky-400 bg-transparent p-8 px-6 sm:px-12">
+          <h2 className="text-lg font-semibold primary-text">Password</h2>
 
           <div className="flex flex-col gap-5 lg:flex-row">
           {/* Current Password */}
@@ -48,7 +46,7 @@ export default function UpdatePassword() {
                 name="oldPassword"
                 id="oldPassword"
                 placeholder="Enter Current Password"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("oldPassword", { required: true })}
               />
 
@@ -81,7 +79,7 @@ export default function UpdatePassword() {
                 name="newPassword"
                 id="newPassword"
                 placeholder="Enter New Password"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("newPassword", { required: true })}
               />
 
@@ -113,7 +111,7 @@ export default function UpdatePassword() {
                 name="confirmNewPassword"
                 id="confirmNewPassword"
                 placeholder="Enter Confirm New Password"
-                className="form-style"
+                className=" bg-transparent border-sky-400 border-2 ring-1 rounded-md p-2"
                 {...register("confirmNewPassword", { required: true })}
               />
 
@@ -138,12 +136,12 @@ export default function UpdatePassword() {
         </div>
 
         <div className="flex justify-end gap-2">
-          <button
+          {/* <button
             onClick={() => { navigate("/dashboard/my-profile") }}
             className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
           >
             Cancel
-          </button>
+          </button> */}
           <IconBtn type="submit" text="Update" />
         </div>
 

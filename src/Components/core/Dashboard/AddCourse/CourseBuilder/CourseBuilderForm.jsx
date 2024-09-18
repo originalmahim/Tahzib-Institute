@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { createSection, updateSection } from "../../../../../services/operations/courseDetailsAPI"
 import { setCourse, setEditCourse, setStep, } from "../../../../../slices/courseSlice"
 
-import IconBtn from "../../../../common/IconBtn"
+import IconBtn from "./../../../../../Components/IconBtn"
 import NestedView from "./NestedView"
 
 
