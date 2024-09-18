@@ -3,6 +3,8 @@ import counterReducer from '../features/counter/counterSlice';
 import authReducer from '../slices/authSlice';
 import profileReducer from '../slices/profileSlice';
 import sidebarReducer from '../slices/sidebarSlice';
+import viewCourseReducer from '../slices/viewCourseSlice';
+import courseReducer from '../slices/courseSlice';
 // import cartReducer from '../slices/cartSlice';
 
 export const store = configureStore({
@@ -11,6 +13,8 @@ export const store = configureStore({
     counter: counterReducer,
     profile: profileReducer,
     sidebar: sidebarReducer,
+    viewCourse: viewCourseReducer,
+    course: courseReducer,
     // cart: cartReducer,
   },
 });

@@ -49,7 +49,7 @@ export default function RequirementsField({ name, label, register, setValue, err
           id={name}
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          className="form-style w-full"
+          className="bg-transparent border-blue-400 ring-2 rounded-md primary-text p-2 w-full"
         />
         <button
           type="button"

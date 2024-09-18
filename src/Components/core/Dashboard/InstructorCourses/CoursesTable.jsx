@@ -49,16 +49,13 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
   // Loading Skeleton
   const skItem = () => {
     return (
-      <div className="flex border-b border-richblack-800 px-6 py-8 w-full">
+      <div className="flex border-b border-blue-500 px-6 py-8 w-full">
         <div className="flex flex-1 gap-x-4 ">
           <div className='h-[148px] min-w-[300px] rounded-xl skeleton '></div>
 
           <div className="flex flex-col w-[40%]">
             <p className="h-5 w-[50%] rounded-xl skeleton"></p>
             <p className="h-20 w-[60%] rounded-xl mt-3 skeleton"></p>
-
-            <p className="h-2 w-[20%] rounded-xl skeleton mt-3"></p>
-            <p className="h-2 w-[20%] rounded-xl skeleton mt-2"></p>
           </div>
         </div>
       </div>
@@ -67,7 +64,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
 
   return (
     <>
-      <Table className="rounded-2xl border border-richblack-800 ">
+      <Table className="rounded-md border border-blue-400 ">
         {/* heading */}
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-3xl border-b border-b-richblack-800 px-6 py-2">

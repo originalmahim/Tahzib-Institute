@@ -5,8 +5,8 @@ import ReactStars from "react-rating-stars-component"
 import { useSelector } from "react-redux"
 
 import { createRating } from "../../../services/operations/courseDetailsAPI"
-import IconBtn from './../../common/IconBtn';
-import Img from './../../common/Img';
+import IconBtn from './../../IconBtn';
+import Img from './../../IconBtn';
 
 
 

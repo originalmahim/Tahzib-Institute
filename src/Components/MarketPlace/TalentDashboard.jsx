@@ -3,13 +3,12 @@ import {
   checked,
   dashboard,
   information,
-  map,
   noResult,
 } from "../../assets";
 import { BiEdit } from "react-icons/bi";
-import { FaFacebookF } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import EnrolledCourses from "../core/Dashboard/EnrolledCourses";
+import { Link } from "react-router-dom";
 
 const TalentDashboard = ({ darkTheme }) => {
   const [btn1, setbtn1] = useState(true);
@@ -77,17 +76,16 @@ const TalentDashboard = ({ darkTheme }) => {
               <div className="top-line">
                 <h1 className="primary-text">{user?.firstName + " " + user?.lastName}</h1>
                 <div className="location">
-                  <img src={map} alt="" />
-                  <small className="secondary-text">Bangladesh</small>
+                <small className="tag">{user?.accountType}</small>
                 </div>
               </div>
-
+              <Link to='/mySettings'>
               <button className="editProfile">
                 <BiEdit className="editBtn primary-text" />
                 <small className="primary-text">Edit</small>
               </button>
+              </Link>
             </div>
-            <small className="tag">{user?.accountType}</small>
             <p className="bio secondary-text">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
               aperiam ab harum, vitae deleniti ducimus minus quas odit odio hic
@@ -95,7 +93,9 @@ const TalentDashboard = ({ darkTheme }) => {
               facere nostrum.
             </p>
           </div>
-
+          {user?.accountType === 'Student' &&
+          <EnrolledCourses/>
+          }
           <div className="content-btns">
             <button
               className={btn1 && !btn2 ? "active secondary-text" : "secondary-text"}
@@ -121,6 +121,7 @@ const TalentDashboard = ({ darkTheme }) => {
 
           {btn2 && (
             <div className="timeline-content">
+             
             <div className="noContent">
                   <img src={noResult} alt="" />
                   <small className="secondary-text">No result found</small>
@@ -146,14 +147,6 @@ const TalentDashboard = ({ darkTheme }) => {
               <div className="info">
                 <small className="primary-text">Email: {user?.email}</small>
                 <small className="primary-text">Phone: +880 1879866202</small>
-              </div>
-
-              <p className="barTitle3">Social Media</p>
-
-              <div className="social">
-                <Link to="">
-                  <FaFacebookF className="primary-text sio" />
-                </Link>
               </div>
             </div>
           )}

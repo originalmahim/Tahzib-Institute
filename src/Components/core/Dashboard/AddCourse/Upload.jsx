@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
 
 import "video-react/dist/video-react.css"
 import { Player } from "video-react"
@@ -50,7 +49,7 @@ export default function Upload({ name, label, register, setValue, errors, video 
   return (
     <div className="flex flex-col space-y-2">
       <label className="text-sm text-richblack-5" htmlFor={name}>
-        {label} {!viewData && <sup className="text-pink-200">*</sup>}
+        {label} {!viewData && <sup className="text-red-500">*</sup>}
       </label>
 
       <div
@@ -58,7 +57,7 @@ export default function Upload({ name, label, register, setValue, errors, video 
          flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
       >
         {previewSource ? (
-          <div className="flex w-full flex-col p-6">
+          <div className="flex h-[500px] w-auto flex-col p-2">
             {!video ? (
               <img
                 src={previewSource}

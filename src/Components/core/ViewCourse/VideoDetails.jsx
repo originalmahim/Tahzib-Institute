@@ -1,21 +1,82 @@
-import React, { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useLocation } from "react-router-dom"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import IconBtn from './../../IconBtn';
+import { setCourseViewSidebar } from "../../../slices/sidebarSlice";
+import { HiMenuAlt1 } from 'react-icons/hi';
+import ReactPlayer from 'react-player';
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
+import { markLectureAsComplete } from './../../../services/operations/courseDetailsAPI';
+import { updateCompletedLectures } from "../../../slices/viewCourseSlice";
 
-import "video-react/dist/video-react.css"
-import { BigPlayButton, Player } from "video-react"
+// Inline styles for the component
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '0px',
+    height: 'auto',
+  },
+  sidebarToggle: {
+    color: 'white',
+    cursor: 'pointer',
+    margin: '10px',
+  },
+  videoPlayerContainer: {
+    position: 'relative',
+    maxWidth: '1000px',
+    margin: '0 auto',
+    width: '100%',
+  },
+  aspectRatioContainer: {
+    position: 'relative',
+    width: '100%',
+    paddingTop: '50%', // 16:9 Aspect Ratio
+  },
+  aspectRatioInner: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+  },
+  videoEndedOverlay: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    borderRadius: '12px',
+  },
+  button: {
+    backgroundColor: '#1E293B',
+    color: 'white',
+    padding: '8px 16px',
+    borderRadius: '4px',
+    margin: '4px',
+    cursor: 'pointer',
+    border: 'none',
+  },
+  buttonHover: {
+    backgroundColor: '#374151',
+  },
+  title: {
+    marginTop: '24px',
+    fontSize: '24px',
+    fontWeight: 'bold',
+  },
+  description: {
+    color: '#D1D5DB',
+    paddingTop: '1px',
+    paddingBottom: '24px',
+  },
+};
 
-import { markLectureAsComplete } from "../../../services/operations/courseDetailsAPI"
-import { updateCompletedLectures } from "../../../slices/viewCourseSlice"
-import { setCourseViewSidebar } from "../../../slices/sidebarSlice"
-
-import IconBtn from "../../common/IconBtn"
-
-import { HiMenuAlt1 } from 'react-icons/hi'
-
-
-const VideoDetails = () => {
+export default function VideoDetails() {
   const { courseId, sectionId, subSectionId } = useParams()
 
   const navigate = useNavigate()
@@ -32,7 +93,7 @@ const VideoDetails = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    ; (async () => {
+   (async () => {
       if (!courseSectionData.length) return
       if (!courseId && !sectionId && !subSectionId) {
         navigate(`/dashboard/enrolled-courses`)
@@ -148,40 +209,29 @@ const VideoDetails = () => {
   }
 
   const { courseViewSidebar } = useSelector(state => state.sidebar)
-
-  // this will hide course video , title , desc, if sidebar is open in small device
-  // for good looking i have try this 
-  if (courseViewSidebar && window.innerWidth <= 640) return;
+  
 
   return (
-    <div className="flex flex-col gap-5 text-white">
-
-      {/* open - close side bar icons */}
-      <div className="sm:hidden text-white absolute left-7 top-3 cursor-pointer " onClick={() => dispatch(setCourseViewSidebar(!courseViewSidebar))}>
-        {
-          !courseViewSidebar && <HiMenuAlt1 size={33} />
-        }
-      </div>
-
-
-      {!videoData ? (
-        <img
-          src={previewSource}
-          alt="Preview"
-          className="h-full w-full rounded-md object-cover"
-        />
-      ) : (
-        <Player
-          ref={playerRef}
-          aspectRatio="16:9"
-          playsInline
-          autoPlay
-          onEnded={() => setVideoEnded(true)}
-          src={videoData?.videoUrl}
-        >
-          <BigPlayButton position="center" />
-          {/* Render When Video Ends */}
-          {videoEnded && (
+    <div className="sec-background">
+      {/* Sidebar Toggle Button */}
+      
+      <h1 className="primary-text mb-2 text-xl">{videoData?.title}</h1>
+      {/* Video Player */}
+      <div style={styles.videoPlayerContainer}>
+        <div style={styles.aspectRatioContainer}>
+          <div style={styles.aspectRatioInner}>
+            <ReactPlayer
+              url={videoData?.videoUrl}
+              playing
+              controls
+              width="100%"
+              height="100%"
+              onEnded={() => setVideoEnded(true)}
+              style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}
+            />
+          </div>
+        </div>
+        {videoEnded && (
             <div
               style={{
                 backgroundImage:
@@ -232,13 +282,29 @@ const VideoDetails = () => {
               </div>
             </div>
           )}
-        </Player>
-      )}
+      </div>
 
-      <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
-      <p className="pt-2 pb-6">{videoData?.description}</p>
+      {/* Video Title and Description */}
+      
+      <p className="text-center mt-2 primary-text">{videoData?.description}</p>
+      <div className="mt-4 flex justify-around items-center">
+                <div>
+                   <button onClick={goToPrevVideo} className="btn gap-1 flex items-center justify-center bg-blue-400 p-2 text-sm lg:text-xl text-white">
+            <ArrowLeftIcon className="w-4 h-4 text-3xl text-white" />
+            Previous
+            </button>
+            </div>
+            <div>
+            <button onClick={goToNextVideo} className="btn gap-1 flex items-center justify-center bg-blue-400 p-2 text-sm lg:text-xl text-white">
+            Next
+            <ArrowRightIcon className="w-4 h-4 text-3xl text-white" />
+            </button>
+            </div>
+            </div>
+      <div className=" lg:hidden flex" style={styles.sidebarToggle} onClick={() => dispatch(setCourseViewSidebar(!courseViewSidebar))}>
+        {courseViewSidebar ? ''  : <HiMenuAlt1 size={30} />}
+      </div>
     </div>
-  )
+  );
 }
 
-export default VideoDetails

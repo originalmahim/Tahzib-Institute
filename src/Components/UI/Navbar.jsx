@@ -31,6 +31,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseCategories } from './../../services/operations/courseDetailsAPI';
+import { ACCOUNT_TYPE } from './../../utils/constants';
 import { logout } from "./../../services/operations/authAPI"
 
 const Navbar = ({ setDarkTheme, darkTheme }) => {
@@ -186,20 +187,23 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   whileInView={{ opacity: [0, 1] }}
                   className="profileOverview drop-bg"
                 >
+                  { user?.accountType === ACCOUNT_TYPE.STUDENT &&
+                  <>
                   <Link
-                    to="/talent-dashboard"
+                    to="/my-dashboard"
                     className="activity hover:text-blue-400 secondary-text"
                     onClick={() => setProfileView(false)}
                   >
                     <p>Dashboard</p>
                   </Link>
                   <Link
-                    to="/talent"
+                    to="/mySettings"
                     className="activity hover:text-blue-400 secondary-text"
                     onClick={() => setProfileView(false)}
                   >
-                    <p>My Courses</p>
-                  </Link>
+                    <p>Settings</p>
+                  </Link> 
+                  </>}
                   
             
 

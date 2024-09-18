@@ -86,23 +86,23 @@ export default function CourseBuilderForm() {
 
   return (
     <div className="space-y-8 rounded-2xl border-[1px] border-richblack-700 bg-richblack-800 p-6">
-      <p className="text-2xl font-semibold text-richblack-5">Course Builder</p>
+      <p className="text-2xl font-semibold primary-text">Course Builder</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Section Name */}
         <div className="flex flex-col space-y-2">
-          <label className="text-sm text-richblack-5" htmlFor="sectionName">
-            Section Name <sup className="text-pink-200">*</sup>
+          <label className="text-sm primary-text" htmlFor="sectionName">
+            Section Name <sup className="text-red-500">*</sup>
           </label>
           <input
             id="sectionName"
             disabled={loading}
             placeholder="Add a section to build your course"
             {...register("sectionName", { required: true })}
-            className="form-style w-full"
+            className="bg-transparent border-blue-400 ring-2 rounded-md primary-text p-2"
           />
           {errors.sectionName && (
-            <span className="ml-2 text-xs tracking-wide text-pink-200">
+            <span className="ml-2 text-xs tracking-wide text-red-500">
               Section name is required
             </span>
           )}
@@ -116,7 +116,7 @@ export default function CourseBuilderForm() {
             text={editSectionName ? "Edit Section Name" : "Create Section"}
             outline={true}
           >
-            <IoAddCircleOutline size={20} className="text-yellow-50" />
+            <IoAddCircleOutline size={20} className="text-black" />
           </IconBtn>
           {/* if editSectionName mode is on */}
           {editSectionName && (
@@ -140,7 +140,7 @@ export default function CourseBuilderForm() {
       <div className="flex justify-end gap-x-3">
         <button
           onClick={goBack}
-          className={`rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+          className={`rounded-md primary-text py-[8px] px-[20px] font-semibold text-richblack-900`}
         >
           Back
         </button>
