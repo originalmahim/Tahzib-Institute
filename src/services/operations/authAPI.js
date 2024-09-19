@@ -4,6 +4,7 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { endpoints } from "../apis"
+import { ACCOUNT_TYPE } from "../../utils/constants"
 
 const {
   SENDOTP_API,
@@ -94,7 +95,7 @@ export function signin(email, password, navigate) {
         password,
       })
 
-      console.log("LOGIN API RESPONSE............", response);
+      // console.log("LOGIN API RESPONSE............", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message)
@@ -113,9 +114,19 @@ export function signin(email, password, navigate) {
 
       localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage }));
 
-      navigate("/dashboard/my-profile");
+      // Conditional navigation based on user role
+      if (response.data.user.accountType === ACCOUNT_TYPE.ADMIN) {
+        navigate("/dashboard/my-profile");
+      }
+      if (response.data.user.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+        navigate("/dashboard/my-profile");
+      }
+      if (response.data.user.accountType === ACCOUNT_TYPE.STUDENT) {
+        navigate("/");
+      }
+
     } catch (error) {
-      console.log("LOGIN API ERROR.......", error)
+      // console.log("LOGIN API ERROR.......", error)
       toast.error(error.response?.data?.message)
     }
     dispatch(setLoading(false))

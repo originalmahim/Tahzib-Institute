@@ -16,10 +16,6 @@ const Dashboard = ({darkTheme}) => {
             </div>
         )
     }
-    // Scroll to the top of the page when the component mounts
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, [])
 
     return (
         <div className={!darkTheme ? "dark" : "light"}>

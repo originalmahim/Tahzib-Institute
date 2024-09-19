@@ -11,7 +11,6 @@ import Marketplace from "./Components/MarketPlace/Marketplace";
 import SingleAnimatedCategory from "./Components/MarketPlace/SingleAnimatedCategory";
 import PostJob from "./Components/MarketPlace/PostJob";
 import SingleJob from "./Components/MarketPlace/SingleJob";
-import ClientProfile from "./Components/MarketPlace/ClientProfile";
 import TalentProfile from "./Components/MarketPlace/TalentProfile";
 import TalentDashboard from "./Components/MarketPlace/TalentDashboard";
 import AllJobs from "./Components/MarketPlace/AllJobs";
@@ -42,6 +41,7 @@ import ProtectedRoute from "./Components/core/Dashboard/ProtectedRoute";
 import { ACCOUNT_TYPE } from './utils/constants';
 import VideoDetails from './Components/core/ViewCourse/VideoDetails';
 import ViewCourse from "./Components/core/Dashboard/ViewCourse";
+import AllCourses from "./Components/core/Dashboard/InstructorDashboard/AllCourses";
 
 
 function App() {
@@ -61,20 +61,19 @@ function App() {
 
   return (
     <div className="app">
-            <Router>
+          <Router>
         <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
         <ScrollTop />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Homepage darkTheme={darkTheme} />} />
           <Route path="/about-us" element={<About darkTheme={darkTheme} />} />
-          <Route path="/marketplace/animated" element={<SingleAnimatedCategory darkTheme={darkTheme} />} />
-          <Route path="/post-job" element={<PostJob darkTheme={darkTheme} />} />
-          <Route path="/all-jobs" element={<AllJobs darkTheme={darkTheme} />} />
-          <Route path="/single-job" element={<SingleJob darkTheme={darkTheme} />} />
+          {/* <Route path="/marketplace/animated" element={<SingleAnimatedCategory darkTheme={darkTheme} />} /> */}
+          {/* <Route path="/post-job" element={<PostJob darkTheme={darkTheme} />} /> */}
+          {/* <Route path="/all-jobs" element={<AllJobs darkTheme={darkTheme} />} /> */}
+          {/* <Route path="/single-job" element={<SingleJob darkTheme={darkTheme} />} /> */}
           
-          
-          <Route path="/client" element={<ClientProfile darkTheme={darkTheme} />} />
+        
           <Route path="/Details/:id" element={<CourseDetaisPage courses={courses} darkTheme={darkTheme} />} />
           <Route path="/Learn/:id" element={<CourseStart courses={courses} darkTheme={darkTheme} />} />
           <Route path="/all-courses" element={<Allcourses darkTheme={darkTheme} />} />
@@ -82,7 +81,7 @@ function App() {
           <Route path="/Login" element={<Login darkTheme={darkTheme} />} />
           <Route path="/verify-email" element={<VerifyEmail darkTheme={darkTheme} />} />
           <Route path="/forgot-password" element={<ForgotPassword darkTheme={darkTheme} />} />
-          <Route path="/update-password/:id" element={<UpdatePassword darkTheme={darkTheme} />} />
+          <Route path="/update-password/:id" element={<UpdatePassword darkTheme={darkTheme} />}/>
 
           {/* Protected Routes */}
         {/* Protected Route - for Only Logged in User */}
@@ -104,18 +103,20 @@ function App() {
           </ProtectedRoute>
         }
         >
-          
-          
           {/* Route only for Admin */}
           {/* create category, all students, all instructors */}
           {user?.accountType === ACCOUNT_TYPE.ADMIN && (
             <>
             <Route path="dashboard/my-profile" element={<MyProfile />} />
+            <Route path="dashboard/my-courses" element={<MyCourses />} />
+            <Route path="dashboard/settings" element={ 
+            <TalentProfile darkTheme={darkTheme} />} />
               <Route path="dashboard/create-category" element={<CreateCategory />} />
               <Route path="dashboard/all-students" element={<AllStudents />} />
               <Route path="dashboard/all-instructors" element={<AllInstructors />} />
               <Route path="dashboard/add-course" element={<AddCourse darkTheme={darkTheme} />} />
-              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              <Route path="dashboard/all-courses" element={<AllCourses />} />
+              <Route path="dashboard/edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
             </>
           )}
 

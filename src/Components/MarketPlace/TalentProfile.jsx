@@ -5,9 +5,11 @@ import UpdatePassword from "../core/Dashboard/Settings/UpdatePassword";
 import EditProfile from "../core/Dashboard/Settings/EditProfile";
 import DeleteAccount from "../core/Dashboard/Settings/DeleteAccount";
 import ChangeProfilePicture from "../core/Dashboard/Settings/ChangeProfilePicture";
-
+import { ACCOUNT_TYPE } from "../../utils/constants";
+import { useSelector } from "react-redux";
 
 const TalentProfile = ({ darkTheme }) => {
+  const { user } = useSelector((state) => state.profile)
   return (
     <div id="talentProfile" className={!darkTheme ? "dark" : "light"}>
       <main className="background">
@@ -57,7 +59,7 @@ const TalentProfile = ({ darkTheme }) => {
         
           </div>
             <UpdatePassword></UpdatePassword>
-            <DeleteAccount/>
+            {user?.accountType !== ACCOUNT_TYPE.ADMIN &&<DeleteAccount/>}
         </div>
       </main>
     </div>
