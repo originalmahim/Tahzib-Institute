@@ -29,7 +29,7 @@ export default function AllCourses() {
   }, [])
 
   return (
-    <div className="primary-text">
+    <div className="primary-text ">
       <div className="lg:mb-24 mb-28 flex justify-between">
       </div>
 

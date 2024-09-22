@@ -1,271 +1,161 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import { getAllStudentsData } from '../../../services/operations/adminApi'
-import { Table, Th, Thead, Tr, Td, Tbody } from 'react-super-responsive-table';
-import IconBtn from "./../../../Components/IconBtn"
-
-import { VscAdd } from 'react-icons/vsc';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { getAllStudentsData } from '../../../services/operations/adminApi';
 import user_logo from "./../../../assets/user.jpg";
 
-
-// loading skeleton
-const LoadingSkeleton = () => {
-    return (<div className="flex p-5 flex-col gap-6 border-b border-2 border-b-richblack-500">
-        <div className="flex flex-col sm:flex-row gap-5 items-center mt-7">
-            <p className='h-[150px] w-[150px] rounded-full skeleton'></p>
-            <div className="flex flex-col gap-2 ">
-                <p className='h-4 w-[160px] rounded-xl skeleton'></p>
-                <p className='h-4 w-[270px] rounded-xl skeleton'></p>
-                <p className='h-4 w-[100px] rounded-xl skeleton'></p>
+const LoadingSkeleton = () => (
+    <>
+        <div className="border-t border-blue-400 p-5 flex justify-between items-center transition-all">
+          <div className="flex items-center gap-6">
+            <Skeleton baseColor="#202020" highlightColor="#444" circle={false} height={64} width={64} />
+            <div className="flex flex-col gap-2">
+              <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={160} />
+              <Skeleton baseColor="#202020" highlightColor="#444" height={15} width={120} />
+              <Skeleton baseColor="#202020" highlightColor="#444" height={15} width={100} />
             </div>
+          </div>
+          <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={200} className="text-center" />
+          <div className="text-center text-lg primary-text">
+            <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={160} />
+          </div>
         </div>
-        <div className='flex gap-5'>
-            <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
-            <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
-            <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
-        </div>
-    </div>)
-}
+    </>
+);
 
 const AllStudents = () => {
+  const { token } = useSelector((state) => state.auth);
+  const [allStudents, setAllStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const { token } = useSelector(state => state.auth)
-    const [allStudents, setAllStudents] = useState([])
-    const [studentsCount, setStudentsCount] = useState();
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate();
+  useEffect(() => {
+    const fetchAllStudents = async () => {
+      setLoading(true);
+      const { allStudentsDetails } = await getAllStudentsData(token);
+      setAllStudents(allStudentsDetails);
+      setLoading(false);
+    };
 
-    // fetch all Students Details
-    useEffect(() => {
-        const fetchAllStudents = async () => {
-            setLoading(true)
-            const { allStudentsDetails, studentsCount } = await getAllStudentsData(token)
-            setAllStudents(allStudentsDetails)
-            setStudentsCount(studentsCount);
-            setLoading(false)
-        }
+    fetchAllStudents();
+  }, [token]);
 
-        fetchAllStudents()
-    }, [token])
+  return (
+    <div className="sec-background primary-text p-3 min-h-screen flex flex-col">
+      <div className='mt-24'></div>
 
+      {/* Scrollable Container */}
+      <div className="border border-blue-400 rounded-md overflow-y-auto max-h-screen flex-1">
+        <div className="hidden md:block w-full">
+          <div className="flex justify-between text-sm uppercase font-bold primary-text p-5">
+            <div>Student Details</div>
+            <div className="text-left">Mail Address</div>
+            <div className="text-left">Enrolled Courses</div>
+          </div>
 
-
-    return (
-        <div className=''>
-            <div className="mb-14 flex items-center justify-between">
-                <h1 className="text-4xl font-medium text-richblack-5 font-boogaloo text-center sm:text-left">All Students Details</h1>
-
-                <IconBtn text="Add Students" onclick={() => navigate("")}>
-                    <VscAdd />
-                </IconBtn>
-            </div>
-
-            <Table className="rounded-xl border-2 border-richblack-500 ">
-                <Thead>
-                    <Tr className="flex gap-x-10 rounded-t-md border-b border-2 border-b-richblack-500 px-6 py-2">
-                        <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-                            Students : {studentsCount}
-                        </Th>
-
-                        <Th className="mr-[10%]  text-center ml-4 text-sm font-medium uppercase text-richblack-100 ">
-                            ACTIVE
-                        </Th>
-                        <Th className="mr-[7%] text-sm font-medium uppercase text-richblack-100">
-                            APPROVED
-                        </Th>
-                    </Tr>
-                </Thead>
-
-                <Tbody>
-                    {
-                        loading ? <>
-                            <LoadingSkeleton />
-                            <LoadingSkeleton />
-                            <LoadingSkeleton />
-                        </>
-                            // if No Data Available
-                            :
-                            !allStudents ? <div className='text-5xl py-5 bg-yellow-800 text-white text-center'>No Data Available</div>
-                                :
-                                allStudents.map((temp) =>
-                                (<div
-                                    key={temp._id}
-                                    className='border-x border-2 border-richblack-500 '
-                                >
-                                    <Tr className="flex gap-x-10 px-6 py-8">
-                                        <Td className="flex flex-1 gap-x-2">
-                                            <img
-                                                src={temp.image != "/" ? temp.image : user_logo}
-                                                alt="student"
-                                                className="h-[150px] w-[150px] rounded-full "
-                                            />
-                                            <div className="flex flex-col justify-between">
-                                                <p className="text-lg font-semibold text-richblack-5">
-                                                    <div className='text-sm font-normal'>
-                                                        <p className='text-base font-bold'>{temp.firstName + " " + temp.lastName}</p>
-                                                        <p>{temp.email}</p>
-
-                                                        <p>
-                                                            gender:{" "}
-                                                            {temp.additionalDetails.gender
-                                                                ? temp.additionalDetails.gender
-                                                                : "Not define"}
-                                                        </p>
-                                                        <p>
-                                                            Mobile No:{" "}
-                                                            {temp.additionalDetails.contactNumber
-                                                                ? temp.additionalDetails.contactNumber
-                                                                : "No Data"}
-                                                        </p>
-                                                        <p>
-                                                            DOB:{" "}
-                                                            {temp.additionalDetails.dateOfBirth
-                                                                ? temp.additionalDetails.dateOfBirth
-                                                                : "No Data"}
-                                                        </p>
-                                                    </div>
-                                                </p>
-                                            </div>
-                                        </Td>
-                                        <Td className="mr-[11.5%] text-sm font-medium text-richblack-100">
-                                            {temp.active ? "Active" : "Inactive"}
-                                        </Td>
-                                        <Td className="mr-[8%] text-sm font-medium text-richblack-100">
-                                            {temp.approved ? "Approved" : "Not Approved"}
-                                        </Td>
-                                    </Tr>
-
-
-                                    {temp && temp.courses && temp.courses.length ? (
-                                        <Tr className="flex gap-x-10 px-6 pb-5">
-                                            <p className="text-yellow-50 ">All Enrolled Courses</p>
-                                            <div className='grid grid-cols-5 gap-y-5'>
-                                                {temp.courses.map((course) => (
-                                                    <div className="text-white text-sm" key={course._id}>
-                                                        <p>{course.courseName}</p>
-                                                        <p className="text-sm font-normal">Price: ₹{course.price}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </Tr>
-                                    ) : (
-                                        <div className="px-6 text-white mb-4">Not Purchased any course</div>
-                                    )}
-
-                                </div>
-                                )
-                                )}
-                </Tbody>
-            </Table>
+          {loading ? (
+            <>
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+            </>
+          ) : allStudents.length === 0 ? (
+            <div className="text-center py-10 bg-yellow-100 primary-text">No Data Available</div>
+          ) : (
+            allStudents.map((student) => (
+              <div key={student._id} className="border-t border-blue-400 p-5 flex justify-between items-start transition-all">
+                <div className="flex items-center gap-6">
+                  <img
+                    src={student?.image !== "/" ? student?.image : user_logo}
+                    alt="student"
+                    className="h-16 w-16 rounded-md object-cover shadow-md"
+                  />
+                  <div>
+                    <p className="font-semibold text-xl primary-text text-left">{student?.firstName} {student?.lastName}</p>
+                    <p className="primary-text text-sm text-left">Gender: {student?.additionalDetails?.gender || "Not defined"}</p>
+                    <p className="primary-text text-sm text-left">Mobile No: {student?.additionalDetails?.contactNumber || "No Data"}</p>
+                  </div>
+                </div>
+                <div className="text-left text-md primary-text">{student?.email || "Not Available"}</div>
+                <div className="text-left text-lg primary-text">
+                  {student?.courses && student.courses.length ? (
+                    <div className="flex flex-col text-left">
+                      {student.courses.map((course) => (
+                        <div key={course._id} className="primary-text text-sm">
+                          <p>{course.courseName}</p>
+                          <p className="text-xs">Price: ₹{course.price}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="primary-text text-sm">Not enrolled in any courses</div>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
-        // <div className=''>
-        //     <div className="mb-14 flex items-center justify-between">
-        //         <h1 className="text-3xl font-medium text-richblack-5">
-        //             All Student Details
-        //         </h1>
-        //         <IconBtn text="Add Students" onclick={() => navigate("")}>
-        //             <VscAdd />
-        //         </IconBtn>
-        //     </div>
+        {/* Mobile View */}
+        <div className="md:hidden">
+          {loading ? (
+            <>
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+            </>
+          ) : allStudents.length === 0 ? (
+            <div className="text-center py-5 bg-yellow-100 text-black">No Data Available</div>
+          ) : (
+            allStudents.map((student) => (
+              <div key={student._id} className="bg-white mb-6 p-5 rounded-lg shadow-md border border-gray-200">
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={student.image !== "/" ? student.image : user_logo}
+                    alt="student"
+                    className="h-16 w-16 rounded-full object-cover shadow-md"
+                  />
+                  <div>
+                    <p className="font-semibold text-xl primary-text">{student.firstName} {student.lastName}</p>
+                    <p className="primary-text text-sm">{student.email}</p>
+                  </div>
+                </div>
+                <div className="text-sm primary-text mb-2">
+                  <p><strong>Gender: </strong>{student.additionalDetails?.gender || "Not defined"}</p>
+                  <p><strong>Mobile No: </strong>{student.additionalDetails?.contactNumber || "No Data"}</p>
+                  <p><strong>DOB: </strong>{student.additionalDetails?.dateOfBirth || "No Data"}</p>
+                </div>
+                <div className="mt-4">
+                  {student?.courses && student.courses.length ? (
+                    <div className="grid grid-cols-2 gap-4">
+                      {student.courses.map((course) => (
+                        <div key={course._id} className="primary-text text-sm">
+                          <p>{course.courseName}</p>
+                          <p className="text-xs">Price: ₹{course.price}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="primary-text">No enrolled courses</div>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-        //     <table className="rounded-xl border-2 border-richblack-500 ">
-        //         <thead>
-        //             <tr className="flex gap-x-10 rounded-t-md border-b border-2 border-b-richblack-500 px-6 py-2">
-        //                 <th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-        //                     Students : {studentsCount}
-        //                 </th>
+export default AllStudents;
 
-        //                 <th className="mr-[10%]  text-center ml-4 text-sm font-medium uppercase text-richblack-100 ">
-        //                     ACTIVE
-        //                 </th>
-        //                 <th className="mr-[7%] text-sm font-medium uppercase text-richblack-100">
-        //                     APPROVED
-        //                 </th>
-        //             </tr>
-        //         </thead>
-
-        //         <tbody>
-        //             {
-        //                 loading ? <>
-        //                     <LoadingSkeleton />
-        //                     <LoadingSkeleton />
-        //                     <LoadingSkeleton />
-        //                 </>
-        //                     :
-
-        //                     allStudents.map((temp) =>
-        //                     (<div
-        //                         key={temp._id}
-        //                         className='border-x border-2 border-richblack-500 '
-        //                     >
-        //                         <tr className="flex gap-x-10 px-6 py-8">
-        //                             <td className="flex flex-1 gap-x-2">
-        //                                 <img
-        //                                     src={temp.image != "/" ? temp.image : user_logo}
-        //                                     alt="student"
-        //                                     className="h-[150px] w-[150px] rounded-full "
-        //                                 />
-        //                                 <div className="flex flex-col justify-between">
-        //                                     <p className="text-lg font-semibold text-richblack-5">
-        //                                         <div className='text-sm font-normal'>
-        //                                             <p className='text-base font-bold'>{temp.firstName + " " + temp.lastName}</p>
-        //                                             <p>{temp.email}</p>
-
-        //                                             <p>
-        //                                                 gender:{" "}
-        //                                                 {temp.additionalDetails.gender
-        //                                                     ? temp.additionalDetails.gender
-        //                                                     : "Not define"}
-        //                                             </p>
-        //                                             <p>
-        //                                                 Mobile No:{" "}
-        //                                                 {temp.additionalDetails.contactNumber
-        //                                                     ? temp.additionalDetails.contactNumber
-        //                                                     : "No Data"}
-        //                                             </p>
-        //                                             <p>
-        //                                                 DOB:{" "}
-        //                                                 {temp.additionalDetails.dateOfBirth
-        //                                                     ? temp.additionalDetails.dateOfBirth
-        //                                                     : "No Data"}
-        //                                             </p>
-        //                                         </div>
-        //                                     </p>
-        //                                 </div>
-        //                             </td>
-        //                             <td className="mr-[11.5%] text-sm font-medium text-richblack-100">
-        //                                 {temp.active ? "Active" : "Inactive"}
-        //                             </td>
-        //                             <td className="mr-[8%] text-sm font-medium text-richblack-100">
-        //                                 {temp.approved ? "Approved" : "Not Approved"}
-        //                             </td>
-        //                         </tr>
-
-
-        //                         {temp && temp.courses && temp.courses.length ?
-        //                             <tr className="flex gap-x-10 px-6 pb-5">
-        //                                 <p className="text-yellow-50 ">All Enrolled Courses</p>
-        //                                 <div className='grid grid-cols-5 gap-y-5'>
-        //                                     {temp.courses.map((course) => (
-        //                                         <div className="text-white text-sm" key={course._id}>
-        //                                             <p>{course.courseName}</p>
-        //                                             <p className="text-sm font-normal">Price: ₹{course.price}</p>
-        //                                         </div>
-        //                                     ))}
-        //                                 </div>
-        //                             </tr>
-        //                             :
-        //                             <div className="px-6 text-white mb-4">Not Purchased any course</div>
-        //                         }
-
-        //                     </div>
-        //                     ))}
-        //         </tbody>
-        //     </table>
-        // </div>
-    );
-}
-
-export default AllStudents

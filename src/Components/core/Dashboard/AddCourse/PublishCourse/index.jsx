@@ -7,9 +7,11 @@ import { editCourseDetails } from "../../../../../services/operations/courseDeta
 import { resetCourseState, setStep } from "../../../../../slices/courseSlice"
 import { COURSE_STATUS } from "../../../../../utils/constants"
 import IconBtn from "../../../../IconBtn"
+import { ACCOUNT_TYPE } from './../../../../../utils/constants';
 
 export default function PublishCourse() {
   const { register, handleSubmit, setValue, getValues } = useForm()
+  const { user } = useSelector((state) => state.profile)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -29,7 +31,14 @@ export default function PublishCourse() {
 
   const goToCourses = () => {
     dispatch(resetCourseState())
-    navigate("/dashboard/all-courses")
+    if (user?.accountType === ACCOUNT_TYPE.ADMIN) {
+      
+      navigate("/dashboard/all-courses")
+    }
+    if (user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      
+      navigate("/dashboard/my-courses")
+    }
   }
 
   const handleCoursePublish = async () => {

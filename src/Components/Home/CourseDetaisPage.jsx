@@ -7,7 +7,7 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import CauntDown from "./CauntDown";
 import Popup from "./Popup";
 import Coursecontents from "./Coursecontents";
-import Faq from "./Faq";
+
 
 const benefits = [
   "৮০+ ভিডিও কন্টেন্ট",
@@ -135,7 +135,9 @@ const CourseDetaisPage = ({ darkTheme, courses }) => {
               </div>
             </div>
           </div>
-          <div className="lg:w-[37%] h-full"></div>
+          <div className="lg:w-[37%] h-full">
+            
+          </div>
         </div>
       </div>
       {popup && <Popup videoUrl='https://res.cloudinary.com/dfq61lhkc/video/upload/v1718371491/ahpr07eu902q5ajbdkru.mp4' onClose={() => setPopup(false)} />}

@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react"
-import { VscAdd } from "react-icons/vsc"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 
 import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
-import IconBtn from "./../../../Components/IconBtn"
 import CoursesTable from "./InstructorCourses/CoursesTable"
 
 
 
 export default function MyCourses() {
   const { token } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -36,14 +32,7 @@ export default function MyCourses() {
 
   return (
     <div className="primary-text">
-      <div className="mb-14 flex justify-between">
-        <h1 className="text-4xl font-medium text-richblack-5 font-boogaloo text-center lg:text-left">My Courses</h1>
-        <IconBtn
-          text="Add Course"
-          onclick={() => navigate("/dashboard/add-course")}
-        >
-          <VscAdd />
-        </IconBtn>
+      <div className="lg:mb-24 mb-28 flex justify-between">
       </div>
 
       {/* course Table */}

@@ -151,7 +151,7 @@ export default function CourseInformationForm() {
       {/* Course Title */}
       <div className="flex flex-col space-y-2">
         <label className=" primary-text" htmlFor="courseTitle">
-          Course Title <sup className="text-red-500">*</sup>
+          Course Title - কোর্সের নাম <sup className="text-red-500">*</sup>
         </label>
         <input
           id="courseTitle"
@@ -169,7 +169,7 @@ export default function CourseInformationForm() {
       {/* Course Short Description */}
       <div className="flex flex-col space-y-2">
         <label className="primary-text" htmlFor="courseShortDesc">
-          Course Short Description <sup className="text-red-500">*</sup>
+          Course Short Description - কোর্সের সংক্ষিপ্ত বর্ননা  <sup className="text-red-500">*</sup>
         </label>
         <textarea
           id="courseShortDesc"
@@ -187,7 +187,7 @@ export default function CourseInformationForm() {
       {/* Course Price */}
       <div className="flex flex-col space-y-2">
         <label className=" primary-text" htmlFor="coursePrice">
-          Course Price <sup className="text-red-500">*</sup>
+          Course Price - কোর্সের দাম <sup className="text-red-500">*</sup>
         </label>
         <div className="relative">
           <input
@@ -215,7 +215,7 @@ export default function CourseInformationForm() {
       {/* Course Category */}
       <div className="flex flex-col space-y-2 ">
         <label className=" primary-text" htmlFor="courseCategory">
-          Course Category <sup className="text-red-500">*</sup>
+          Course Category - কোর্স ক্যাটাগরি <sup className="text-red-500">*</sup>
         </label>
         <select
           {...register("courseCategory", { required: true })}
@@ -239,10 +239,10 @@ export default function CourseInformationForm() {
         )}
       </div>
 
-      {/* Course Tags */}
+      {/* Course Designed For */}
       <ChipInput
        className="bg-transparent border-blue-400 ring-2 rounded-md primary-text p-2"
-        label="Tags"
+        label="Course Designed For - কোর্সটি যাদের জন্য বানানো"
         name="courseTags"
         placeholder="Enter Tags and press Enter or Comma"
         register={register}
@@ -253,17 +253,17 @@ export default function CourseInformationForm() {
       {/* Course Thumbnail Image */}
       <Upload
         name="courseImage"
-        label="Course Thumbnail"
+        label="Course Thumbnail - কোর্সের  ছবি"
         register={register}
         setValue={setValue}
         errors={errors}
         editData={editCourse ? course?.thumbnail : null}
       />
 
-      {/* Benefits of the course */}
+      {/* learn from the course  */}
       <div className="flex flex-col space-y-2">
         <label className=" primary-text" htmlFor="courseBenefits">
-          Benefits of the course <sup className="text-red-500">*</sup>
+      What You Will  Learn - যা শিখবেন কোর্স থেকে <sup className="text-red-500">*</sup>
         </label>
         <textarea
           id="courseBenefits"
@@ -281,7 +281,7 @@ export default function CourseInformationForm() {
       {/* Requirements/Instructions */}
       <RequirementsField
         name="courseRequirements"
-        label="Requirements/Instructions"
+        label="Requirements To Do This Course - যা প্রয়োজন হবে কোর্সটি করতে "
         register={register}
         setValue={setValue}
         errors={errors}

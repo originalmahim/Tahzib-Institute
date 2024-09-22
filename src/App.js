@@ -6,7 +6,6 @@ import Homepage from "./Pages/Homepage";
 import Footer from "./Components/UI/Footer";
 
 import Construction from "./Components/UI/Construction";
-import ScrollTop from "./Components/UI/ScrollTop";
 import Marketplace from "./Components/MarketPlace/Marketplace";
 import SingleAnimatedCategory from "./Components/MarketPlace/SingleAnimatedCategory";
 import PostJob from "./Components/MarketPlace/PostJob";
@@ -42,6 +41,7 @@ import { ACCOUNT_TYPE } from './utils/constants';
 import VideoDetails from './Components/core/ViewCourse/VideoDetails';
 import ViewCourse from "./Components/core/Dashboard/ViewCourse";
 import AllCourses from "./Components/core/Dashboard/InstructorDashboard/AllCourses";
+import NewCourseDetails from "./Components/Home/NewCourseDetails";
 
 
 function App() {
@@ -63,7 +63,6 @@ function App() {
     <div className="app">
           <Router>
         <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
-        <ScrollTop />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Homepage darkTheme={darkTheme} />} />
@@ -82,6 +81,7 @@ function App() {
           <Route path="/verify-email" element={<VerifyEmail darkTheme={darkTheme} />} />
           <Route path="/forgot-password" element={<ForgotPassword darkTheme={darkTheme} />} />
           <Route path="/update-password/:id" element={<UpdatePassword darkTheme={darkTheme} />}/>
+          <Route path="courses/:courseId" element={<NewCourseDetails darkTheme={darkTheme} />}/>
 
           {/* Protected Routes */}
         {/* Protected Route - for Only Logged in User */}
@@ -97,50 +97,48 @@ function App() {
         {/* Dashboard */}
 
         
-        <Route element={
+        <Route path="/dashboard" element={
           <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-        >
-          {/* Route only for Admin */}
-          {/* create category, all students, all instructors */}
-          {user?.accountType === ACCOUNT_TYPE.ADMIN && (
-            <>
-            <Route path="dashboard/my-profile" element={<MyProfile />} />
-            <Route path="dashboard/my-courses" element={<MyCourses />} />
-            <Route path="dashboard/settings" element={ 
-            <TalentProfile darkTheme={darkTheme} />} />
-              <Route path="dashboard/create-category" element={<CreateCategory />} />
-              <Route path="dashboard/all-students" element={<AllStudents />} />
-              <Route path="dashboard/all-instructors" element={<AllInstructors />} />
-              <Route path="dashboard/add-course" element={<AddCourse darkTheme={darkTheme} />} />
-              <Route path="dashboard/all-courses" element={<AllCourses />} />
-              <Route path="dashboard/edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
-            </>
-          )}
+    <Dashboard />
+  </ProtectedRoute>
+}>
+  <Route index element={<MyProfile/>} />
+  {/* Default route for /dashboard */}
 
+  {/* Route only for Admin */}
+  {user?.accountType === ACCOUNT_TYPE.ADMIN && (
+    <>
+      <Route path="my-profile" element={<MyProfile />} />
+      <Route path="my-courses" element={<MyCourses />} />
+      <Route path="settings" element={<TalentProfile darkTheme={darkTheme} />} />
+      <Route path="create-category" element={<CreateCategory />} />
+      <Route path="all-students" element={<AllStudents />} />
+      <Route path="all-instructors" element={<AllInstructors />} />
+      <Route path="add-course" element={<AddCourse darkTheme={darkTheme} />} />
+      <Route path="all-courses" element={<AllCourses />} />
+      <Route path="edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
+    </>
+  )}
 
-          {/* Route only for Students */}
-          {/* cart , EnrolledCourses */}
-          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-            <>
-              <Route path="dashboard/cart" element={<Cart />} />
-            </>
-          )}
+  {/* Route only for Students */}
+  {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+    <>
+      <Route path="cart" element={<Cart />} />
+    </>
+  )}
 
-          {/* Route only for Instructors */}
-          {/* add course , MyCourses, EditCourse*/}
-          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-            <>
-            <Route path="dashboard/my-profile" element={<MyProfile />} />
-              <Route path="dashboard/instructor" element={<Instructor />} />
-              <Route path="dashboard/add-course" element={<AddCourse darkTheme={darkTheme} />} />
-              <Route path="dashboard/my-courses" element={<MyCourses />} />
-              <Route path="dashboard/edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
-            </>
-          )}
-        </Route>
+  {/* Route only for Instructors */}
+  {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+    <>
+      <Route path="my-profile" element={<MyProfile />} />
+      <Route path="instructor" element={<Instructor />} />
+      <Route path="add-course" element={<AddCourse darkTheme={darkTheme} />} />
+      <Route path="my-courses" element={<MyCourses />} />
+      <Route path="edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
+      <Route path="settings" element={<TalentProfile darkTheme={darkTheme} />} />
+    </>
+  )}
+</Route>
 
 
         {/* For the watching course lectures */}
@@ -158,7 +156,7 @@ function App() {
             />
           )}
         </Route>
-          <Route path="*" element={<Construction darkTheme={darkTheme} />} />
+          <Route path="*" errorElement element={<Construction darkTheme={darkTheme} />} />
         </Routes>
         <Footer darkTheme={darkTheme} />
       </Router>

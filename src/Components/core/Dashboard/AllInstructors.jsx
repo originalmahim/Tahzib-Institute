@@ -2,163 +2,147 @@ import { useEffect, useState } from "react";
 import { VscAdd } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { getAllInstructorDetails } from "../../../services/operations/adminApi";
+import IconBtn from "./../../../Components/IconBtn";
+import user_logo from "./../../../assets/user.jpg"; // Placeholder image
 
-import IconBtn from "./../../../Components/IconBtn"
-
-
-
-
-// loading skeleton
-const LoadingSkeleton = () => {
-  return (<div className="flex p-5 flex-col gap-6 border-b border-2 border-b-richblack-500">
-    <div className="flex flex-col sm:flex-row gap-5 items-center mt-7">
-      <p className='h-[150px] w-[150px] rounded-full skeleton'></p>
-      <div className="flex flex-col gap-2 ">
-        <p className='h-4 w-[160px] rounded-xl skeleton'></p>
-        <p className='h-4 w-[270px] rounded-xl skeleton'></p>
-        <p className='h-4 w-[100px] rounded-xl skeleton'></p>
+// Loading Skeleton
+const LoadingSkeleton = () => (
+  <div className="border-t border-blue-400 p-5 flex justify-between items-center transition-all">
+    <div className="flex items-center gap-6">
+      <Skeleton baseColor="#202020" highlightColor="#444" circle={false} height={64} width={64} />
+      <div className="flex flex-col gap-2">
+        <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={160} />
+        <Skeleton baseColor="#202020" highlightColor="#444" height={15} width={120} />
+        <Skeleton baseColor="#202020" highlightColor="#444" height={15} width={100} />
       </div>
     </div>
-    <div className='flex gap-5'>
-      <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
-      <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
-      <p className="h-7 w-full sm:w-1/2 rounded-xl skeleton"></p>
+    <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={200} className="text-center" />
+    <div className="text-center text-lg primary-text">
+      <Skeleton baseColor="#202020" highlightColor="#444" height={20} width={160} />
     </div>
-  </div>)
-}
-
+  </div>
+);
 
 function AllInstructors() {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const [allInstructorDetails, setAllInstructorDetails] = useState([]);
-  const [instructorsCount, setInstructorsCount] = useState();
-  const [loading, setLoading] = useState(false)
-
-
+  const [allInstructors, setAllInstructors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInstructorsData = async () => {
-      setLoading(true)
-      const { allInstructorsDetails, instructorsCount } = await getAllInstructorDetails(token);
-      if (allInstructorsDetails) {
-        setAllInstructorDetails(allInstructorsDetails);
-        setInstructorsCount(instructorsCount)
-      }
-      setLoading(false)
+      setLoading(true);
+      const { allInstructorsDetails } = await getAllInstructorDetails(token);
+      setAllInstructors(allInstructorsDetails);
+      setLoading(false);
     };
 
     fetchInstructorsData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [token]);
 
   return (
-    <div>
+    <div className="sec-background primary-text p-3 min-h-screen flex flex-col">
+      <div className="h-20"></div>
       <div className="mb-14 flex items-center justify-between text-white">
-        <h1 className="text-4xl font-medium text-richblack-5 font-boogaloo text-center sm:text-left">All Instructors Details</h1>
-
-        <IconBtn text="Add Instructor" onclick={() => navigate("")}>
+        <IconBtn text="Add Instructor" onclick={() => navigate("/add-instructor")}>
           <VscAdd />
         </IconBtn>
       </div>
 
-      <Table className="rounded-xl border-2 border-richblack-500 ">
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-500 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-              Instructors : {instructorsCount}
-            </Th>
+      {/* Scrollable Container */}
+      <div className="border border-blue-400 rounded-md ">
+        <div className="hidden md:block w-full">
+          <div className="flex justify-between text-sm uppercase font-bold primary-text p-5">
+            <div>Instructor Details</div>
+            <div className="text-left">Status</div>
+            <div className="text-left">Build Course</div>
+          </div>
 
-            <Th className=" ml-4 text-sm font-medium uppercase text-richblack-100">
-              Status
-            </Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {
-            loading ? <>
+          {loading ? (
+            <>
+              <LoadingSkeleton />
               <LoadingSkeleton />
               <LoadingSkeleton />
               <LoadingSkeleton />
             </>
-              // if No Data Available
-              :
-              !allInstructorDetails ? <div className='text-5xl py-5 bg-yellow-800 text-white text-center'>No Data Available</div>
-                :
-                allInstructorDetails?.map((instructor) => (
-                  <div
-                    key={instructor._id}
-                    className='border-x border-2 border-richblack-500 '
-                  >
-                    <Tr className="flex gap-x-10 px-6 py-8">
-                      <Td className="flex flex-1 gap-x-2">
-                        <img
-                          src={instructor.image}
-                          alt="student"
-                          className="h-[150px] w-[150px] rounded-full "
-                        />
-                        <div className="flex flex-col justify-between">
-                          <p className="text-lg font-semibold text-richblack-5">
-                            <div className='text-sm font-normal'>
-                              <p className='text-base font-bold capitalize'>{instructor.firstName + " " + instructor.lastName}</p>
-                              <p>{instructor.email}</p>
-
-                              <p>
-                                Gender:{" "}
-                                {instructor.additionalDetails.gender
-                                  ? instructor.additionalDetails.gender
-                                  : "Not define"}
-                              </p>
-                              <p>
-                                Mobile No:{" "}
-                                {instructor.additionalDetails.contactNumber
-                                  ? instructor.additionalDetails.contactNumber
-                                  : "No Data"}
-                              </p>
-                              <p>
-                                DOB:{" "}
-                                {instructor.additionalDetails.dateOfBirth
-                                  ? instructor.additionalDetails.dateOfBirth
-                                  : "No Data"}
-                              </p>
-                            </div>
-                          </p>
-                        </div>
-                      </Td>
-                      <Td className="mr-[11.5%] text-sm font-medium text-richblack-100">
-                        {instructor.active ? "Active" : "Inactive"}
-                      </Td>
-                      <Td className="mr-[8%] text-sm font-medium text-richblack-100">
-                        {instructor.approved ? "Approved" : "Not Approved"}
-                      </Td>
-                    </Tr>
-
-
-                    {instructor.courses.length ? (
-                      <Tr className="flex gap-x-10 px-6 pb-5">
-                        <p className="text-yellow-50 ">Built Courses</p>
-                        <div className='grid grid-cols-5 gap-y-5'>
-                          {instructor.courses.map((course) => (
-                            <div className="text-white text-sm" key={course._id}>
-                              <p>{course.courseName}</p>
-                              <p className="text-sm font-normal">Price: ₹{course.price}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </Tr>)
-                      :
-                      <div className="px-6 text-white mb-4">Not Purchased any course</div>
-                    }
+          ) : allInstructors.length === 0 ? (
+            <div className="text-center py-10 primary-text">No Data Available</div>
+          ) : (
+            allInstructors.map((instructor) => (
+              <div key={instructor._id} className="border-t border-blue-400 p-5 flex justify-between items-start transition-all">
+                <div className="flex items-center gap-6">
+                  <img
+                    src={instructor?.image !== "/" ? instructor?.image : user_logo}
+                    alt="instructor"
+                    className="h-16 w-16 rounded-md object-cover shadow-md"
+                  />
+                  <div>
+                    <p className="font-semibold text-xl primary-text text-left">{instructor?.firstName} {instructor?.lastName}</p>
+                    <p className="primary-text text-sm text-left">Gender: {instructor?.additionalDetails?.gender || "Not defined"}</p>
+                    <p className="primary-text text-sm text-left">Mobile No: {instructor?.additionalDetails?.contactNumber || "No Data"}</p>
                   </div>
+                </div>
+                <div className="text-left text-md primary-text">{instructor?.active ? "Active" : "Inactive"}</div>
+                <div className="text-left text-lg primary-text">
+                {instructor?.courses ? instructor?.courses?.map((course) => (
+                        <div className="text-white text-sm" key={course._id}>
+                          <p>{course?.courseName}</p>
+                          <p className="text-sm font-normal">Price:  {course.price} TK</p>
+                        </div>
+                      )) : <div>
+                        <p>Did Not Build Any Course Yet</p>
+                        </div>}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
 
-                ))}
-        </Tbody>
-      </Table>
+        {/* Mobile View */}
+        <div className="md:hidden">
+          {loading ? (
+            <>
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+              <LoadingSkeleton />
+            </>
+          ) : allInstructors.length === 0 ? (
+            <div className="text-center py-5 primary-text">No Data Available</div>
+          ) : (
+            allInstructors.map((instructor) => (
+              <div key={instructor._id} className=" mb-6 p-5 rounded-lg ">
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={instructor.image !== "/" ? instructor.image : user_logo}
+                    alt="instructor"
+                    className="h-16 w-16 rounded-full object-cover shadow-md"
+                  />
+                  <div>
+                    <p className="font-semibold text-xl primary-text">{instructor.firstName} {instructor.lastName}</p>
+                    <p className="primary-text text-sm">{instructor.email}</p>
+                  </div>
+                </div>
+                <div className="text-sm primary-text mb-2">
+                  <p><strong>Gender: </strong>{instructor.additionalDetails?.gender || "Not defined"}</p>
+                  <p><strong>Mobile No: </strong>{instructor?.additionalDetails?.contactNumber || "No Data"}</p>
+                  {instructor?.courses?.map((course) => (
+                        <div className="text-white text-sm" key={course._id}>
+                          <p>{course?.courseName}</p>
+                          <p className="text-sm font-normal">Price:  {course.price} TK</p>
+                        </div>
+                      ))}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 
 export default AllInstructors;
+

@@ -11,6 +11,8 @@ import { COURSE_STATUS } from "../../../../utils/constants";
 import ConfirmationModal from "../../../../Components/ConfirmationModal";
 import Img from './../../../Img';
 import toast from 'react-hot-toast';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function ResponsiveCoursesTable({ courses, setCourses, loading, setLoading }) {
   const navigate = useNavigate();
@@ -18,7 +20,6 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
   const [confirmationModal, setConfirmationModal] = useState(null);
   const TRUNCATE_LENGTH = 25;
 
-  // Delete course handler
   const handleCourseDelete = async (courseId) => {
     setLoading(true);
     const toastId = toast.loading("Deleting...");
@@ -30,14 +31,15 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
     toast.dismiss(toastId);
   };
 
-  // Loading Skeleton
-  const skItem = () => (
-    <div className="flex border-b border-blue-500 px-6 py-8 w-full">
-      <div className="flex flex-1 gap-x-4">
-        <div className="h-[148px] min-w-[300px] rounded-xl skeleton"></div>
-        <div className="flex flex-col w-[40%]">
-          <p className="h-5 w-[50%] rounded-xl skeleton"></p>
-          <p className="h-20 w-[60%] rounded-xl mt-3 skeleton"></p>
+  const SkeletonItem = () => (
+    <div className="p-5 flex justify-between items-center transition-all">
+      <div className="flex items-center gap-6">
+        <Skeleton baseColor="#202020" highlightColor="#444" circle={false} height={124} width={224} style={{ borderRadius: '0.5rem' }} />
+        <div className="flex flex-col gap-2">
+          <Skeleton baseColor="#202020" highlightColor="#444" height={17} width={160} style={{ borderRadius: '0.5rem' }} />
+          <Skeleton baseColor="#202020" highlightColor="#444" height={14} width={240} style={{ borderRadius: '0.5rem' }} />
+          <Skeleton baseColor="#202020" highlightColor="#444" height={10} width={100} style={{ borderRadius: '0.5rem' }} />
+          <Skeleton baseColor="#202020" highlightColor="#444" height={10} width={100} style={{ borderRadius: '0.5rem' }} />
         </div>
       </div>
     </div>
@@ -46,10 +48,10 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
   return (
     <div className="w-full">
       {/* PC View */}
-      <div className="hidden lg:block">
-        <table className="w-full border border-blue-400 rounded-md">
-          <thead className="bg-blue-200">
-            <tr className="text-left text-sm font-medium text-black">
+      <div className="hidden lg:block rounded-lg primary-text sec-background overflow-hidden">
+        <table className="w-full border border-blue-500 rounded-md">
+          <thead className="bg-blue-500 primary-text">
+            <tr className="text-left text-sm font-medium">
               <th className="p-4">Courses</th>
               <th>Duration</th>
               <th>Price</th>
@@ -57,16 +59,18 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
             </tr>
           </thead>
           <tbody>
-            {loading && [skItem(), skItem(), skItem()]}
-            {!loading && courses?.length === 0 ? (
+            {loading ? (
+              <>
+                {Array(3).fill().map((_, index) => <SkeletonItem key={index} />)}
+              </>
+            ) : courses?.length === 0 ? (
               <tr>
-                <td colSpan="4" className="text-center p-10">No courses found</td>
+                <td colSpan="4" className="text-center p-10 text-yellow-500">No courses found</td>
               </tr>
             ) : (
               courses?.map((course) => (
-                <tr key={course._id} className="border-b border-gray-300">
+                <tr key={course._id} className="border-b border-blue-500  transition duration-300">
                   <td className="p-4 flex gap-4 items-start">
-                    {/* Fix Image Size */}
                     <Img
                       src={course?.thumbnail}
                       alt={course?.courseName}
@@ -94,12 +98,12 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
                       )}
                     </div>
                   </td>
-                  <td className="p-4">2hr 30min</td>
+                  <td className="p-4">{loading ? <Skeleton baseColor="#202020" highlightColor="#444" height={14} width={40} style={{ borderRadius: '0.5rem' }} /> : '2hr 30min'}</td>
                   <td className="p-4">₹{course.price}</td>
-                  <td className="p-4">
+                  <td className="p-4 flex items-center">
                     <button
                       onClick={() => navigate(`/dashboard/edit-course/${course._id}`)}
-                      className="mr-4 text-blue-500 hover:scale-110"
+                      className="mr-4 text-blue-500 hover:scale-110 transition-transform"
                     >
                       <FiEdit2 size={18} />
                     </button>
@@ -114,7 +118,7 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
                           btn2Handler: () => setConfirmationModal(null),
                         })
                       }
-                      className="text-red-500 hover:scale-110"
+                      className="text-red-500 hover:scale-110 transition-transform"
                     >
                       <RiDeleteBin6Line size={18} />
                     </button>
@@ -128,13 +132,15 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
 
       {/* Mobile View */}
       <div className="lg:hidden">
-        {loading && [skItem(), skItem(), skItem()]}
-        {!loading && courses?.length === 0 ? (
-          <div className="p-10 text-center">No courses found</div>
+        {loading ? (
+          <>
+            {Array(3).fill().map((_, index) => <SkeletonItem key={index} />)}
+          </>
+        ) : courses?.length === 0 ? (
+          <div className="p-10 text-center text-gray-500">No courses found</div>
         ) : (
           courses?.map((course) => (
-            <div key={course._id} className="border border-gray-300 rounded-md p-4 mb-4">
-              {/* Fix Image Size */}
+            <div key={course._id} className="border  rounded-md p-4 mb-4 ">
               <Img
                 src={course?.thumbnail}
                 alt={course?.courseName}
@@ -163,7 +169,7 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
                 <div className="flex gap-4 mt-4">
                   <button
                     onClick={() => navigate(`/dashboard/edit-course/${course._id}`)}
-                    className="text-blue-500 hover:scale-110"
+                    className="text-blue-500 hover:scale-110 transition-transform"
                   >
                     <FiEdit2 size={18} />
                   </button>
@@ -178,7 +184,7 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
                         btn2Handler: () => setConfirmationModal(null),
                       })
                     }
-                    className="text-red-500 hover:scale-110"
+                    className="text-red-500 hover:scale-110 transition-transform"
                   >
                     <RiDeleteBin6Line size={18} />
                   </button>
@@ -189,7 +195,6 @@ export default function ResponsiveCoursesTable({ courses, setCourses, loading, s
         )}
       </div>
 
-      {/* Confirmation Modal */}
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </div>
   );

@@ -64,7 +64,7 @@ export default function ViewCourse({darkTheme}) {
 
   return (
     <div className={!darkTheme ? "dark" : "light"} >
-          <div className="lg:h-28 h-10 sec-background"></div>
+          <div className="lg:h-24 h-10 sec-background"></div>
       <div className="sec-background relative flex min-h-[calc(100vh-3.5rem)] ">
         {/* view course side bar */}
         {courseViewSidebar && <VideoDetailsSidebar setReviewModal={setReviewModal} />}
