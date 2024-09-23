@@ -63,11 +63,11 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="sm:hidden text-white absolute right-10 top-24 cursor-pointer " onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
+      {/* <div className="sm:hidden text-white absolute right-10 top-24 cursor-pointer " onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
         {
           openSideMenu ? <IoMdClose size={33} /> : <HiMenuAlt1 size={33} />
         }
-      </div>
+      </div> */}
 
 
       {
@@ -91,24 +91,7 @@ export default function Sidebar() {
               setOpenSideMen={setOpenSideMenu}
             />
 
-            <button
-              onClick={() =>
-                setConfirmationModal({
-                  text1: "Are you sure ?",
-                  text2: "You will be logged out of your account.",
-                  btn1Text: "Logout",
-                  btn2Text: "Cancel",
-                  btn1Handler: () => dispatch(logout(navigate)),
-                  btn2Handler: () => setConfirmationModal(null),
-                })
-              }
-              className=" "
-            >
-              <div className="flex items-center gap-x-2 px-8 py-2 text-sm font-medium primary-text hover:bg-richblack-700 relative">
-                <VscSignOut className="text-lg" />
-                <span>Logout</span>
-              </div>
-            </button>
+            
 
           </div>
         </div>

@@ -1,157 +1,114 @@
 import React, { useState } from "react";
-import {
-  checked,
-  dashboard,
-  information,
-  noResult,
-} from "../../assets";
 import { BiEdit } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import EnrolledCourses from "../core/Dashboard/EnrolledCourses";
 import { Link } from "react-router-dom";
 
 const TalentDashboard = ({ darkTheme }) => {
-  const [btn1, setbtn1] = useState(true);
-  const [btn2, setbtn2] = useState(false);
+  const [tab, setTab] = useState("about");
   const { user } = useSelector((state) => state.profile);
 
   const createdDate = user?.createdAt;
-
   let formattedDate = "Date not available";
 
-  console.log("Raw createdDate:", createdDate); // Check if the date is being retrieved
-
   if (createdDate) {
-    // Parse the ISO date string correctly
     const date = new Date(createdDate);
-
-    console.log("Parsed date object:", date); // Check the parsed date object
-
-    // Check if the date is valid
     if (!isNaN(date.getTime())) {
-      // Format the date as "09 September 2024"
       const options = { day: '2-digit', month: 'short', year: 'numeric' };
       formattedDate = date.toLocaleDateString('en-GB', options);
-    } else {
-      console.log("Invalid date parsed from createdDate:", createdDate);
     }
   }
 
-
   return (
-    <div id="talentProfile" className={!darkTheme ? "dark" : "light"}>
-      <main className="background">
-        <div className="left">
-          <div className="profilePic ">
-            <img className="rounded-full" src={user?.image} alt="" />
-          </div>
-          {/* <h3 className="primary-text">Activity</h3>
-          <div className="line"></div> */}
+    <div className={!darkTheme ? "dark" : "light"}>
+      <div className="sec-background primary-text">
+        <div className="lg:h-28 h-24"></div>
+        <div className=" max-w-6xl mx-auto">
+      <div className="relative rounded-md w-full h-52 ">
+        <img
+          src='https://scontent.fdac165-1.fna.fbcdn.net/v/t39.30808-6/306284355_464405405724091_7484475457980942930_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dOsiZ5Bj6oIQ7kNvgHttKFE&_nc_ht=scontent.fdac165-1.fna&_nc_gid=ALfkagcI9YXVBrhSzZvMBro&oh=00_AYAeI9ds-G4dzM0mBme0QLjpNVf4nSI0j5zqXF-2xguXxQ&oe=66F5DE96'
+          alt="Cover"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute z-10 bottom-2 right-3">
+        <Link to="/mySettings">
+          <button className="bg-[#00a89c] text-white px-2 py-2 rounded-md">
+            Edit Profile <BiEdit className="inline-block ml-2" />
+          </button>
+        </Link>
+      </div>
+      </div>
 
-          <h3 className="primary-text">Skills</h3>
-          <div className="skills">
-            <small className="skill primary-text">Branding</small>
-            <small className="skill primary-text">UI/UX Design</small>
-            <small className="skill primary-text">Web Design</small>
-            <small className="skill primary-text">HTML</small>
-            <small className="skill primary-text">CSS</small>
-            <small className="skill primary-text">JavaScript</small>
-          </div>
-          <div className="line"></div>
-          <h3 className="primary-text">Badge Earned</h3>
-          <div className="tests">
-            <div className="test">
-              <div className="testDetails">
-                <img src={checked} alt="" />
-                <small className="secondary-text">Learner</small>
-              </div>
-              <small className="level secondary-text">Basic</small>
-            </div>
-          </div>
+      {/* Profile Picture */}
+      <div className="relative  -mt-16 flex justify-center">
+        <div className="rounded-full border-4 border-[#00a89c]  w-32 h-32 md:w-40 md:h-40">
+          <img
+            src={user?.image}
+            alt="Profile"
+            className="rounded-full w-full h-full object-cover"
+          />
         </div>
+      </div>
 
-        <div className="right">
-          <div className="userDetails">
-            <div className="bar">
-              <div className="top-line">
-                <h1 className="primary-text">{user?.firstName + " " + user?.lastName}</h1>
-                <div className="location">
-                <small className="tag">{user?.accountType}</small>
-                </div>
-              </div>
-              <Link to='/mySettings'>
-              <button className="editProfile">
-                <BiEdit className="editBtn primary-text" />
-                <small className="primary-text">Edit</small>
-              </button>
-              </Link>
-            </div>
-            <p className="bio secondary-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
-              aperiam ab harum, vitae deleniti ducimus minus quas odit odio hic
-              similique recusandae provident nobis in! Eveniet architecto modi
-              facere nostrum.
-            </p>
-          </div>
-          {user?.accountType === 'Student' &&
-          <EnrolledCourses/>
-          }
-          <div className="content-btns">
-            <button
-              className={btn1 && !btn2 ? "active secondary-text" : "secondary-text"}
-              onClick={() => {
-                setbtn1(true);
-                setbtn2(false);
-              }}
-            >
-              <img src={information} alt="" />
-              About
-            </button>
-            <button
-              className={btn2 && !btn1 ? "active secondary-text" : "secondary-text"}
-              onClick={() => {
-                setbtn1(false);
-                setbtn2(true);
-              }}
-            >
-              <img src={dashboard} alt="" />
-              Timeline
-            </button>
-          </div>
-
-          {btn2 && (
-            <div className="timeline-content">
-             
-            <div className="noContent">
-                  <img src={noResult} alt="" />
-                  <small className="secondary-text">No result found</small>
-                </div>
-
-            </div>
-          )}
-
-          {btn1 && (
-            <div className="about-content">
-              <p className="barTitle">Basic Information</p>
-              <div className="info">
-                <small className="primary-text">Birthday: 12 Jan, 2001</small>
-                <small className="primary-text">Gender: Male</small>
-                <small className="primary-text">Member Since: {formattedDate}</small>
-                <small className="primary-text">
-                  Education: Dhaka University of Bangladesh
-                </small>
-              </div>
-
-              <p className="barTitle2">Contact Information</p>
-
-              <div className="info">
-                <small className="primary-text">Email: {user?.email}</small>
-                <small className="primary-text">Phone: +880 1879866202</small>
-              </div>
-            </div>
-          )}
+      {/* User Info */}
+      <div className="text-center mt-4">
+        <h1 className="text-3xl font-semibold">{user?.firstName + " " + user?.lastName}</h1>
+        <p>{user?.email}</p>
+        <p>Member Since: {formattedDate}</p>
+        {/* <small className="block text-gray-500">{user?.accountType}</small> */}
+      </div>
+      <div className="px-2">
+{user?.accountType === 'Student' && (
+        <div className="my-6">
+          <EnrolledCourses />
         </div>
-      </main>
+      )}
+      </div>
+
+      {/* Tabs */}
+      <div className="flex justify-center mt-6 ">
+        <button
+          className={`px-4 py-2 ${tab === 'about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          onClick={() => setTab('about')}
+        >
+          About
+        </button>
+        <button
+          className={`px-4 py-2 ${tab === 'timeline' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          onClick={() => setTab('timeline')}
+        >
+          Timeline
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="p-4">
+        {tab === 'about' ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h3 className="font-semibold text-lg">Basic Information</h3>
+              <p>Birthday: 12 Jan, 2001</p>
+              <p>Gender: Male</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg">Contact Information</h3>
+              
+              <p>Phone: +880 1879866202</p>
+            </div>
+          </div>
+        ) : (
+          <div className="text-center text-gray-500">
+            <img src="path_to_no_result_image" alt="No result" className="mx-auto my-6 w-24 h-24" />
+            <p>No result found</p>
+          </div>
+        )}
+      </div>
+
+
+      
+        </div>
+      </div>
+      
     </div>
   );
 };

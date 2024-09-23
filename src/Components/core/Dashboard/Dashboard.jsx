@@ -22,7 +22,7 @@ const Dashboard = ({darkTheme}) => {
             <div className='sec-background'>
         <div className=' flex mx-auto max-w-[1580px] min-h-[calc(100vh-3.5rem)] relative '>
             <div className='h-auto overflow-auto w-full'>
-                <div className=' p-10 '>
+                <div className='px-3'>
                     <Outlet />
                 </div>
             </div>

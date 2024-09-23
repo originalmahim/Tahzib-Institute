@@ -33,6 +33,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseCategories } from './../../services/operations/courseDetailsAPI';
 import { ACCOUNT_TYPE } from './../../utils/constants';
 import { logout } from "./../../services/operations/authAPI"
+import { IoSettings } from "react-icons/io5";
+import { FolderIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+import { BiGroup } from "react-icons/bi";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const Navbar = ({ setDarkTheme, darkTheme }) => {
   const themeChange = () => {
@@ -197,12 +202,22 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                     <p>Dashboard</p>
                   </Link>
                   <Link
-                    to="/mySettings"
+                    to="/settings"
                     className="activity hover:text-blue-400 secondary-text"
                     onClick={() => setProfileView(false)}
                   >
                     <p>Settings</p>
                   </Link> 
+                  </>}
+                  { user?.accountType === ACCOUNT_TYPE.ADMIN &&
+                  <>
+                  <Link
+                    to="/dashboard"
+                    className="activity hover:text-blue-400 secondary-text"
+                    onClick={() => setProfileView(false)}
+                  >
+                    <p>Dashboard</p>
+                  </Link>
                   </>}
                   
             
@@ -211,9 +226,6 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
 
                   <button
                     className="logout"
-                    // onClick={() => {
-                    //   
-                    // }}
                     onClick={() => {
                       dispatch(logout(navigate))
                       setProfileView(false);
@@ -264,43 +276,122 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
             transition={{ duration: 0.3 }}
             className="menu nav-bg"
           >
-            <NavLink
+            { user?.accountType === ACCOUNT_TYPE.STUDENT ? <NavLink
               to="/"
               className="link"
               onClick={() => setMobileActive(false)}
             >
               <img src={home} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item1")}</p>
-            </NavLink>
+            </NavLink> : ''}
 
-            <NavLink
+            {user ? '' :
+              <NavLink
               to="/about-us"
               onClick={() => setMobileActive(false)}
               className="link"
             >
               <img src={aboutus} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item2")}</p>
-            </NavLink>
+            </NavLink>}
 
-            {/* <NavLink
-              to="/about-us"
-              onClick={() => setMobileActive(false)}
-              className="link"
-            >
-              <img src={box} alt="" className="ico" />
-              <p className="secondary-text">{t("navbar.item4")}</p>
-            </NavLink> */}
+            
 
-            {/* <NavLink
-              to="/about-us"
-              onClick={() => setMobileActive(false)}
-              className="link"
-            >
-              <img src={job} alt="" className="ico" />
-              <p className="secondary-text">{t("navbar.item5")}</p>
-            </NavLink> */}
+           {token !== null && (
+            <div className="profile">
 
-            <p to="" className="link d-link">
+                <motion.div
+                  whileInView={{ opacity: [0, 1] }}
+                  className=""
+                >
+                  { user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <motion.ul>
+                  <NavLink
+                  onClick={() => setMobileActive(false)}
+                    to="/my-dashboard"
+                    className="activity link flex gap-1 items-center hover:text-blue-400 secondary-text"
+                  >
+                    <img src={dashboard} alt="" className="w-6" />
+                    <p>Dashboard</p>
+                  </NavLink>
+                  <NavLink
+                    to="/settings"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <IoSettings className="text-2xl"/>
+                    <p>Settings</p>
+                  </NavLink> 
+                  </motion.ul>
+                  )}
+                  { user?.accountType === ACCOUNT_TYPE.ADMIN && (
+              <motion.ul>
+                  <NavLink
+                  onClick={() => setMobileActive(false)}
+                    to="/dashboard/my-profile"
+                    className="activity link flex gap-1 items-center hover:text-blue-400 secondary-text"
+                  >
+                    <img src={aboutus} alt="" className="w-6" />
+                    <p>My Profile</p>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/create-category"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <FolderIcon className="w-6" />
+                    <p>Create Catagory</p>
+                  </NavLink> 
+                  <NavLink
+                    to="/dashboard/all-students"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <BiGroup className="text-2xl"/>
+                    <p>All Students</p>
+                  </NavLink> 
+                  <NavLink
+                    to="/dashboard/all-instructors"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <FaChalkboardTeacher className="text-2xl"/>
+                    <p>All Instractors</p>
+                  </NavLink> 
+                  <NavLink
+                    to="/dashboard/all-courses"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <BookOpenIcon className="w-6"/>
+                    <p>All Course</p>
+                  </NavLink> 
+                  <NavLink
+                    to="/dashboard/add-course"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <PlusCircleIcon className="w-6"/>
+                    <p>Add Course</p>
+                  </NavLink> 
+                  <NavLink
+                    to="/dashboard/settings"
+                    onClick={() => setMobileActive(false)}
+                    className="activity link flex gap-1 items-center  hover:text-blue-400 secondary-text"
+                  >
+                    <IoSettings className="text-2xl"/>
+                    <p>Settings</p>
+                  </NavLink> 
+                  </motion.ul>
+                  )}
+                  
+            
+                </motion.div>
+            </div>
+          )}
+
+
+            { user?.accountType === ACCOUNT_TYPE.ADMIN || user?.accountType === ACCOUNT_TYPE.INSTRUCTOR ? '' : <p to="" className="link d-link">
               <img src={courses} alt="" className="ico" />
               <p className="secondary-text">{t("navbar.item3")}</p>
               {/* <BsFillCaretDownFill className="downArrow" />
@@ -363,9 +454,23 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   </Link>
                 </li>
               </ul> */}
-            </p>
+            </p> }
 
-            <div className="link-btns">
+            { token !== null  ? <div className="link-btns">
+              <Link
+              to='/'
+              onClick={() => setMobileActive(false)}
+                className="linkBtn"
+              >
+                <button onClick={() => {
+                      dispatch(logout(navigate))
+                      setProfileView(false);
+                    }}>
+                  <img src={login} alt="" className="ico" />
+                  <p className="secondary-text">Logout</p>
+                </button>
+              </Link>
+            </div> : <div className="link-btns">
               <Link
                 to="/login"
                 onClick={() => setMobileActive(false)}
@@ -376,22 +481,11 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
                   <p className="secondary-text">{t("navbar.item6")}</p>
                 </button>
               </Link>
-
-              {/* <Link
-                to="/batch"
-                onClick={() => setMobileActive(false)}
-                className="linkBtn"
-              >
-                <button className="hbtn">
-                  <img src={peoples} alt="" className="ico" />
-                  <p>{t("navbar.item7")}</p>
-                </button>
-              </Link> */}
-            </div>
+            </div>}
           </motion.ul>
         )}
         <div className="navButtons">
-          {/* {langEN ? (
+          {langEN ? (
             <img
               src={bn}
               alt="en"
@@ -405,7 +499,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
               onClick={() => handleLanguage("en")}
               className="lang"
             />
-          )} */}
+          )}
           
           {!darkTheme ? (
             <BsSun className="sun" onClick={themeChange} />

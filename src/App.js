@@ -89,7 +89,7 @@ function App() {
             <>
               <Route path="/my-dashboard" element={ <ProtectedRoute>
           <TalentDashboard darkTheme={darkTheme} /></ProtectedRoute> } />
-          <Route path="/mySettings" element={ <ProtectedRoute>
+          <Route path="/settings" element={ <ProtectedRoute>
             <TalentProfile darkTheme={darkTheme} />
           </ProtectedRoute> } />
             </>

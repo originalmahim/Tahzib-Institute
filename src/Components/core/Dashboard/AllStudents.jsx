@@ -117,7 +117,7 @@ const AllStudents = () => {
             <div className="text-center py-5 bg-yellow-100 text-black">No Data Available</div>
           ) : (
             allStudents.map((student) => (
-              <div key={student._id} className="bg-white mb-6 p-5 rounded-lg shadow-md border border-gray-200">
+              <div key={student._id} className=" mb-6 p-5 rounded-lg shadow-md ">
                 <div className="flex items-center gap-4 mb-4">
                   <img
                     src={student.image !== "/" ? student.image : user_logo}
