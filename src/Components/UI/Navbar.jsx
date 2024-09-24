@@ -58,30 +58,7 @@ const Navbar = ({ setDarkTheme, darkTheme }) => {
 //  login and sign up related codes 
  const { token } = useSelector((state) => state.auth);
     const { user } = useSelector((state) => state.profile);
-    // console.log('USER data from Navbar (store) = ', user)
-    // const { totalItems } = useSelector((state) => state.cart)
-    // const location = useLocation();
-
-    // const [subLinks, setSubLinks] = useState([]);
-    // const [loading, setLoading] = useState(false);
-
-
-    // const fetchSublinks = async () => {
-    //     try {
-    //         setLoading(true)
-    //         const res = await fetchCourseCategories();
-    //         // (res);setSubLinks
-    //     }
-    //     catch (error) {
-    //         console.log("Could not fetch the category list = ", error);
-    //     }
-    //     setLoading(false)
-    // }
-
-
-    // useEffect(() => {
-    //     fetchSublinks();
-    // }, [])
+  
 
   return (
     <div id="navbar" className={!darkTheme ? "dark navColor" : "light "  }>

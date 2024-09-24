@@ -13,9 +13,7 @@ import SingleJob from "./Components/MarketPlace/SingleJob";
 import TalentProfile from "./Components/MarketPlace/TalentProfile";
 import TalentDashboard from "./Components/MarketPlace/TalentDashboard";
 import AllJobs from "./Components/MarketPlace/AllJobs";
-import CourseDetaisPage from "./Components/Home/CourseDetaisPage";
 import vedioapi from "./app/vedioapi";
-import CourseStart from "./Components/Home/CourseStart";
 import About from "./Components/About/About";
 import Allcourses from './Components/AllCourses/Allcourses';
 import Login from "./styles/Pages_style/Login-Register/Login";
@@ -42,6 +40,8 @@ import VideoDetails from './Components/core/ViewCourse/VideoDetails';
 import ViewCourse from "./Components/core/Dashboard/ViewCourse";
 import AllCourses from "./Components/core/Dashboard/InstructorDashboard/AllCourses";
 import NewCourseDetails from "./Components/Home/NewCourseDetails";
+import Checkout from "./Components/UI/Checkout";
+import Newlayout from "./Components/Home/Newlayout";
 
 
 function App() {
@@ -71,17 +71,17 @@ function App() {
           {/* <Route path="/post-job" element={<PostJob darkTheme={darkTheme} />} /> */}
           {/* <Route path="/all-jobs" element={<AllJobs darkTheme={darkTheme} />} /> */}
           {/* <Route path="/single-job" element={<SingleJob darkTheme={darkTheme} />} /> */}
+
+          <Route path="courses/:courseId" element={<NewCourseDetails darkTheme={darkTheme} />}/>
+          <Route path="chelkout/:courseId" element={ <Checkout darkTheme={darkTheme} /> }/>
           
         
-          <Route path="/Details/:id" element={<CourseDetaisPage courses={courses} darkTheme={darkTheme} />} />
-          <Route path="/Learn/:id" element={<CourseStart courses={courses} darkTheme={darkTheme} />} />
           <Route path="/all-courses" element={<Allcourses darkTheme={darkTheme} />} />
           <Route path="/blogs" element={<Blogs darkTheme={darkTheme} />} />
           <Route path="/Login" element={<Login darkTheme={darkTheme} />} />
           <Route path="/verify-email" element={<VerifyEmail darkTheme={darkTheme} />} />
           <Route path="/forgot-password" element={<ForgotPassword darkTheme={darkTheme} />} />
           <Route path="/update-password/:id" element={<UpdatePassword darkTheme={darkTheme} />}/>
-          <Route path="courses/:courseId" element={<NewCourseDetails darkTheme={darkTheme} />}/>
 
           {/* Protected Routes */}
         {/* Protected Route - for Only Logged in User */}
@@ -109,6 +109,7 @@ function App() {
   {user?.accountType === ACCOUNT_TYPE.ADMIN && (
     <>
       <Route path="my-profile" element={<MyProfile />} />
+      <Route path="orders" element={<Newlayout darkTheme={darkTheme} />} />
       <Route path="my-courses" element={<MyCourses />} />
       <Route path="settings" element={<TalentProfile darkTheme={darkTheme} />} />
       <Route path="create-category" element={<CreateCategory />} />
@@ -117,13 +118,6 @@ function App() {
       <Route path="add-course" element={<AddCourse darkTheme={darkTheme} />} />
       <Route path="all-courses" element={<AllCourses />} />
       <Route path="edit-course/:courseId" element={<EditCourse darkTheme={darkTheme} />} />
-    </>
-  )}
-
-  {/* Route only for Students */}
-  {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-    <>
-      <Route path="cart" element={<Cart />} />
     </>
   )}
 

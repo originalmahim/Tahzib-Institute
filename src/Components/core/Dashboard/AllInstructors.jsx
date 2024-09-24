@@ -45,7 +45,7 @@ function AllInstructors() {
 
   return (
     <div className="sec-background primary-text p-3 min-h-screen flex flex-col">
-      <div className="h-20"></div>
+      <div className="h-24"></div>
       <div className="mb-14 flex items-center justify-between text-white">
         <IconBtn text="Add Instructor" onclick={() => navigate("/add-instructor")}>
           <VscAdd />

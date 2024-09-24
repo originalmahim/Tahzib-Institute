@@ -44,6 +44,13 @@ export const sidebarLinks = [
   },
   {
     id: 7,
+    name: "Manage Orders",
+    path: "/dashboard/orders",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscDashboard",
+  },
+  {
+    id: 11,
     name: "Create Category",
     path: "/dashboard/create-category",
     type: ACCOUNT_TYPE.ADMIN,

@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react"
-import { VscSignOut } from "react-icons/vsc"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 
 import { sidebarLinks } from './../../../data/dashboard-links';
-import { logout } from "../../../services/operations/authAPI"
 import SidebarLink from "./SidebarLink"
 import Loading from './../../Loading';
-
-import { HiMenuAlt1 } from 'react-icons/hi'
-import { IoMdClose } from 'react-icons/io'
 
 import { setOpenSideMenu, setScreenSize } from "../../../slices/sidebarSlice";
 import ConfirmationModal from "../../ConfirmationModal";
@@ -21,7 +15,6 @@ export default function Sidebar() {
   const { user, loading: profileLoading } = useSelector((state) => state.profile)
   const { loading: authLoading } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   // to keep track of confirmation modal
   const [confirmationModal, setConfirmationModal] = useState(null)

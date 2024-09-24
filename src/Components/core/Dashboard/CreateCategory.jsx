@@ -57,8 +57,10 @@ const CreateCategory = () => {
 
 
   return (
+    <div className="sec-background">
+      <div className="h-32"></div>
     <div className="border-[1px] border-richblack-700 rounded-2xl bg-richblack-800 p-8 px-7 sm:px-12">
-      <h1 className="mb-14 text-4xl font-medium text-richblack-5 font-boogaloo text-center sm:text-left">Create Category</h1>
+      <h1 className="mb-14 text-4xl font-medium text-richblack-5 font-boogaloo text-center sm:text-left primary-text">Create Category</h1>
 
       <div className='flex flex-col sm:flex-row gap-5 items-center '>
         <div className="flex flex-col w-full gap-5">
@@ -104,6 +106,7 @@ const CreateCategory = () => {
       </div>
 
 
+    </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import RatingStars from "./../../Components/RatingStars";
 import CourseAccordionBar from "./../../Components/core/Course/CourseAccordionBar";
 import { fetchCourseDetails } from "./../../services/operations/courseDetailsAPI";
@@ -19,18 +19,17 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 function NewCourseDetails({ darkTheme }) {
   const { user } = useSelector((state) => state.profile);
-  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { courseId } = useParams();
-
-  const [courseDetails, setCourseDetails] = useState(null);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [confirmationModal, setConfirmationModal] = useState(null);
   const [avgReviewCount, setAvgReviewCount] = useState(0);
   const [isActive, setIsActive] = useState([]);
   const [totalNoOfLectures, setTotalNoOfLectures] = useState(0);
+  const { courseId } = useParams();
+  const [courseDetails, setCourseDetails] = useState(null);
 
   useEffect(() => {
     const fetchCourseDetailsData = async () => {
@@ -49,6 +48,7 @@ function NewCourseDetails({ darkTheme }) {
     fetchCourseDetailsData();
   }, [courseId]);
 
+
   useEffect(() => {
     if (courseDetails) {
       const lectures = courseDetails.courseContent.reduce((acc, sec) => acc + (sec.subSection.length || 0), 0);
@@ -61,19 +61,8 @@ function NewCourseDetails({ darkTheme }) {
   };
 
   const handleBuyCourse = () => {
-    if (token) {
-      const coursesId = [courseId];
-      buyCourse(token, coursesId, user, navigate, dispatch);
-    } else {
-      setConfirmationModal({
-        text1: "You are not logged in!",
-        text2: "Please login to purchase the course.",
-        btn1Text: "Login",
-        btn2Text: "Cancel",
-        btn1Handler: () => navigate("/login"),
-        btn2Handler: () => setConfirmationModal(null),
-      });
-    }
+    const coursesId = [courseId];
+      buyCourse(coursesId, user, navigate, dispatch);
   };
 
   const LoadingSkeleton = () => (
@@ -180,13 +169,15 @@ function NewCourseDetails({ darkTheme }) {
                   <h1 className="text-center text-3xl">কোর্স ফি</h1>
                 <div className="flex items-center justify-center ">
                   <div className="flex mb-3 items-center justify-center gap-4">
-                    <div className="text-red-500 line-through text-3xl font-bold">10000</div>
-                    <div className="text-green-500 text-4xl font-bold">4000/- </div>
+                    <div className="text-red-500 line-through text-3xl font-bold">8000</div>
+                    <div className="text-green-500 text-4xl font-bold">{courseDetails?.price}/- </div>
                   </div>
                 </div>
-                  <button className="w-full flex items-center justify-center gap-2 p-2 text-black text-2xl font-bold text-center bg-yellow-400 rounded-md">
-                   কোর্সে ভর্তি হতে চাই
+                <Link to={`/chelkout/${courseId}`}>
+                  <button  className="w-full flex items-center justify-center gap-2 p-2 text-black text-2xl font-bold text-center bg-yellow-400 rounded-md">
+                   ভর্তি হতে চাই
                   </button>
+                </Link>
                 </div>
 
                 <div className=" mt-4">

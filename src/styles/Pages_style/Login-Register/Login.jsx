@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cover, login } from '../../../assets';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { signin } from "./../../../services/operations/authAPI"
 import SignUp from './SignUp';
+import { ACCOUNT_TYPE } from './../../../utils/constants';
 
 const Login = ({ darkTheme }) => {
   const [btn1, setbtn1] = useState(true);
   const [btn2, setbtn2] = useState(false);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -20,6 +20,20 @@ const Login = ({ darkTheme }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { email, password } = formData;
+
+  // Select authentication status from Redux store or localStorage
+  // const { token } = useSelector((state) => state.auth); 
+
+  const { user } = useSelector((state) => state.profile);
+
+  // Redirect if the user is already logged in
+  useEffect(() => {
+    if (!user) { // Check if token is null, undefined, or falsy
+      navigate('/Login'); // Redirect to login if there's no token
+    } else { user?.accountType === ACCOUNT_TYPE.ADMIN || user?.accountType === ACCOUNT_TYPE.INSTRUCTOR ?
+      navigate('/dashboard') :  navigate('/my-dashboard')
+    }
+  }, [user, navigate]);
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -42,7 +56,7 @@ const Login = ({ darkTheme }) => {
           <div className="banner hidden lg:block w-1/2">
             <img src={cover} alt="cover" className="object-cover w-full h-full" />
           </div>
-          <header className="w-full lg:w-1/2 flex flex-col gap-8 p-6  primary-text">
+          <header className="w-full lg:w-1/2 flex flex-col gap-8 p-6 primary-text">
             {btn1 && (
               <>
                 <h1 className="text-center text-2xl sm:text-4xl font-bold">
@@ -122,3 +136,4 @@ const Login = ({ darkTheme }) => {
 };
 
 export default Login;
+

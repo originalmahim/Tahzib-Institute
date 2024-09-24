@@ -45,6 +45,7 @@ export default function EditCourse({darkTheme}) {
     <div className="sec-background flex w-full items-start gap-x-6">
 
       <div className="flex flex-1 flex-col">
+        <div className="h-20"></div>
         <h1 className="mb-14 text-3xl font-medium text-richblack-5 text-center sm:text-left">
         </h1>
 
